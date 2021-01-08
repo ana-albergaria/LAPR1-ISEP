@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Manu {
     static Scanner read = new Scanner(System.in);
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main (String[] args) throws FileNotFoundException {
         //simulação da entrada por paramêtro do nome do ficheiro
         String fileName = read.next();
         String[] speciesName = speciesName(fileName);
