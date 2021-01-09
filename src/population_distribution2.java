@@ -23,8 +23,8 @@ public class population_distribution2 {
 
         double[] popVec = new double[leslieMatrix.length];
         double[] normalizedPopVec = new double[popVec.length];
-        double[] popDim = new double[popVec.length];
-        double[] rateVariation = new double[popVec.length-1];
+        double[] popDim = new double[generationNum];
+        double[] rateVariation = new double[generationNum];
         double dim, rate;
 
         while (time < generationNum) {
@@ -33,27 +33,26 @@ public class population_distribution2 {
 
             if(time == 0) {
                 printPopDistribution(initialPopVec);
-                time++;
-                int a=time-1;
 
                 //NORMALIZATION
 
                 System.out.println("Normalized Population Distribution:");
                 fillNormalizedPopVec(normalizedPopVec,initialPopVec);
+                printPopDistribution(normalizedPopVec);
 
                 //DIMENSION
 
                 double initialDim=getTotalPopulation(initialPopVec);
                 System.out.println("Population Dimension: " + getTotalPopulation(initialPopVec));
-                fillArray(initialDim, time-1, popDim);
+                fillArray(initialDim, time, popDim);
+                System.out.println();
 
-
+                time++;
 
 
             } else {
                 fillPopulationDistribution(initialPopVec,popVec,leslieMatrix,time);
                 printPopDistribution(popVec);
-                time++;
 
 
                 //NORMALIZATION
@@ -66,23 +65,36 @@ public class population_distribution2 {
 
                 dim=getTotalPopulation(popVec);
                 System.out.println("Population Dimension: " + dim);
+                fillArray(dim, time, popDim);
                 System.out.println();
-                fillArray(dim, time-1, popDim);
+
+                //RATE
+
+                rate = getRateOfChangeOverTheYears(time, popDim);
+                System.out.println("The rate variation between the generation " + (time-1) + " and generation " + (time) + " is: " + rate);
+                System.out.println();
+                fillArray(rate, time-1, rateVariation);
+
+                time++;
 
             }
 
         }
         //APAGAR ANTES DE ENTREGAR
+        System.out.println("Population Dimension Array:");
         System.out.println(Arrays.toString(popDim));
 
+        /*
         time=0;
         while(time+1<generationNum) {
             rate = getRateOfChangeOverTheYears(time, popDim);
             fillArray(rate, time, rateVariation);
             time++;
         }
+         */
 
         //APAGAR ANTES DE ENTREGAR
+        System.out.println("Rate Variation Array:");
         System.out.println(Arrays.toString(rateVariation));
 
 
@@ -155,17 +167,21 @@ public class population_distribution2 {
     /*-----------------------object = FILL POP DIMENSION AND RATE VARIATION OVER THE YEARS----------------------------*/
     public static void fillArray(double object, int time, double[] array) {
         array[time] = object;
-        System.out.println();
     }
 
 
     public static double getRateOfChangeOverTheYears(int time, double [] popDim) {
-        double nowGeneration = popDim[time];
-        double nextGeneration = popDim[time+1];
+        double nowGeneration = popDim[time-1];
+        double nextGeneration = popDim[time];
 
         double quocient = nextGeneration/nowGeneration;
 
         return quocient;
+    }
+    public static void printRateOfChangeOverTheYears(int time, double [] rate) {
+        for (int i = 0; i < rate.length; i++) {
+            System.out.println("The rate ");
+        }
     }
 }
 
