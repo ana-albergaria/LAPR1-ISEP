@@ -23,8 +23,8 @@ public class population_distribution2 {
 
         double[] popVec = new double[leslieMatrix.length];
         double[] normalizedPopVec = new double[popVec.length];
-        double[] popDim = new double[popVec.length];
-        double[] rateVariation = new double[popVec.length-1];
+        double[] popDim = new double[generationNum];
+        double[] rateVariation = new double[generationNum-1];
         double dim, rate;
 
         while (time < generationNum) {
@@ -47,14 +47,10 @@ public class population_distribution2 {
                 System.out.println("Population Dimension: " + getTotalPopulation(initialPopVec));
                 fillArray(initialDim, time-1, popDim);
 
-
-
-
             } else {
                 fillPopulationDistribution(initialPopVec,popVec,leslieMatrix,time);
                 printPopDistribution(popVec);
                 time++;
-
 
                 //NORMALIZATION
 

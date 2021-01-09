@@ -8,7 +8,6 @@ import java.util.Scanner;
 public class callGnuplot {
     public static void main(String[] args) throws IOException, InterruptedException {
         Scanner sc = new Scanner(System.in);
-
         Process process1 = Runtime.getRuntime().exec("gnuplot -c ./testeGnuplot.gp 1 4");
         printResults(process1);
     }
