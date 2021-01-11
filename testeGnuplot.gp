@@ -49,9 +49,9 @@ set xlabel "Tempo"
 set ylabel "Taxa de variação"
 
 set style data linespoints
-
+lastline=ARG3
 # Plot
-plot [ ][0:] data using 1:3 skip 1 title 'variação da população'
+plot [ :lastline][0:] data using 1:3 title 'variação da população'
 
 # =====================================================POP DISTRIBUTION================================================
 if (ARG1==1){
