@@ -61,8 +61,6 @@ public class main {
         readFile.close();
     }
 
-
-
     public static String[] transformVector (String vector){
         String[] auxVector = vector.split(", ");
         for (int i=0; i<auxVector.length; i++){
