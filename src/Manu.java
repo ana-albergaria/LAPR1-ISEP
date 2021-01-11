@@ -58,12 +58,8 @@ public class Manu {
                     }
                     break;
                 case 1:
-                    for (int m=1; m<leslie.length; m++) {
-                        for (int k = 0; k < leslie.length; k++) {
-                            if (m == k + 1) {
-                                leslie[m][k] = Double.parseDouble(auxVector[k]);
-                            }
-                        }
+                    for (i=0; i<leslie.length-1; i++) {
+                        leslie[i+1][i] = Double.parseDouble(auxVector[i]);
                     }
                     break;
                 default:
