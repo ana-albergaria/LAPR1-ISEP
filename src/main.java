@@ -257,7 +257,7 @@ public class main {
             for (int column = 0; column < matrix[line].length; column++) {
                 if(line == time) {
                     System.out.print("- Class " + column + ": ");
-                    System.out.printf("%.3f%n", matrix[line][column]);
+                    System.out.printf("%.2f%n", matrix[line][column]);
                 }
             }
         }
@@ -266,7 +266,7 @@ public class main {
     public static void printPopDistribution2(double[] array) {
         for (int i = 0; i < array.length; i++) {
             System.out.print("- Class " + i + ": ");
-            System.out.printf("%.3f%n", array[i]);
+            System.out.printf("%.2f%n", array[i]);
         }
     }
     public static void callGnuplot (int gen, int classes) throws IOException, InterruptedException {
@@ -312,9 +312,12 @@ public class main {
         printPopDistribution(distributionMatrix, time);
         System.out.println("Normalized Population Distribution:");
         printPopDistribution(normDistMatrix, time);
-        System.out.println("Population Dimension: " + popDim[time]);
+        System.out.printf("Population Dimension: %.2f", popDim[time] );
+        System.out.println();
         if(time != generationNum) {
-            System.out.println("Rate Variation between generation " + time + " and generation " + (time + 1) + ": " + rateVariation[time]);
+            System.out.print("Rate Variation between generation " + time + " and generation " + (time + 1) + ": ");
+            System.out.printf("%.2f%n",rateVariation[time]);
+            System.out.println();
         } else {
             System.out.println("For this generation, there is no Rate Variation.");
         }
@@ -379,10 +382,10 @@ public class main {
         System.out.println();
         System.out.println("The eigenvector associated to the maximum eigenvalue represents the constant population proportions.");
         System.out.println();
-        System.out.println("Constant population proportions: (3 decimal places)");
+        System.out.println("Constant population proportions: (2 decimal places)");
         printPopDistribution2(maxVecM);
         System.out.println();
-        System.out.println("Normalized constant population proportions: (3 decimal places)");
+        System.out.println("Normalized constant population proportions: (2 decimal places)");
         fillNormalizedPopVec2(normalizedMaxVecM,maxVecM);
         printPopDistribution2(normalizedMaxVecM);
     }
