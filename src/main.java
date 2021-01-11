@@ -335,14 +335,10 @@ public class main{
     }
     public static void assintoticAnalysis(double leslieMatrix[][]){
 
-        //double leslieMatrix[][]={{0.50, 2.40, 1, 0},{0.5,0, 0, 0}, {0, 0.8, 0, 0}, {0, 0, 0.5, 0}};
-        //double leslieMatrix[][]={{0.50, 2.40, 1, 0},{0.5,0, 0, 0}, {0, 0.8, 0, 0}, {0, 0, 0.5, 0}};
-
         //creation and filling of the eigen Vector Matrix and the eigen Value Matrix through Eigen Decomposition
         double eigenVecM [][] = new double[leslieMatrix.length][leslieMatrix.length];
         double eigenValM [][] = new double[leslieMatrix.length][leslieMatrix.length];
         eigenValAndVecMatrix(leslieMatrix,eigenVecM,eigenValM);
-
 
         //creation of the maximum Eigen Vector Array
         double maxVecM [] = new double [leslieMatrix.length];
@@ -350,21 +346,7 @@ public class main{
         double normalizedMaxVecM [] = new double [maxVecM.length];
 
         //saving the max Eigen Value through the method maxEigenValue and filling the maxVecM through the fillMaxVecM
-        double maxEigenValue = findMaxEigenValue(leslieMatrix,eigenValM,eigenVecM,maxVecM);
-
-
-        //TESTES:
-        /*
-        print2D(eigenVecM);
-        System.out.println();
-        print2D(eigenValM);
-        System.out.println();
-        System.out.println("The eigen value which has the maximum module is: " + maxEigenValue);
-        System.out.println();
-        System.out.println("The maximum eigen vector is: ");
-        print1D(maxVecM);
-         */
-
+        double maxEigenValue = findMaxEigenValue(eigenValM,eigenVecM,maxVecM);
 
         double percChangePop = (maxEigenValue-1) * 100;
 
@@ -375,17 +357,17 @@ public class main{
         System.out.println("The vector is its respective eigenvector.");
         System.out.println();
         System.out.print("The eigen value which has the maximum module is, approximately: ");
-        System.out.printf("%.2f%n", maxEigenValue);
+        System.out.printf("%.3f%n", maxEigenValue);
         System.out.println("This eigen value represents the growth rate.");
 
         if(maxEigenValue > 1) {
             System.out.print("As the eigen value is greater than 1, this means the population is growing and will be, approximately, ");
             System.out.printf("%.0f", percChangePop);
-            System.out.println("% larger in size.");
+            System.out.println("% larger in size that it was last year.");
         } else if(maxEigenValue < 1) {
             System.out.print("As the eigen value is lesser than 1, this means the population is decreasing and will be, approximately, ");
             System.out.printf("%.0f", Math.abs(percChangePop));
-            System.out.println("% smaller in size.");
+            System.out.println("% smaller in size that it was last year.");
         } else {
             System.out.println("As the eigen value is equal to 1, the population will remain constant in size over time.");
         }
@@ -393,10 +375,10 @@ public class main{
         System.out.println();
         System.out.println("The eigenvector associated to the maximum eigenvalue represents the constant population proportions.");
         System.out.println();
-        System.out.println("Constant population proportions: (2 decimal places)");
+        System.out.println("Constant population proportions: (3 decimal places)");
         printPopDistribution(maxVecM);
         System.out.println();
-        System.out.println("Normalized constant population proportions: (2 decimal places)");
+        System.out.println("Normalized constant population proportions: (3 decimal places)");
         fillNormalizedPopVec(normalizedMaxVecM,maxVecM);
         printPopDistribution(normalizedMaxVecM);
     }
@@ -409,27 +391,22 @@ public class main{
         double vecM [][] = decompLeslie[0].toDenseMatrix().toArray();
         double valM [][] = decompLeslie[1].toDenseMatrix().toArray();
 
-        //APAGAR FOR ANTES DE ENTREGAR
-        for (int i = 0; i < 2; i++) {
-            System.out.println(decompLeslie[i]);
-        }
-        //TERMINA AQUI
-
         fillEmptyMatrix(eigenVecM,vecM);
         fillEmptyMatrix(eigenValM,valM);
 
     }
-
-    public static double findMaxEigenValue(double[][] leslieMatrix, double[][] eigenValM, double[][] eigenVecM, double[] maxVecM) {
+    public static double findMaxEigenValue(double[][] eigenValM, double[][] eigenVecM, double[] maxVecM) {
 
         double maxEigenVal = Math.abs(eigenValM[0][0]);
         int columnMaxEigenVal = 0;
 
         for (int line = 0; line < eigenValM.length; line++) {
             for (int column = 0; column < eigenValM.length; column++) {
-                if (Math.abs(eigenValM[line][column]) > maxEigenVal) {
-                    maxEigenVal = eigenValM[line][column];
-                    columnMaxEigenVal = column;
+                if(line == column) {
+                    if (Math.abs(eigenValM[line][column]) > maxEigenVal) {
+                        maxEigenVal = eigenValM[line][column];
+                        columnMaxEigenVal = column;
+                    }
                 }
             }
         }
@@ -455,28 +432,4 @@ public class main{
             }
         }
     }
-    //MÉTODO QUE SE REPETE NA POPULATION_DISTRIBUTION
-    public static void fillNormalizedPopVec(double[] normalizedPopVec, double[] popVec) {
-        double totalPopulation = getTotalPopulation(popVec);
-
-        for (int i = 0; i < popVec.length; i++) {
-            normalizedPopVec[i] = popVec[i] / totalPopulation;
-        }
-    }
-    //APAGAR ANTES DE ENTREGAR
-    public static void print2D(double[][] array) {
-        for (int line = 0; line < array.length; line++) {
-            for (int column = 0; column < array[line].length; column++) {
-                System.out.print(array[line][column] + " ");
-            }
-            System.out.println();
-        }
-    }
-    //APAGAR ANTES DE ENTREGAR
-    public static void print1D(double[] array) {
-        for (int i = 0; i < array.length; i++) {
-            System.out.println(array[i]);
-        }
-    }
-
 }
