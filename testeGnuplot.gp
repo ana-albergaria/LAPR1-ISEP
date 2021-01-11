@@ -51,7 +51,7 @@ set ylabel "Taxa de variação"
 set style data linespoints
 
 # Plot
-plot data using 1:3 skip 1 title 'variação da população'
+plot [ ][0:] data using 1:3 skip 1 title 'variação da população'
 
 # =====================================================POP DISTRIBUTION================================================
 if (ARG1==1){
