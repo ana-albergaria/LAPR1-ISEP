@@ -106,12 +106,10 @@ public class main {
     public static int popDistribution (double initialPopVec[], double[][] leslieMatrix) throws IOException {
         Scanner read = new Scanner(System.in);
 
-        //double initialPopVec[] = {1000, 300, 330, 100};
-        //double[][] leslieMatrix = {{0.50,2.40,1,0},{0.5,0,0,0},{0,0.8,0,0},{0,0,0.5,0}};
-        //double[][] leslieMatrix = {{0, 3, 3.17, 0.39}, {0.11, 0, 0, 0}, {0, 0.29, 0, 0}, {0, 0, 0.33, 0}};
-
+        //ISTO É PARA APAGAR?
         print1D(initialPopVec);
         printMatrix(leslieMatrix);
+        //TERMINA AQUI
 
         int generationNum, t = 0;
 
@@ -143,14 +141,12 @@ public class main {
             //DIMENSION
             dim=getTotalPopulation(popVec);
             fillArray(dim, time, popDim);
-        }
 
-        //RATE
-
-        while(t+1<generationNum) {
-            rate = getRateOfChangeOverTheYears(t, popDim);
-            fillArray(rate, t, rateVariation);
-            t++;
+            //RATE
+            if(time >= 1) {
+                rate = getRateOfChangeOverTheYears(time, popDim);
+                fillArray(rate, time-1, rateVariation);
+            }
         }
 
         dimensionDataFormat(popDim, rateVariation);
@@ -159,6 +155,7 @@ public class main {
             printGenerationInfo(i,generationNum,distributionMatrix,normDistMatrix,popDim,rateVariation);
         }
 
+        //CONFIRMAR COM JOÃO QUE ISTO FAZ
         return t;
     }
     public static void generationsDataFormat (double [] popVec, double [] normalizedPopVec, int gen) throws IOException {
@@ -302,8 +299,8 @@ public class main {
         }
     }
     public static double getRateOfChangeOverTheYears(int time, double [] popDim) {
-        double nowGeneration = popDim[time];
-        double nextGeneration = popDim[time+1];
+        double nowGeneration = popDim[time-1];
+        double nextGeneration = popDim[time];
 
         double quocient = nextGeneration/nowGeneration;
 
@@ -364,7 +361,7 @@ public class main {
         System.out.println("The vector is its respective eigenvector.");
         System.out.println();
         System.out.print("The eigen value which has the maximum module is, approximately: ");
-        System.out.printf("%.3f%n", maxEigenValue);
+        System.out.printf("%.4f%n", maxEigenValue);
         System.out.println("This eigen value represents the growth rate.");
 
         if(maxEigenValue > 1) {
