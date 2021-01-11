@@ -11,6 +11,42 @@ import java.util.Scanner;
 public class main {
     static Scanner read = new Scanner(System.in);
     public static void main(String[] args) throws IOException, InterruptedException {
+        switch (args.length){
+            case 0:
+                System.out.println("Insira o nome da espécie a analisar:");
+                String speciesName = read.nextLine();
+                System.out.println("Insira quantidade de faixas etárias:");
+                int ageClass = read.nextInt();
+                double[] initialPopulation = new double[ageClass];
+                fillClasse(initialPopulation);
+                System.out.println("Insira a taxa de sobrevivência dos indivíduos reprodutores");
+                double[][] leslieMatrix = new double[ageClass][ageClass];
+                fillSurviveRate(leslieMatrix);
+                System.out.println("Insira o número médio de indivíduos reprodutores gerados por um indivíduo reprodutor:");
+                fillFecundityRate(leslieMatrix);
+                System.out.println("Insira o número de gerações a estimar: ");
+                int numberOfGenerations = read.nextInt();
+                popDistribution(initialPopulation, leslieMatrix, numberOfGenerations);
+                System.out.println("Deseja gerar o valor e vetor próprio associados a matriz de Leslie?");
+                //ask the user the necessary questions for iteractive modes
+                //isert the necessary method
+                //case 2 split the array after -n to take the arquiche name
+                break;
+            case 2:
+                break;
+            case 9:
+                //no interactive mode with all the features
+                break;
+            case 4:
+                //no interactive mode without any features
+                break;
+            case 7: case 8:
+                //check how features the user want
+                // -e augevalues and augevectors
+                // -v dimension of population
+                // -r variation of population in each generation
+
+        }
         //simulação da entrada por paramêtro do nome do ficheiro
         String fileName = read.next();
         String[] speciesName = speciesName(fileName);
@@ -20,9 +56,28 @@ public class main {
         readFile(fileName, sizeSpecies, leslieMatrix);
         //print(sizeSpecies);
         //print1(leslieMatrix);
-        int t = popDistribution(sizeSpecies, leslieMatrix);
+        // ver o último paramêtro
+        int t = popDistribution(sizeSpecies, leslieMatrix, 10);
         callGnuplot(t-1, size);
         assintoticAnalysis(leslieMatrix);
+    }
+    public static void fillClasse (double[] array){
+        for (int i=0;i < array.length;i++){
+            System.out.print("Classe " + (i+1) + ":");
+            array[i] = read.nextDouble();
+        }
+    }
+    public static void fillSurviveRate (double[][] array){
+        for (int i=0; i<array.length-1 ;i++){
+            System.out.print("Classe " + (i+1) + ":");
+            array[i+1][i] = read.nextDouble();
+        }
+    }
+    public static void fillFecundityRate (double[][] array){
+        for (int i=0; i<array.length ;i++){
+            System.out.print("Classe " + (i+1) + ":");
+            array[0][i] = read.nextDouble();
+        }
     }
     public static String[] speciesName (String path){
         String[] specie = path.split(".txt");
@@ -87,7 +142,7 @@ public class main {
         return size;
     }
 
-    public static void print (int[] size){
+    public static void print (double[] size){
         for (int i=0; i< size.length; i++){
             System.out.printf("%d ", size[i]);
             System.out.println();
@@ -103,7 +158,7 @@ public class main {
         }
     }
 
-    public static int popDistribution (double initialPopVec[], double[][] leslieMatrix) throws IOException {
+    public static int popDistribution (double initialPopVec[], double[][] leslieMatrix, int generationNum) throws IOException {
         Scanner read = new Scanner(System.in);
 
         //ISTO É PARA APAGAR?
@@ -111,13 +166,13 @@ public class main {
         printMatrix(leslieMatrix);
         //TERMINA AQUI
 
-        int generationNum, t = 0;
+        int t = 0;
 
-        System.out.println("Insert the generations' number to be estimated: ");
+        //System.out.println("Insert the generations' number to be estimated: ");
 
-        do {
+        /*do {
             generationNum = read.nextInt();
-        } while (generationNum <= 0);
+        } while (generationNum <= 0);*/
 
         double[] popVec = new double[leslieMatrix.length];
         double[] normalizedPopVec = new double[popVec.length];
