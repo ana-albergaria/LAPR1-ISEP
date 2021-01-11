@@ -37,19 +37,21 @@ public class main {
 
         do{
             vector = readFile.nextLine();
-            auxVector = transformVector(vector);
-            switch (cont){
-                case 0:
+            switch (vector.charAt(0)){
+                case 'x':
+                    auxVector = transformVector(vector);
                     for (i=0; i<auxVector.length; i++){
                         size[i] = Integer.parseInt(auxVector[i]);
                     }
                     break;
-                case 1:
+                case 's':
+                    auxVector = transformVector(vector);
                     for (i=0; i<leslie.length-1; i++) {
                         leslie[i+1][i] = Double.parseDouble(auxVector[i]);
                     }
                     break;
-                default:
+                case 'f':
+                    auxVector = transformVector(vector);
                     for (i=0; i<auxVector.length; i++){
                         leslie[0][i] = Double.parseDouble(auxVector[i]);
                     }
@@ -70,10 +72,17 @@ public class main {
     }
 
     public static int sizeMatrix (String path) throws FileNotFoundException {
+        int size=0;
         File archive = new File(path);
         Scanner readFile = new Scanner(archive);
-        String vector = readFile.nextLine();
-        int size = transformVector(vector).length;
+        do{
+            String vector = readFile.nextLine();
+            int compare = Character.compare(vector.charAt(0), 'f');
+            if (compare==0){
+               size = transformVector(vector).length;
+            }
+        }while (readFile.hasNextLine());
+
         readFile.close();
         return size;
     }
