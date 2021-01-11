@@ -122,15 +122,15 @@ public class main {
         double[] popVec = new double[leslieMatrix.length];
         double[] normalizedPopVec = new double[popVec.length];
 
-        double[][] distributionMatrix = new double[generationNum][leslieMatrix.length];
-        double[][] normDistMatrix = new double[generationNum][leslieMatrix.length];
+        double[][] distributionMatrix = new double[generationNum+1][leslieMatrix.length];
+        double[][] normDistMatrix = new double[generationNum+1][leslieMatrix.length];
 
-        double[] popDim = new double[generationNum];
-        double[] rateVariation = new double[generationNum];
+        double[] popDim = new double[generationNum+1];
+        double[] rateVariation = new double[generationNum+1];
 
         double dim, rate;
 
-        for(int time = 0; time < generationNum; time++) {
+        for(int time = 0; time <= generationNum; time++) {
 
             //POPULATION DISTRIBUTION
             fillPopulationDistribution(initialPopVec,popVec,distributionMatrix,leslieMatrix,time);
@@ -151,7 +151,7 @@ public class main {
 
         dimensionDataFormat(popDim, rateVariation);
 
-        for (int i = 0; i < generationNum; i++) {
+        for (int i = 0; i <= generationNum; i++) {
             printGenerationInfo(i,generationNum,distributionMatrix,normDistMatrix,popDim,rateVariation);
         }
 
@@ -313,7 +313,7 @@ public class main {
         System.out.println("Normalized Population Distribution:");
         printPopDistribution(normDistMatrix, time);
         System.out.println("Population Dimension: " + popDim[time]);
-        if(time != generationNum-1) {
+        if(time != generationNum) {
             System.out.println("Rate Variation between generation " + time + " and generation " + (time + 1) + ": " + rateVariation[time]);
         } else {
             System.out.println("For this generation, there is no Rate Variation.");
