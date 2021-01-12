@@ -18,7 +18,8 @@ public class FINAL_pop_distribution{
         //print1(leslieMatrix);
         int t = popDistribution(sizeSpecies, leslieMatrix);
         System.out.println(t);
-        callGnuplot(t-1, size);
+        showGnuplotted(t-1, size);
+        saveGnuplotted(t-1, size);
     }
     public static String[] speciesName (String path){
         String[] specie = path.split(".txt");
@@ -33,19 +34,21 @@ public class FINAL_pop_distribution{
 
         do{
             vector = readFile.nextLine();
-            auxVector = transformVector(vector);
-            switch (cont){
-                case 0:
+            switch (vector.charAt(0)){
+                case 'x':
+                    auxVector = transformVector(vector);
                     for (i=0; i<auxVector.length; i++){
                         size[i] = Integer.parseInt(auxVector[i]);
                     }
                     break;
-                case 1:
+                case 's':
+                    auxVector = transformVector(vector);
                     for (i=0; i<leslie.length-1; i++) {
                         leslie[i+1][i] = Double.parseDouble(auxVector[i]);
                     }
                     break;
-                default:
+                case 'f':
+                    auxVector = transformVector(vector);
                     for (i=0; i<auxVector.length; i++){
                         leslie[0][i] = Double.parseDouble(auxVector[i]);
                     }
@@ -247,8 +250,13 @@ public class FINAL_pop_distribution{
         }
         System.out.println();
     }
-    public static void callGnuplot (int gen, int classes) throws IOException, InterruptedException {
-        Process process1 = Runtime.getRuntime().exec("gnuplot -c ./testeGnuplot.gp 1 " + classes + " " + gen);
+    public static void showGnuplotted (int gen, int classes) throws IOException, InterruptedException {
+        Process process1 = Runtime.getRuntime().exec("gnuplot -c ./showGnuplot.gp " + classes + " " + gen);
+        process1.waitFor();
+        //deleteDatFiles();
+    }
+    public static void saveGnuplotted (int gen, int classes) throws IOException, InterruptedException {
+        Process process1 = Runtime.getRuntime().exec("gnuplot -c ./saveGnuplot.gp 1 " + classes + " " + gen);
         process1.waitFor();
         deleteDatFiles();
     }
