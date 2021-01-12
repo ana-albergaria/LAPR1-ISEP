@@ -249,7 +249,7 @@ public class main {
         String data = "", fn= "";
         for(int i=0;i<filesNum;i++){
             data =  gen + " " + df.format(popVec[i]) + " " + df.format(normalizedPopVec[i]);
-            fn = "class"+(i+1)+".dat";
+            fn = "classe"+(i+1)+".dat";
             dataToFile(fn, data);
         }
     }
@@ -341,7 +341,7 @@ public class main {
         for (int line = 0; line < matrix.length; line++) {
             for (int column = 0; column < matrix[line].length; column++) {
                 if(line == time) {
-                    System.out.print("- Class " + column + ": ");
+                    System.out.print("- Classe " + column + ": ");
                     System.out.printf("%.2f%n", matrix[line][column]);
                 }
             }
@@ -350,7 +350,7 @@ public class main {
     }
     public static void printPopDistribution2(double[] array) {
         for (int i = 0; i < array.length; i++) {
-            System.out.print("- Class " + i + ": ");
+            System.out.print("- Classe " + i + ": ");
             System.out.printf("%.2f%n", array[i]);
         }
     }
@@ -404,19 +404,19 @@ public class main {
         return quocient;
     }
     public static void printGenerationInfo(int time, int generationNum, double[][] distributionMatrix, double[][] normDistMatrix, double[] popDim, double[] rateVariation) {
-        System.out.println("GENERATION " + time);
-        System.out.println("Population Distribution:");
+        System.out.println("GERAÇÃO " + time);
+        System.out.println("Distribuição da População:");
         printPopDistribution(distributionMatrix, time);
-        System.out.println("Normalized Population Distribution:");
+        System.out.println("Distribuição da População Normalizada:");
         printPopDistribution(normDistMatrix, time);
-        System.out.printf("Population Dimension: %.2f", popDim[time] );
+        System.out.printf("Dimensão da População: %.2f", popDim[time] );
         System.out.println();
         if(time != generationNum) {
-            System.out.print("Rate Variation between generation " + time + " and generation " + (time + 1) + ": ");
+            System.out.print("Taxa de Variação entre a geração " + time + " e a geração " + (time + 1) + ": ");
             System.out.printf("%.2f%n",rateVariation[time]);
             System.out.println();
         } else {
-            System.out.println("For this generation, there is no Rate Variation.");
+            System.out.println("Para esta geração, não há Taxa de Variação.");
         }
         System.out.println();
     }
@@ -460,35 +460,35 @@ public class main {
 
         double percChangePop = (maxEigenValue-1) * 100;
 
-        System.out.println("ASYMPTOTIC BEHAVIOUR OF THE POPULATION ASSOCIATED TO THE MAXIMUM EIGEN VALUE");
+        System.out.println("COMPORTAMENTO ASSINTÓTICO DA POPULAÇÃO ASSOCIADO AO VALOR PRÓPRIO MÁXIMO");
         System.out.println();
-        System.out.println("At Steady State there is a specific constant number associated with a specific population vector.");
-        System.out.println("The constant number is the eigen value which has the maximum module of the Leslie Matrix representative of the current population.");
-        System.out.println("The vector is its respective eigenvector.");
+        System.out.println("No estado estacionário, existe, um número constante específico, associado a um vetor de população específico.");
+        System.out.println("Esse número é o valor próprio que tem o módulo máximo da Matriz de Leslie, representando a população atual.");
+        System.out.println("O vetor é o seu respetivo vetor próprio.");
         System.out.println();
-        System.out.print("The eigen value which has the maximum module is, approximately: ");
+        System.out.print("O valor próprio, que tem o módulo máximo, é, aproximadamente: ");
         System.out.printf("%.4f%n", maxEigenValue);
-        System.out.println("This eigen value represents the growth rate.");
+        System.out.println("Este valor próprio, representa a taxa de crescimento.");
 
         if(maxEigenValue > 1) {
-            System.out.print("As the eigen value is greater than 1, this means the population is growing and will be, approximately, ");
+            System.out.print("Enquanto o valor próprio for maior do que 1, a população está a crescer e será, aproximadamente, ");
             System.out.printf("%.0f", percChangePop);
-            System.out.println("% larger in size that it was last year.");
+            System.out.println("% maior em tamanho, em comparação ao ano anterior.");
         } else if(maxEigenValue < 1) {
-            System.out.print("As the eigen value is lesser than 1, this means the population is decreasing and will be, approximately, ");
+            System.out.print("Enquanto o valor próprio for menor do que 1, a população está a decrescer e será, aproximadamente, ");
             System.out.printf("%.0f", Math.abs(percChangePop));
-            System.out.println("% smaller in size that it was last year.");
+            System.out.println("% menor em tamanho, em comparação ao ano anterior.");
         } else {
-            System.out.println("As the eigen value is equal to 1, the population will remain constant in size over time.");
+            System.out.println("Enquanto o valor próprio for igual a 1, a população permanecerá constante em tamanho, ao longo do tempo.");
         }
 
         System.out.println();
-        System.out.println("The eigenvector associated to the maximum eigenvalue represents the constant population proportions.");
+        System.out.println("O vetor próprio associado ao valor próprio máximo representa representa as constantes proporções da população.");
         System.out.println();
-        System.out.println("Constant population proportions: (2 decimal places)");
+        System.out.println("Proporções populacionais constantes: (2 casas decimais)");
         printPopDistribution2(maxVecM);
         System.out.println();
-        System.out.println("Normalized constant population proportions: (2 decimal places)");
+        System.out.println("Proporções populacionais constantes normalizadas: (2 casas decimais)");
         fillNormalizedPopVec2(normalizedMaxVecM,maxVecM);
         printPopDistribution2(normalizedMaxVecM);
     }
