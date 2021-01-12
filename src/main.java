@@ -365,7 +365,6 @@ public class main {
 =======
     public static void callGnuplot (int gen, int classes) throws IOException, InterruptedException {
         Process process1 = Runtime.getRuntime().exec("gnuplot -c ./saveGnuplot.gp 3 " + classes + " " + gen);
->>>>>>> 0aeaea3dd8e66ca054e59ddd7414e29e149faf64
         process1.waitFor();
         printResults(process1);
         deleteDatFiles();
