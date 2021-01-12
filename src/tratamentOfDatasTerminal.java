@@ -11,7 +11,7 @@ public class tratamentOfDatasTerminal {
                 System.out.println("Insira quantidade de faixas etárias:");
                 int ageClass = read.nextInt();
                 double initialPopulation[] = new double[ageClass];
-                fillClasse(initialPopulation);
+                //fillClasse(initialPopulation);
                 print(initialPopulation);
                 //ask the user the necessary questions for iteractive modes
                 //isert the necessary method
@@ -33,12 +33,7 @@ public class tratamentOfDatasTerminal {
 
         }
     }
-    public static void fillClasse (double[] array){
-        for (int i=0;i < array.length;i++){
-            System.out.print("Classe " + (i+1) + ":");
-            array[i] = read.nextDouble();
-        }
-    }
+
     public static void print (double[] size){
         for (int i=0; i< size.length; i++){
             System.out.printf("%f ", size[i]);
