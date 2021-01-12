@@ -59,13 +59,8 @@ public class main {
                             fillArray(rate, numberOfGenerations-1, rateVariation);
                             print(rateVariation);
                             break;
-
                     }
                 }
-
-
-
-
                 //ask the user the necessary questions for iteractive modes
                 //isert the necessary method
                 //case 2 split the array after -n to take the arquiche name
@@ -200,7 +195,7 @@ public class main {
 
     public static void print (double[] size){
         for (int i=0; i< size.length; i++){
-            System.out.printf("%d ", size[i]);
+            System.out.printf("%f ", size[i]);
             System.out.println();
         }
     }
@@ -364,8 +359,13 @@ public class main {
             System.out.printf("%.2f%n", array[i]);
         }
     }
+<<<<<<< HEAD
     public static void callGnuplot (int gen, int classes, int formatGaphics) throws IOException, InterruptedException {
         Process process1 = Runtime.getRuntime().exec("gnuplot -c ./testeGnuplot.gp " + formatGaphics + " " + classes + " " + gen);
+=======
+    public static void callGnuplot (int gen, int classes) throws IOException, InterruptedException {
+        Process process1 = Runtime.getRuntime().exec("gnuplot -c ./saveGnuplot.gp 3 " + classes + " " + gen);
+>>>>>>> 0aeaea3dd8e66ca054e59ddd7414e29e149faf64
         process1.waitFor();
         printResults(process1);
         deleteDatFiles();
