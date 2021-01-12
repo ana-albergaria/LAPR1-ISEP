@@ -91,7 +91,6 @@ public class main {
                 // -v dimension of population
                 // -r variation of population in each generation
         }
-
     }
     /* public static void writeFile (String path, double[][] leslieMatrix, double[] initialPop, int generations){
          String textToAppend = fileData;
