@@ -3,7 +3,12 @@ import java.util.Scanner;
 
 public class pedrin {
     public static void main(String[] args) {
+
+
+
         Scanner read = new Scanner(System.in);
+
+
 
         double initialPopVec[] = {1000, 300, 330, 100};
         //double[][] leslieMatrix = {{0.50,2.40,1,0},{0.5,0,0,0},{0,0.8,0,0},{0,0,0.5,0}};
@@ -141,6 +146,8 @@ public class pedrin {
         System.out.println();
     }
     public static void printPopDistribution(double[][] matrix, int time) {
+        System.out.println("GENERATION " + time);
+        System.out.println("Population Distribution:");
         for (int line = 0; line < matrix.length; line++) {
             for (int column = 0; column < matrix[line].length; column++) {
                 if(line == time) {
@@ -150,6 +157,32 @@ public class pedrin {
             }
         }
         System.out.println();
+    }
+    public static void printNormDistribution(double[][] matrix, int time) {
+        System.out.println("Normalized Population Distribution:");
+        for (int line = 0; line < matrix.length; line++) {
+            for (int column = 0; column < matrix[line].length; column++) {
+                if(line == time) {
+                    System.out.print("- Class " + column + ": ");
+                    System.out.printf("%.3f%n", matrix[line][column]);
+                }
+            }
+        }
+        System.out.println();
+    }
+    public static void printPopDim(double[] popDim) {
+        for (int time = 0; time < popDim.length; time++) {
+            System.out.println("Population Dimension: " + popDim[time]);
+        }
+    }
+    public static void printRate(double[] rateVariation, int generationNum) {
+        for (int time = 0; time < rateVariation.length; time++) {
+            if(time != generationNum) {
+                System.out.println("Rate Variation between generation " + time + " and generation " + (time + 1) + ": " + rateVariation[time]);
+            } else {
+                System.out.println("For this generation, there is no Rate Variation.");
+            }
+        }
     }
 
     /*-----------------------object = FILL POP DIMENSION AND RATE VARIATION OVER THE YEARS----------------------------*/
@@ -172,11 +205,11 @@ public class pedrin {
         return quocient;
     }
     public static void printGenerationInfo(int time, int generationNum, double[][] distributionMatrix, double[][] normDistMatrix, double[] popDim, double[] rateVariation) {
-        System.out.println("GENERATION " + time);
-        System.out.println("Population Distribution:");
+        //System.out.println("GENERATION " + time);
+        //System.out.println("Population Distribution:");
         printPopDistribution(distributionMatrix, time);
-        System.out.println("Normalized Population Distribution:");
-        printPopDistribution(normDistMatrix, time);
+        //System.out.println("Normalized Population Distribution:");
+        printNormDistribution(normDistMatrix, time);
         System.out.println("Population Dimension: " + popDim[time]);
         if(time != generationNum) {
             System.out.println("Rate Variation between generation " + time + " and generation " + (time + 1) + ": " + rateVariation[time]);
