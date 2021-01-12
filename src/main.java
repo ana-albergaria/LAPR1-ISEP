@@ -264,9 +264,17 @@ public class main {
         }
     }
     public static void callGnuplot (int gen, int classes) throws IOException, InterruptedException {
-        Process process1 = Runtime.getRuntime().exec("gnuplot -c ./testeGnuplot.gp 1 " + classes + " " + gen);
+        Process process1 = Runtime.getRuntime().exec("gnuplot -c ./testeGnuplot.gp 3 " + classes + " " + gen);
         process1.waitFor();
+        printResults(process1);
         deleteDatFiles();
+    }
+    public static void printResults(Process process) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        String line = "";
+        while ((line = reader.readLine()) != null) {
+            System.out.println(line);
+        }
     }
     public static void deleteDatFiles(){
         // Lists all files in folder

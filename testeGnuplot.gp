@@ -4,6 +4,7 @@ if (ARG1==1){
    # print a png
    set terminal pngcairo  transparent enhanced font "arial,10" fontscale 1.0 size 600, 400
    set output 'popDimension.png'
+   # set terminal wxt size 600, 400 enhanced font 'Verdana,10' persist
 }
 if(ARG1==2) {
     # To print on a PostScript printer:
@@ -12,8 +13,8 @@ if(ARG1==2) {
 }
 if(ARG1==3){
     # To print on a Txt printer:
-    set terminal postscript
-    set output "popDimension.txt"
+    set terminal dumb
+    set output 'popDimension.txt'
 }
 
 data = 'populationTotal.dat'
@@ -40,8 +41,8 @@ if(ARG1==2) {
 }
 if(ARG1==3){
     # To print on a Txt printer:
-    set terminal postscript
-    set output "popVariation.txt"
+    set terminal dumb
+    set output 'popVariation.txt'
 }
 
 set title "Taxa de variação da dimensão da população / tempo"
@@ -66,8 +67,8 @@ if(ARG1==2) {
 }
 if(ARG1==3){
     # To print on a Txt printer:
-    set terminal postscript
-    set output "popDistribution.txt"
+    set terminal dumb
+    set output 'popDistribution.txt'
 }
 
 set title "Distribuição da população / tempo"
@@ -91,8 +92,8 @@ if(ARG1==2) {
 }
 if(ARG1==3){
     # To print on a Txt printer:
-    set terminal postscript
-    set output "normalizedDistribution.txt"
+    set terminal dumb
+    set output 'normalizedDistribution.txt'
 }
 
 set title "Distribuição da população normalizada / tempo"
