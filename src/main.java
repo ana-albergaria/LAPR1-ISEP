@@ -84,17 +84,13 @@ public class main {
             case 6:
                 fileNameInput = args[args.length-2];
                 fileNameOutput= args[args.length-1];
-
-
                 break;
             case 7: case 8:
                 //check how features the user want
                 // -e augevalues and augevectors
                 // -v dimension of population
                 // -r variation of population in each generation
-
         }
-
 
     }
     /* public static void writeFile (String path, double[][] leslieMatrix, double[] initialPop, int generations){
@@ -359,10 +355,10 @@ public class main {
             System.out.printf("%.2f%n", array[i]);
         }
     }
-<<<<<<< HEAD
+
     public static void callGnuplot (int gen, int classes, int formatGaphics) throws IOException, InterruptedException {
         Process process1 = Runtime.getRuntime().exec("gnuplot -c ./testeGnuplot.gp " + formatGaphics + " " + classes + " " + gen);
-=======
+    }
     public static void callGnuplot (int gen, int classes) throws IOException, InterruptedException {
         Process process1 = Runtime.getRuntime().exec("gnuplot -c ./saveGnuplot.gp 3 " + classes + " " + gen);
         process1.waitFor();
