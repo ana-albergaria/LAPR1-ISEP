@@ -11,16 +11,18 @@ import java.util.Scanner;
 public class main {
     static Scanner read = new Scanner(System.in);
     public static void main(String[] args) throws IOException, InterruptedException {
+        double[][] leslieMatrix; double[] initialPopulation; int ageClass; String speciesName;
+        String fileNameOutput, fileNameInput; int gnuplotFormat;
         switch (args.length){
             case 0:
                 System.out.println("Insira o nome da espécie a analisar:");
-                String speciesName = read.nextLine();
+                speciesName = read.nextLine();
                 System.out.println("Insira quantidade de faixas etárias:");
-                int ageClass = read.nextInt();
-                double[] initialPopulation = new double[ageClass];
+                ageClass = read.nextInt();
+                initialPopulation = new double[ageClass];
                 fillClasse(initialPopulation);
                 System.out.println("Insira a taxa de sobrevivência dos indivíduos reprodutores");
-                double[][] leslieMatrix = new double[ageClass][ageClass];
+                leslieMatrix = new double[ageClass][ageClass];
                 fillSurviveRate(leslieMatrix);
                 System.out.println("Insira o número médio de indivíduos reprodutores gerados por um indivíduo reprodutor:");
                 fillFecundityRate(leslieMatrix);
@@ -71,10 +73,24 @@ public class main {
             case 2:
                 break;
             case 9:
-                //no interactive mode with all the features
+                fileNameInput = args[args.length-2];
+                fileNameOutput = args[args.length-1];
+                numberOfGenerations = Integer.parseInt(args[1]);
+                gnuplotFormat = Integer.parseInt(args[3]);
+                String[] speciesName1 = speciesName(fileNameInput);
+                ageClass = sizeMatrix(fileNameInput);
+                initialPopulation = new double [ageClass];
+                leslieMatrix = new double[ageClass][ageClass];
+                readFile(fileNameInput, initialPopulation, leslieMatrix);
+                popDistribution(initialPopulation, leslieMatrix, numberOfGenerations);
+                callGnuplot(numberOfGenerations-1, ageClass, gnuplotFormat);
+                assintoticAnalysis(leslieMatrix);
                 break;
-            case 4:
-                //no interactive mode without any features
+            case 6:
+                fileNameInput = args[args.length-2];
+                fileNameOutput= args[args.length-1];
+
+
                 break;
             case 7: case 8:
                 //check how features the user want
@@ -83,21 +99,24 @@ public class main {
                 // -r variation of population in each generation
 
         }
-        //simulação da entrada por paramêtro do nome do ficheiro
-        /*String fileName = read.next();
-        String[] speciesName = speciesName(fileName);
-        int size = sizeMatrix(fileName);
-        double [] sizeSpecies = new double [size];
-        double[][] leslieMatrix = new double[size][size];
-        readFile(fileName, sizeSpecies, leslieMatrix);
-        //print(sizeSpecies);
-        //print1(leslieMatrix);
-        // ver o último paramêtro
-        //ver como usar dependendo do método
-        popDistribution(sizeSpecies, leslieMatrix, 10);
-        callGnuplot(9, size);
-        assintoticAnalysis(leslieMatrix);*/
+
+
     }
+    /* public static void writeFile (String path, double[][] leslieMatrix, double[] initialPop, int generations){
+         String textToAppend = fileData;
+         File file = new File(fileName);
+         if(file.exists()){
+             //Set true for append mode
+             BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
+             writer.newLine();
+             writer.write(textToAppend);
+             writer.close();
+         }else{
+             BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+             writer.write(textToAppend);
+             writer.close();
+         }
+     }*/
     public static void fillClasse (double[] array){
         for (int i=0;i < array.length;i++){
             System.out.print("Classe " + (i+1) + ":");
@@ -345,8 +364,8 @@ public class main {
             System.out.printf("%.2f%n", array[i]);
         }
     }
-    public static void callGnuplot (int gen, int classes) throws IOException, InterruptedException {
-        Process process1 = Runtime.getRuntime().exec("gnuplot -c ./testeGnuplot.gp 3 " + classes + " " + gen);
+    public static void callGnuplot (int gen, int classes, int formatGaphics) throws IOException, InterruptedException {
+        Process process1 = Runtime.getRuntime().exec("gnuplot -c ./testeGnuplot.gp " + formatGaphics + " " + classes + " " + gen);
         process1.waitFor();
         printResults(process1);
         deleteDatFiles();
