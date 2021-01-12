@@ -26,8 +26,44 @@ public class main {
                 fillFecundityRate(leslieMatrix);
                 System.out.println("Insira o número de gerações a estimar: ");
                 int numberOfGenerations = read.nextInt();
+                read.nextLine();
                 popDistribution(initialPopulation, leslieMatrix, numberOfGenerations);
-                System.out.println("Deseja gerar o valor e vetor próprio associados a matriz de Leslie?");
+                double[] popVec = new double[leslieMatrix.length];
+                double[] normalizedPopVec = new double[popVec.length];
+                double[][] distributionMatrix = new double[numberOfGenerations+1][leslieMatrix.length];
+                double[][] normDistMatrix = new double[numberOfGenerations+1][leslieMatrix.length];
+                double[] popDim = new double[numberOfGenerations+1];
+                double[] rateVariation = new double[numberOfGenerations+1];
+
+                System.out.println("Para aceder as funcionalidades do programa, escreva devidamente espaçado as funcionalidades pretendidas:");
+                System.out.println("Digite -e para obter os valores e vetores próprios associados a matriz de Leslie");
+                System.out.println("Digite -v para obter a dimensão da população a cada geração");
+                System.out.println("Digite -r para obter a variação da população entre as gerações");
+                String answers = read.nextLine();
+                String[] formattedAnswers = answers.split(" ");
+                for (int i=0; i<formattedAnswers.length; i++){
+                    switch (formattedAnswers[i]){
+                        case "-e":
+                            assintoticAnalysis(leslieMatrix);
+                            break;
+                        case "-v":
+                            fillPopulationDistribution(initialPopulation, popVec, distributionMatrix, leslieMatrix, numberOfGenerations);
+                            printPopDistribution(distributionMatrix, numberOfGenerations);
+
+                            //perguntar se pretende apenas visualizar ou salvar o gráfico
+                            break;
+                        case "-r":
+                            double rate = getRateOfChangeOverTheYears(numberOfGenerations,popDim);
+                            fillArray(rate, numberOfGenerations-1, rateVariation);
+                            print(rateVariation);
+                            break;
+
+                    }
+                }
+
+
+
+
                 //ask the user the necessary questions for iteractive modes
                 //isert the necessary method
                 //case 2 split the array after -n to take the arquiche name
@@ -48,7 +84,7 @@ public class main {
 
         }
         //simulação da entrada por paramêtro do nome do ficheiro
-        String fileName = read.next();
+        /*String fileName = read.next();
         String[] speciesName = speciesName(fileName);
         int size = sizeMatrix(fileName);
         double [] sizeSpecies = new double [size];
@@ -57,9 +93,10 @@ public class main {
         //print(sizeSpecies);
         //print1(leslieMatrix);
         // ver o último paramêtro
-        int t = popDistribution(sizeSpecies, leslieMatrix, 10);
-        callGnuplot(t-1, size);
-        assintoticAnalysis(leslieMatrix);
+        //ver como usar dependendo do método
+        popDistribution(sizeSpecies, leslieMatrix, 10);
+        callGnuplot(9, size);
+        assintoticAnalysis(leslieMatrix);*/
     }
     public static void fillClasse (double[] array){
         for (int i=0;i < array.length;i++){
@@ -158,21 +195,7 @@ public class main {
         }
     }
 
-    public static int popDistribution (double initialPopVec[], double[][] leslieMatrix, int generationNum) throws IOException {
-        Scanner read = new Scanner(System.in);
-
-        //ISTO É PARA APAGAR?
-        print1D(initialPopVec);
-        printMatrix(leslieMatrix);
-        //TERMINA AQUI
-
-        int t = 0;
-
-        //System.out.println("Insert the generations' number to be estimated: ");
-
-        /*do {
-            generationNum = read.nextInt();
-        } while (generationNum <= 0);*/
+    public static void popDistribution (double initialPopVec[], double[][] leslieMatrix, int generationNum) throws IOException {
 
         double[] popVec = new double[leslieMatrix.length];
         double[] normalizedPopVec = new double[popVec.length];
@@ -210,8 +233,6 @@ public class main {
             printGenerationInfo(i,generationNum,distributionMatrix,normDistMatrix,popDim,rateVariation);
         }
 
-        //CONFIRMAR COM JOÃO QUE ISTO FAZ
-        return t;
     }
     public static void generationsDataFormat (double [] popVec, double [] normalizedPopVec, int gen) throws IOException {
         DecimalFormat df = new DecimalFormat("0.00", new DecimalFormatSymbols(Locale.US));
@@ -378,6 +399,12 @@ public class main {
         }
         System.out.println();
     }
+    /*public static void printDistribution (int time, double[][] distributionMatrix) {
+        System.out.println("GENERATION " + time);
+        System.out.println("Population Distribution:");
+        printPopDistribution(distributionMatrix, time);
+        System.out.println();
+    }*/
 
     //APAGAR ANTES DE ENTREGAR
     public static void print2D(double[][] array) {
