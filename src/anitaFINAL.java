@@ -43,6 +43,10 @@ public class anitaFINAL {
                     fillNormalizedPopVec(normalizedPopVec,popVec,normDistMatrix,time);
                     printNormDistribution(normDistMatrix,time);
                 }
+                //TRANSFORMEI O CASE DO -V -R EM UM MÉTODO E NO CASE SÓ PRINTO, POIS OS DADOS SÃO NECESSARIOS PARA PLOTAGEM DOS GRAFICOS
+                fillDimArr(numberOfGenerations, distributionMatrix, popDim);
+                fillRatesArr(numberOfGenerations, popDim, rateVariation);
+                dimensionDataFormat(popDim, rateVariation);
 
                 System.out.println("Para aceder as funcionalidades do programa, escreva devidamente espaçado as funcionalidades pretendidas:");
                 System.out.println("Digite -e para obter os valores e vetores próprios associados a matriz de Leslie");
@@ -58,21 +62,13 @@ public class anitaFINAL {
                         case "-v":
                             System.out.println("\nPOPULATION DIMENSIONS\n");
                             for (int time = 0; time <= numberOfGenerations; time++) {
-                                double dim=getDimension(distributionMatrix,time);
-                                fillArray(dim, time, popDim);
                                 System.out.printf("GENERATION " + time + " - %.2f", popDim[time] );
                                 System.out.println();
                             }
-
                             //perguntar se pretende apenas visualizar ou salvar o gráfico
                             break;
                         case "-r":
                             System.out.println("\nRATE VARIATIONS BETWEEN GENERATIONS: \n");
-                            for (int time = 1; time <= numberOfGenerations; time++) {
-                                double rate = getRateOfChangeOverTheYears(time, popDim);
-                                fillArray(rate, time - 1, rateVariation);
-                            }
-
                             for (int time = 0; time <= numberOfGenerations; time++) {
                                 if(time != numberOfGenerations) {
                                     System.out.printf(time + " AND " + (time + 1) + ": %.2f", rateVariation[time]);
@@ -138,6 +134,18 @@ public class anitaFINAL {
         for (int i=0; i<array.length ;i++){
             System.out.print("Classe " + (i+1) + ":");
             array[0][i] = read.nextDouble();
+        }
+    }
+    public static void fillDimArr (int numberOfGenerations, double[][] distributionMatrix, double[] popDim){
+        for (int time = 0; time <= numberOfGenerations; time++) {
+            double dim=getDimension(distributionMatrix,time);
+            fillArray(dim, time, popDim);
+        }
+    }
+    public static void fillRatesArr (int numberOfGenerations, double[] popDim, double[] rateVariation){
+        for (int time = 1; time <= numberOfGenerations; time++) {
+            double rate = getRateOfChangeOverTheYears(time, popDim);
+            fillArray(rate, time - 1, rateVariation);
         }
     }
     public static String[] speciesName (String path){
