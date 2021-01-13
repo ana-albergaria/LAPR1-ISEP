@@ -152,6 +152,8 @@ public class main {
         double[] rateVariation = new double[numberOfGenerations+1];
 
         popDistribution(initialPopulation, leslieMatrix, numberOfGenerations, popVec, normalizedPopVec, distributionMatrix, normDistMatrix, popDim, rateVariation);
+        PrintStream out = new PrintStream (new FileOutputStream(output, true), true);
+        System.setOut(out);
         printTotalPopDistribution(numberOfGenerations, initialPopulation, popVec, distributionMatrix, leslieMatrix, normalizedPopVec, normDistMatrix);
 
             if (flag1){
@@ -160,11 +162,7 @@ public class main {
             }
             if (flag2){
                 //chamar os métodos com as funcionalidades de -v
-                System.out.println("\nDIMENSÕES DAS POPULAÇÕES\n");
                 printPopDim(popDim,numberOfGenerations,distributionMatrix);
-
-
-
             }
             if (flag3){
                 //chamar os métodos com as funcionalidades de -r
@@ -174,8 +172,7 @@ public class main {
 
     }
 
-
-    /*public static void writeFile (String path, double[][] leslieMatrix, double[] initialPop, int generations){
+    public static void writeInFile (String fileName, String fileData) throws IOException {
         String textToAppend = fileData;
         File file = new File(fileName);
         if(file.exists()){
@@ -189,7 +186,7 @@ public class main {
             writer.write(textToAppend);
             writer.close();
         }
-    }*/
+    }
     public static void fillClasse (double[] array){
         for (int i=0;i < array.length;i++){
             System.out.print("Classe " + (i+1) + ":");
@@ -509,11 +506,14 @@ public class main {
             printNormDistribution(normDistMatrix,time);
         }
     }
+
     public static void printPopDim (double[]popDim, int numberOfGenerations, double[][] distributionMatrix){
+        System.out.println("\nDIMENSÕES DAS POPULAÇÕES\n");
         for (int time = 0; time <= numberOfGenerations; time++) {
             System.out.printf("GERAÇÃO " + time + " - %.2f", popDim[time] );
             System.out.println();
         }
+
     }
     public static void printNormDistribution(double[][] matrix, int time) {
         System.out.println("Distribuição Normalizada pelo Total da População:");
