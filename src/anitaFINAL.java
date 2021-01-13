@@ -37,12 +37,8 @@ public class anitaFINAL {
                 double[] rateVariation = new double[numberOfGenerations+1];
 
                 System.out.println("POPULATION DISTRIBUTIONS\n");
-                for (int time = 0; time <= numberOfGenerations; time++) {
-                    fillPopulationDistribution(initialPopulation, popVec, distributionMatrix, leslieMatrix, time);
-                    printPopDistribution(distributionMatrix, time);
-                    fillNormalizedPopVec(normalizedPopVec,popVec,normDistMatrix,time);
-                    printNormDistribution(normDistMatrix,time);
-                }
+                printTotalPopDistribution(numberOfGenerations, initialPopulation, popVec, distributionMatrix, leslieMatrix, normalizedPopVec, normDistMatrix);
+
                 //TRANSFORMEI O CASE DO -V -R EM UM MÉTODO E NO CASE SÓ PRINTO, POIS OS DADOS SÃO NECESSARIOS PARA PLOTAGEM DOS GRAFICOS
                 fillDimArr(numberOfGenerations, distributionMatrix, popDim);
                 fillRatesArr(numberOfGenerations, popDim, rateVariation);
@@ -61,22 +57,14 @@ public class anitaFINAL {
                             break;
                         case "-v":
                             System.out.println("\nPOPULATION DIMENSIONS\n");
-                            for (int time = 0; time <= numberOfGenerations; time++) {
-                                System.out.printf("GENERATION " + time + " - %.2f", popDim[time] );
-                                System.out.println();
-                            }
+                            printPopDim(popDim,numberOfGenerations);
+
                             //perguntar se pretende apenas visualizar ou salvar o gráfico
                             break;
                         case "-r":
                             System.out.println("\nRATE VARIATIONS BETWEEN GENERATIONS: \n");
-                            for (int time = 0; time <= numberOfGenerations; time++) {
-                                if(time != numberOfGenerations) {
-                                    System.out.printf(time + " AND " + (time + 1) + ": %.2f", rateVariation[time]);
-                                    System.out.println();
-                                } else {
-                                    System.out.println("For the last generation (" + time + "), there is no Rate Variation.\n");
-                                }
-                            }
+                            printRateVariation(rateVariation, numberOfGenerations);
+
                             break;
                     }
                 }
@@ -301,6 +289,31 @@ public class anitaFINAL {
                 mult = 0;
             }
             fillMatrix(distributionMatrix,time,popVec);
+        }
+    }
+    public static void printTotalPopDistribution(int numberOfGenerations, double[]initialPopulation, double[]popVec, double[][]distributionMatrix,double[][]leslieMatrix, double[]normalizedPopVec, double[][]normDistMatrix) throws IOException {
+        for (int time = 0; time <= numberOfGenerations; time++) {
+            fillPopulationDistribution(initialPopulation, popVec, distributionMatrix, leslieMatrix, time);
+            printPopDistribution(distributionMatrix, time);
+            fillNormalizedPopVec(normalizedPopVec,popVec,normDistMatrix,time);
+            printNormDistribution(normDistMatrix,time);
+        }
+    }
+
+    public static void printPopDim (double[]popDim, int numberOfGenerations){
+        for (int time = 0; time <= numberOfGenerations; time++) {
+            System.out.printf("GENERATION " + time + " - %.2f", popDim[time] );
+            System.out.println();
+        }
+    }
+    public static void printRateVariation (double[]rateVariation, int numberOfGenerations){
+        for (int time = 0; time <= numberOfGenerations; time++) {
+            if(time != numberOfGenerations) {
+                System.out.printf(time + " AND " + (time + 1) + ": %.2f", rateVariation[time]);
+                System.out.println();
+            } else {
+                System.out.println("For the last generation (" + time + "), there is no Rate Variation.\n");
+            }
         }
     }
     public static void fillPreviousPopVec(double[] previousPopVec, double[] popVec) {

@@ -29,13 +29,21 @@ public class main {
                 System.out.println("Insira o número de gerações a estimar: ");
                 int numberOfGenerations = read.nextInt();
                 read.nextLine();
-                popDistribution(initialPopulation, leslieMatrix, numberOfGenerations);
+
                 double[] popVec = new double[leslieMatrix.length];
                 double[] normalizedPopVec = new double[popVec.length];
                 double[][] distributionMatrix = new double[numberOfGenerations+1][leslieMatrix.length];
                 double[][] normDistMatrix = new double[numberOfGenerations+1][leslieMatrix.length];
                 double[] popDim = new double[numberOfGenerations+1];
                 double[] rateVariation = new double[numberOfGenerations+1];
+
+                System.out.println("POPULATION DISTRIBUTIONS\n");
+                printTotalPopDistribution(numberOfGenerations, initialPopulation, popVec, distributionMatrix, leslieMatrix, normalizedPopVec, normDistMatrix);
+
+                //TRANSFORMEI O CASE DO -V -R EM UM MÉTODO E NO CASE SÓ PRINTO, POIS OS DADOS SÃO NECESSARIOS PARA PLOTAGEM DOS GRAFICOS
+                fillDimArr(numberOfGenerations, distributionMatrix, popDim);
+                fillRatesArr(numberOfGenerations, popDim, rateVariation);
+                dimensionDataFormat(popDim, rateVariation);
 
                 System.out.println("Para aceder as funcionalidades do programa, escreva devidamente espaçado as funcionalidades pretendidas:");
                 System.out.println("Digite -e para obter os valores e vetores próprios associados a matriz de Leslie");
@@ -49,15 +57,14 @@ public class main {
                             assintoticAnalysis(leslieMatrix);
                             break;
                         case "-v":
-                            fillPopulationDistribution(initialPopulation, popVec, distributionMatrix, leslieMatrix, numberOfGenerations);
-                            printPopDistribution(distributionMatrix, numberOfGenerations);
+                            System.out.println("\nPOPULATION DIMENSIONS\n");
+                            printPopDim(popDim,numberOfGenerations);
 
                             //perguntar se pretende apenas visualizar ou salvar o gráfico
                             break;
                         case "-r":
-                            double rate = getRateOfChangeOverTheYears(numberOfGenerations,popDim);
-                            fillArray(rate, numberOfGenerations-1, rateVariation);
-                            print(rateVariation);
+                            System.out.println("\nRATE VARIATIONS BETWEEN GENERATIONS: \n");
+                            printRateVariation(rateVariation, numberOfGenerations);
                             break;
                     }
                 }
@@ -423,16 +430,19 @@ public class main {
         System.out.println();
     }
     public static void printPopDistribution(double[][] matrix, int time) {
+        System.out.println("GENERATION " + time);
+        System.out.println("Population Distribution:");
         for (int line = 0; line < matrix.length; line++) {
             for (int column = 0; column < matrix[line].length; column++) {
                 if(line == time) {
-                    System.out.print("- Classe " + column + ": ");
+                    System.out.print("- Class " + column + ": ");
                     System.out.printf("%.2f%n", matrix[line][column]);
                 }
             }
         }
         System.out.println();
     }
+
     public static void printPopDistribution2(double[] array) {
         for (int i = 0; i < array.length; i++) {
             System.out.print("- Classe " + i + ": ");
@@ -487,6 +497,65 @@ public class main {
         double quocient = nextGeneration/nowGeneration;
 
         return quocient;
+    }
+
+    public static double getDimension(double[][] distributionMatrix, int time) {
+        double dim = 0;
+
+        for (int line = time; line < (time+1); line++) {
+            for (int column = 0; column < distributionMatrix[line].length; column++) {
+                dim += distributionMatrix[line][column];
+            }
+        }
+        return dim;
+    }
+    public static void fillDimArr (int numberOfGenerations, double[][] distributionMatrix, double[] popDim){
+        for (int time = 0; time <= numberOfGenerations; time++) {
+            double dim=getDimension(distributionMatrix,time);
+            fillArray(dim, time, popDim);
+        }
+    }
+    public static void fillRatesArr (int numberOfGenerations, double[] popDim, double[] rateVariation){
+        for (int time = 1; time <= numberOfGenerations; time++) {
+            double rate = getRateOfChangeOverTheYears(time, popDim);
+            fillArray(rate, time - 1, rateVariation);
+        }
+    }
+    public static void printTotalPopDistribution(int numberOfGenerations, double[]initialPopulation, double[]popVec, double[][]distributionMatrix,double[][]leslieMatrix, double[]normalizedPopVec, double[][]normDistMatrix) throws IOException {
+        for (int time = 0; time <= numberOfGenerations; time++) {
+            fillPopulationDistribution(initialPopulation, popVec, distributionMatrix, leslieMatrix, time);
+            printPopDistribution(distributionMatrix, time);
+            fillNormalizedPopVec(normalizedPopVec,popVec,normDistMatrix,time);
+            printNormDistribution(normDistMatrix,time);
+        }
+    }
+    public static void printPopDim (double[]popDim, int numberOfGenerations){
+        for (int time = 0; time <= numberOfGenerations; time++) {
+            System.out.printf("GENERATION " + time + " - %.2f", popDim[time] );
+            System.out.println();
+        }
+    }
+    public static void printNormDistribution(double[][] matrix, int time) {
+        System.out.println("Normalized Population Distribution:");
+        for (int line = 0; line < matrix.length; line++) {
+            for (int column = 0; column < matrix[line].length; column++) {
+                if(line == time) {
+                    System.out.printf("- Class " + column + ": %.2f", matrix[line][column]);
+                    System.out.println("%");
+                }
+            }
+        }
+        System.out.println();
+    }
+    public static void printRateVariation (double[]rateVariation, int numberOfGenerations){
+        for (int time = 0; time <= numberOfGenerations; time++) {
+            if(time != numberOfGenerations) {
+                System.out.printf(time + " AND " + (time + 1) + ": %.2f", rateVariation[time]);
+                System.out.println();
+            } else {
+                System.out.println("For the last generation (" + time + "), there is no Rate Variation.\n");
+            }
+        }
     }
     public static void printGenerationInfo(int time, int generationNum, double[][] distributionMatrix, double[][] normDistMatrix, double[] popDim, double[] rateVariation) {
         System.out.println("GERAÇÃO " + time);
