@@ -164,11 +164,10 @@ public class AdicionandoMenu {
                     }
                     break;
                 case 5:
-                    for (int j = 1; j < 5; j++){
-                        menuGraphs(numberOfGenerations, popVec.length);
-                        showGnuplotted((numberOfGenerations-1), popVec.length, j);
-                        saveGnuplotted((numberOfGenerations-1), popVec.length, j, 1);
-                    }
+                    menuGraphs((numberOfGenerations-1), popVec.length);
+                    break;
+                case 0:
+                    deleteDatFiles();
                     break;
                 default:
                     System.out.println("Opção Inválida!");
@@ -178,35 +177,78 @@ public class AdicionandoMenu {
     }
     public static void menuGraphs(int gens, int classes) throws IOException, InterruptedException {
         int option = 0;
-        do {
-            System.out
-                    .println("\nDigite o numero da funcionalidade desejada:");
+        //do {
+            System.out.println("\nInsira separando por espaços os graficos que deseja visualizar:");
             System.out.println("\n ===================================================================================================================================");
-            System.out.println("|     1 - Distribuição da população                                                                                                  |");
-            System.out.println("|     2 - Distribuição normalizada pelo total da população                                                                             |");
-            System.out.println("|     3 - Dimensão da população ao longo do tempo                                                          |");
-            System.out.println("|     4 - Variações da dimensão população entre as gerações                                                                            |");
-            System.out.println("|     9 - Voltar                                                                                             |");
-            System.out.println("|     0 - Sair                                                                                                                       |");
+            System.out.println("|     1 - Distribuição da população                                                                                                   |");
+            System.out.println("|     2 - Distribuição normalizada pelo total da população                                                                            |");
+            System.out.println("|     3 - Dimensão da população ao longo do tempo                                                                                     |");
+            System.out.println("|     4 - Variações da dimensão população entre as gerações                                                                           |");
+            System.out.println("|     0 - Voltar                                                                                                                      |");
             System.out.println("============================================================================================================ =========================\n");
 
-            System.out.println("Opção -> ");
-            option = read.nextInt();
-            read.nextLine();
+            System.out.print("Opção -> ");
+            String optionString = read.nextLine();
+            String [] options = optionString.split(" ");
             System.out.print("\n");
-
-            switch (option) {
-                case 5:
-                    for (int j = 1; j < 5; j++){
-                        showGnuplotted(gens, classes, j);
-                        saveGnuplotted(gens, classes, j, 1);
-                    }
-                    break;
-                default:
-                    System.out.println("Opção Inválida!");
-                    break;
+            for(int g = 0; g< options.length; g++){
+                System.out.println(options[g]);
+                switch (Integer.parseInt(options[g])) {
+                    case 1:
+                        showGnuplotted(gens, classes, Integer.parseInt(options[g]));
+                        option = Integer.parseInt(options[g]);
+                        break;
+                    case 2:
+                        showGnuplotted(gens, classes, Integer.parseInt(options[g]));
+                        option = Integer.parseInt(options[g]);
+                        break;
+                    case 3:
+                        showGnuplotted(gens, classes, Integer.parseInt(options[g]));
+                        option = Integer.parseInt(options[g]);
+                        break;
+                    case 4:
+                        showGnuplotted(gens, classes, Integer.parseInt(options[g]));
+                        option = Integer.parseInt(options[g]);
+                        break;
+                    case 0:
+                        option = Integer.parseInt(options[g]);
+                        break;
+                    default:
+                        System.out.println("Opção Inválida!");
+                        break;
+                }
             }
-        } while (option != 0);
+            if(option !=0) {
+                System.out.println("Gostaria de guardar os graficos gerados?");
+                System.out.println("\n ================");
+                System.out.println("|     1 - Sim      |");
+                System.out.println("|     2 - Não      |");
+                System.out.println("===================\n");
+                System.out.print("Opção -> ");
+                int save = read.nextInt();
+                read.nextLine();
+                System.out.print("\n");
+                switch (save) {
+                    case 1:
+                        System.out.println("Qual formato o ficheiro deve ser guardado?");
+                        System.out.println("\n ================");
+                        System.out.println("|     1 - PNG      |");
+                        System.out.println("|     2 - EPS      |");
+                        System.out.println("|     3 - TXT      |");
+                        System.out.println("===================\n");
+                        System.out.print("Opção -> ");
+                        int format = read.nextInt();
+                        read.nextLine();
+                        System.out.print("\n");
+                        for (int k = 0; k < options.length; k++) {
+                            saveGnuplotted(gens, classes,Integer.parseInt(options[k]) , format);
+                        }
+                        break;
+                    case 2:
+                        break;
+                }
+            }
+    //    } while (option != 0);
     }
     public static void fillClasse (double[] array){
         for (int i=0;i < array.length;i++){
@@ -474,7 +516,7 @@ public class AdicionandoMenu {
     }
     public static void deleteDatFiles(){
         // Lists all files in folder
-        File folder = new File("./");
+        File folder = new File("./gnuplot/");
         File fList[] = folder.listFiles();
         // Searchs .lck
         for (int i = 0; i < fList.length; i++) {
