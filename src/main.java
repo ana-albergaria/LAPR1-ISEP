@@ -92,22 +92,56 @@ public class main {
                 // -r variation of population in each generation
         }
     }
-    
-     /*public static void writeFile (String path, double[][] leslieMatrix, double[] initialPop, int generations){
-         String textToAppend = fileData;
-         File file = new File(fileName);
-         if(file.exists()){
-             //Set true for append mode
-             BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
-             writer.newLine();
-             writer.write(textToAppend);
-             writer.close();
-         }else{
-             BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-             writer.write(textToAppend);
-             writer.close();
-         }
-     }*/
+    public static void analysisOfDatas (String[] args, double[][] leslieMatrix, double[] initialPopulation) throws FileNotFoundException{
+        int i; String path = null; String[] nameOfSpecie;
+       for (i=0; i<args.length; i++){
+           switch (args[i]){
+               case "-t":
+                   break;
+               case "-g":
+                   break;
+               case "-e":
+                   break;
+               case "-v":
+                   break;
+               case "-r":
+                   break;
+               default:
+                   switch (args.length){
+                       case 0:
+                           //chamar o modo interativo
+                           break;
+                       case 2:
+                           for (i=0; i<args.length; i++){
+                               if (args[i].equalsIgnoreCase("-n")){
+                                   args[i] = args[i].substring(args[i].indexOf("=")+1);
+                                   path = args[i];
+                               }
+                           }
+                           readFile(path, initialPopulation, leslieMatrix);
+                           nameOfSpecie = speciesName(path);
+                           //modo interativo com o ficheiro de entrada
+                           break;
+                   }
+
+           }
+       }
+   }
+    /*public static void writeFile (String path, double[][] leslieMatrix, double[] initialPop, int generations){
+        String textToAppend = fileData;
+        File file = new File(fileName);
+        if(file.exists()){
+            //Set true for append mode
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
+            writer.newLine();
+            writer.write(textToAppend);
+            writer.close();
+        }else{
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+            writer.write(textToAppend);
+            writer.close();
+        }
+    }*/
     public static void fillClasse (double[] array){
         for (int i=0;i < array.length;i++){
             System.out.print("Classe " + (i+1) + ":");
