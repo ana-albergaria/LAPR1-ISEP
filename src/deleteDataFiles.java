@@ -3,7 +3,7 @@ import java.io.File;
 public class deleteDataFiles {
     public static void main(String[] args) {
         // Lists all files in folder
-        File folder = new File("./");
+        File folder = new File("./gnuplot/");
         File fList[] = folder.listFiles();
         // Searchs .lck
         for (int i = 0; i < fList.length; i++) {
