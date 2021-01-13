@@ -43,8 +43,8 @@ public class main {
                 printTotalPopDistribution(numberOfGenerations, initialPopulation, popVec, distributionMatrix, leslieMatrix, normalizedPopVec, normDistMatrix);
 
                 //TRANSFORMEI O CASE DO -V -R EM UM MÉTODO E NO CASE SÓ PRINTO, POIS OS DADOS SÃO NECESSARIOS PARA PLOTAGEM DOS GRAFICOS
-                fillDimArr(numberOfGenerations, distributionMatrix, popDim);
-                fillRatesArr(numberOfGenerations, popDim, rateVariation);
+                //fillDimArr(numberOfGenerations, distributionMatrix, popDim);
+                //fillRatesArr(numberOfGenerations, popDim, rateVariation);
                 dimensionDataFormat(popDim, rateVariation);
 
                 System.out.println("Para aceder as funcionalidades do programa, escreva devidamente espaçado as funcionalidades pretendidas:");
@@ -60,13 +60,13 @@ public class main {
                             break;
                         case "-v":
                             System.out.println("\nPOPULATION DIMENSIONS\n");
-                            printPopDim(popDim,numberOfGenerations);
+                            printPopDim(popDim,numberOfGenerations,distributionMatrix);
 
                             //perguntar se pretende apenas visualizar ou salvar o gráfico
                             break;
                         case "-r":
                             System.out.println("\nRATE VARIATIONS BETWEEN GENERATIONS: \n");
-                            printRateVariation(rateVariation, numberOfGenerations);
+                            printRateVariation(rateVariation, numberOfGenerations,popDim);
                             break;
                     }
                 }
@@ -497,7 +497,8 @@ public class main {
             printNormDistribution(normDistMatrix,time);
         }
     }
-    public static void printPopDim (double[]popDim, int numberOfGenerations){
+    public static void printPopDim (double[]popDim, int numberOfGenerations, double[][] distributionMatrix){
+        fillDimArr(numberOfGenerations, distributionMatrix, popDim);
         for (int time = 0; time <= numberOfGenerations; time++) {
             System.out.printf("GENERATION " + time + " - %.2f", popDim[time] );
             System.out.println();
@@ -515,7 +516,8 @@ public class main {
         }
         System.out.println();
     }
-    public static void printRateVariation (double[]rateVariation, int numberOfGenerations){
+    public static void printRateVariation (double[]rateVariation, int numberOfGenerations, double[] popDim){
+        fillRatesArr(numberOfGenerations, popDim, rateVariation);
         for (int time = 0; time <= numberOfGenerations; time++) {
             if(time != numberOfGenerations) {
                 System.out.printf(time + " AND " + (time + 1) + ": %.2f", rateVariation[time]);
