@@ -93,7 +93,8 @@ public class main {
         }
 
     }
-    /* public static void writeFile (String path, double[][] leslieMatrix, double[] initialPop, int generations){
+    
+     /*public static void writeFile (String path, double[][] leslieMatrix, double[] initialPop, int generations){
          String textToAppend = fileData;
          File file = new File(fileName);
          if(file.exists()){
