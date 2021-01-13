@@ -11,12 +11,14 @@ import java.util.Scanner;
 public class main {
     static Scanner read = new Scanner(System.in);
     public static void main(String[] args) throws IOException, InterruptedException {
-        double[][] leslieMatrix; double[] initialPopulation; int ageClass; String speciesName;
-        String fileNameOutput, fileNameInput; int gnuplotFormat;
-        switch (args.length){
+        int ageClass, gnuplotFormat, i;
+        String fileNameOutput, fileNameInput, path=null, speciesName1;
+        String[] speciesName;
+        analysisOfDatas(args);
+        /*switch (args.length){
             case 0:
                 System.out.println("Insira o nome da espécie a analisar:");
-                speciesName = read.nextLine();
+                speciesName1 = read.nextLine();
                 System.out.println("Insira quantidade de faixas etárias:");
                 ageClass = read.nextInt();
                 initialPopulation = new double[ageClass];
@@ -51,7 +53,7 @@ public class main {
                 System.out.println("Digite -r para obter a variação da população entre as gerações");
                 String answers = read.nextLine();
                 String[] formattedAnswers = answers.split(" ");
-                for (int i=0; i<formattedAnswers.length; i++){
+                for (i=0; i<formattedAnswers.length; i++){
                     switch (formattedAnswers[i]){
                         case "-e":
                             assintoticAnalysis(leslieMatrix);
@@ -73,13 +75,18 @@ public class main {
                 //case 2 split the array after -n to take the arquiche name
                 break;
             case 2:
+                for (i = 0; i < args.length - 1; i++) {
+                    if (args[i].equalsIgnoreCase("-n")) {
+                        path = args[i + 1];
+                    }
+                }
+                readFile(path, initialPopulation, leslieMatrix);
+                speciesName = speciesName(path);
                 break;
             case 9:
                 fileNameInput = args[args.length-2];
                 fileNameOutput = args[args.length-1];
-                numberOfGenerations = Integer.parseInt(args[1]);
-                gnuplotFormat = Integer.parseInt(args[3]);
-                String[] speciesName1 = speciesName(fileNameInput);
+                speciesName = speciesName(fileNameInput);
                 ageClass = sizeMatrix(fileNameInput);
                 initialPopulation = new double [ageClass];
                 leslieMatrix = new double[ageClass][ageClass];
@@ -97,10 +104,11 @@ public class main {
                 // -e augevalues and augevectors
                 // -v dimension of population
                 // -r variation of population in each generation
-        }
+        }*/
     }
-    public static void analysisOfDatas (String[] args, double[][] leslieMatrix, double[] initialPopulation) throws IOException, InterruptedException {
-        int i; String path = null; String[] nameOfSpecie; int numberOfGenerations=0, gnuplotFormat;
+    public static void analysisOfDatas (String[] args) throws IOException, InterruptedException {
+        String fileNameinput, fileNomeOutput; String[] nameOfSpecie; int numberOfGenerations=0, gnuplotFormat = 0, i;
+        boolean e = false, v= false, r = false;
        for (i=0; i<args.length; i++){
            switch (args[i]) {
                case "-t":
@@ -108,81 +116,45 @@ public class main {
                    break;
                case "-g":
                    gnuplotFormat = Integer.parseInt(args[i + 1]);
-                   if (numberOfGenerations != 0) {
-                       callGnuplot(numberOfGenerations, gnuplotFormat);
-                   }
                    break;
                case "-e":
-                   //ver as funcionalidades com a Anita
+                   e = true;
                    break;
                case "-v":
+                   v = true;
                    break;
                case "-r":
+                   r = true;
                    break;
-               default:
-                   switch (args.length) {
-                       case 0:
-                           //chamar o modo interativo
-                           System.out.println("Insira o nome da espécie a analisar:");
-                           speciesName = read.nextLine();
-                           initialPopulation = new double[ageClass];
-                           fillClasse(initialPopulation);
-                           System.out.println("Insira a taxa de sobrevivência dos indivíduos reprodutores");
-                           leslieMatrix = new double[ageClass][ageClass];
-                           fillSurviveRate(leslieMatrix);
-                           System.out.println("Insira o número médio de indivíduos reprodutores gerados por um indivíduo reprodutor:");
-                           fillFecundityRate(leslieMatrix);
-                           System.out.println("Insira o número de gerações a estimar: ");
-                           numberOfGenerations = read.nextInt();
-                           read.nextLine();
-                           popDistribution(initialPopulation, leslieMatrix, numberOfGenerations);
-                           double[] popVec = new double[leslieMatrix.length];
-                           double[] normalizedPopVec = new double[popVec.length];
-                           double[][] distributionMatrix = new double[numberOfGenerations + 1][leslieMatrix.length];
-                           double[][] normDistMatrix = new double[numberOfGenerations + 1][leslieMatrix.length];
-                           double[] popDim = new double[numberOfGenerations + 1];
-                           double[] rateVariation = new double[numberOfGenerations + 1];
-
-                           System.out.println("Para aceder as funcionalidades do programa, escreva devidamente espaçado as funcionalidades pretendidas:");
-                           System.out.println("Digite -e para obter os valores e vetores próprios associados a matriz de Leslie");
-                           System.out.println("Digite -v para obter a dimensão da população a cada geração");
-                           System.out.println("Digite -r para obter a variação da população entre as gerações");
-                           String answers = read.nextLine();
-                           String[] formattedAnswers = answers.split(" ");
-                           for (i = 0; i < formattedAnswers.length; i++) {
-                               switch (formattedAnswers[i]) {
-                                   case "-e":
-                                       assintoticAnalysis(leslieMatrix);
-                                       break;
-                                   case "-v":
-                                       fillPopulationDistribution(initialPopulation, popVec, distributionMatrix, leslieMatrix, numberOfGenerations);
-                                       printPopDistribution(distributionMatrix, numberOfGenerations);
-
-                                       //perguntar se pretende apenas visualizar ou salvar o gráfico
-                                       break;
-                                   case "-r":
-                                       double rate = getRateOfChangeOverTheYears(numberOfGenerations, popDim);
-                                       fillArray(rate, numberOfGenerations - 1, rateVariation);
-                                       print(rateVariation);
-                                       break;
-                               }
-                           }
-                           break;
-                           case 2:
-                           for (i = 0; i < args.length - 1; i++) {
-                               if (args[i].equalsIgnoreCase("-n")) {
-                                       path = args[i + 1];
-                               }
-                           }
-                           readFile(path, initialPopulation, leslieMatrix);
-                           nameOfSpecie = speciesName(path);
-                           //modo interativo com o ficheiro de entrada
-                           break;
-                   }
 
            }
        }
+       fileNameinput = args[args.length-2];
+       fileNomeOutput = args[args.length-1];
+       executeArguments(e, v, r, numberOfGenerations, gnuplotFormat, fileNameinput, fileNomeOutput);
+
     }
+    public static void executeArguments (boolean flag1, boolean flag2, boolean flag3, int numberOfGenerations, int gnuplotFormat, String input, String output) throws IOException {
+        int ageClass = sizeMatrix(input);
+        double[] initialPopulation = new double[ageClass];
+        double[][] leslieMatrix = new double[ageClass][ageClass];
+        readFile(input, initialPopulation, leslieMatrix);
+        popDistribution(initialPopulation, leslieMatrix, numberOfGenerations);
+            if (flag1){
+                //chamar os métodos com as funcionalidades de -e
+                assintoticAnalysis(leslieMatrix);
+            }
+            if (flag2){
+                //chamar os métodos com as funcionalidades de -v
+
+
+            }
+            if (flag3){
+                //chamar os métodos com as funcionalidades de -r
+            }
+
+    }
+
 
     /*public static void writeFile (String path, double[][] leslieMatrix, double[] initialPop, int generations){
         String textToAppend = fileData;
@@ -329,10 +301,6 @@ public class main {
         }
 
         dimensionDataFormat(popDim, rateVariation);
-
-        for (int i = 0; i <= generationNum; i++) {
-            printGenerationInfo(i,generationNum,distributionMatrix,normDistMatrix,popDim,rateVariation);
-        }
 
     }
     public static void generationsDataFormat (double [] popVec, double [] normalizedPopVec, int gen) throws IOException {
