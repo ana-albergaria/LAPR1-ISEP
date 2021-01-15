@@ -36,7 +36,7 @@ public class main {
         System.out.println("|     2 - Ficheiro de texto      |");
         System.out.println("|     0 - Sair                   |");
         System.out.println("=================================\n");
-        System.out.println("Opção -> ");
+        System.out.print("Opção -> ");
         int init = read.nextInt();
         read.nextLine();
         System.out.print("\n");
@@ -293,6 +293,7 @@ public class main {
         for(int j = 0; j<=NUMBER_OF_GRAPHS;j++){
             saveGnuplotted((numberOfGenerations-1), popVec.length,j, gnuplotFormat, specie);
         }
+
         deleteDatFiles();
 
         PrintStream out = new PrintStream (new FileOutputStream(output, true), true);
