@@ -27,17 +27,21 @@ public class test_eigenValue {
         EigenDecompositor eigenD = new EigenDecompositor(leslie);
         Matrix [] decompLeslie = eigenD.decompose();
 
+        /*
         for (int i = 0; i < 2; i++) {
             System.out.println(decompLeslie[i]);
         }
+         */
 
         double eigenVecM [][] = decompLeslie[0].toDenseMatrix().toArray();
 
         double eigenValM [][] = decompLeslie[1].toDenseMatrix().toArray();
 
+        /*
         print2D(eigenVecM);
         System.out.println();
         print2D(eigenValM);
+         */
 
 
 

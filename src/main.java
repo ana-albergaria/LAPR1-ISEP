@@ -110,7 +110,7 @@ public class main {
                             double[][]distributionMatrix, double[][]leslieMatrix, double[]normalizedPopVec,
                             double[][]normDistMatrix, double [] popDim, double[] rateVariation, String specie) throws IOException, InterruptedException { // menu principal
         int option;
-        popDistribution(initialPopulation, leslieMatrix, numberOfGenerations, popVec, normalizedPopVec,
+        getGenerationsData(initialPopulation, leslieMatrix, numberOfGenerations, popVec, normalizedPopVec,
                 distributionMatrix, normDistMatrix, popDim, rateVariation);
         do {
             System.out
@@ -142,8 +142,7 @@ public class main {
                     assintoticAnalysis(leslieMatrix);
                     break;
                 case 4:
-                    System.out.println("\nTAXAS DE VARIAÇÃO ENTRE AS GERAÇÕES: \n");
-                    printRateVariation(rateVariation, numberOfGenerations,popDim);
+                    printRateVariation(rateVariation, numberOfGenerations);
                     break;
                 case 5:
                     menuGraphs((numberOfGenerations-1), popVec.length, specie);
@@ -152,8 +151,7 @@ public class main {
                     printTotalPopDistribution(numberOfGenerations, initialPopulation, popVec, distributionMatrix, leslieMatrix, normalizedPopVec, normDistMatrix);
                     printPopDim(popDim,numberOfGenerations,distributionMatrix);
                     assintoticAnalysis(leslieMatrix);
-                    System.out.println("\nTAXAS DE VARIAÇÃO ENTRE AS GERAÇÕES: \n");
-                    printRateVariation(rateVariation, numberOfGenerations,popDim);
+                    printRateVariation(rateVariation, numberOfGenerations);
                     int format = graphsFormat();
                     for(int j = 0; j<=NUMBER_OF_GRAPHS;j++){
                         showGnuplotted((numberOfGenerations-1), popVec.length, j);
@@ -289,7 +287,7 @@ public class main {
         double[] popDim = new double[numberOfGenerations+1];
         double[] rateVariation = new double[numberOfGenerations+1];
 
-        popDistribution(initialPopulation, leslieMatrix, numberOfGenerations, popVec, normalizedPopVec, distributionMatrix, normDistMatrix, popDim, rateVariation);
+        getGenerationsData(initialPopulation, leslieMatrix, numberOfGenerations, popVec, normalizedPopVec, distributionMatrix, normDistMatrix, popDim, rateVariation);
 
         for(int j = 0; j<=NUMBER_OF_GRAPHS;j++){
             saveGnuplotted((numberOfGenerations-1), popVec.length,j, gnuplotFormat, specie);
@@ -312,8 +310,7 @@ public class main {
             }
             if (flag3){
                 //chamar os métodos com as funcionalidades de -r
-                System.out.println("\nTAXAS DE VARIAÇÃO ENTRE AS GERAÇÕES: \n");
-                printRateVariation(rateVariation, numberOfGenerations,popDim);
+                printRateVariation(rateVariation, numberOfGenerations);
             }
 
     }
@@ -416,7 +413,7 @@ public class main {
         }
     }
 
-    public static void popDistribution (double initialPopVec[], double[][] leslieMatrix, int generationNum,
+    public static void getGenerationsData (double initialPopVec[], double[][] leslieMatrix, int generationNum,
     double[] popVec, double[] normalizedPopVec, double[][] distributionMatrix, double[][] normDistMatrix, double[] popDim, double[] rateVariation) throws IOException {
 
         double dim, rate;
@@ -510,7 +507,7 @@ public class main {
         }
         return sum;
     }
-    public static void fillNormalizedPopVec2(double[] normalizedPopVec, double[] popVec){
+    public static void fillNormalizedDEE(double[] normalizedPopVec, double[] popVec){
         double totalPopulation = getTotalPopulation(popVec);
 
         for (int i = 0; i < popVec.length; i++) {
@@ -541,10 +538,11 @@ public class main {
         System.out.println();
     }
 
-    public static void printPopDistribution2(double[] array) {
+    public static void printDEE(double[] array) {
         for (int i = 0; i < array.length; i++) {
             System.out.print("- Classe " + (i+1) + ": ");
-            System.out.printf("%.2f%n", array[i]);
+            System.out.printf("%.2f", array[i]);
+            System.out.println("%");
         }
     }
 
@@ -614,7 +612,8 @@ public class main {
         }
         System.out.println();
     }
-    public static void printRateVariation (double[]rateVariation, int numberOfGenerations, double[] popDim){
+    public static void printRateVariation (double[]rateVariation, int numberOfGenerations){
+        System.out.println("TAXAS DE VARIAÇÃO ENTRE AS GERAÇÕES: \n");
         for (int time = 0; time <= numberOfGenerations; time++) {
             if(time != numberOfGenerations) {
                 System.out.printf(time + " E " + (time + 1) + ": %.2f", rateVariation[time]);
@@ -624,29 +623,7 @@ public class main {
             }
         }
     }
-    public static void printGenerationInfo(int time, int generationNum, double[][] distributionMatrix, double[][] normDistMatrix, double[] popDim, double[] rateVariation) {
-        System.out.println("GERAÇÃO " + time);
-        System.out.println("Distribuição da População:");
-        printPopDistribution(distributionMatrix, time);
-        System.out.println("Distribuição da População Normalizada:");
-        printPopDistribution(normDistMatrix, time);
-        System.out.printf("Dimensão da População: %.2f", popDim[time] );
-        System.out.println();
-        if(time != generationNum) {
-            System.out.print("Taxa de Variação entre a geração " + time + " e a geração " + (time + 1) + ": ");
-            System.out.printf("%.2f%n",rateVariation[time]);
-            System.out.println();
-        } else {
-            System.out.println("Para esta geração, não há Taxa de Variação.");
-        }
-        System.out.println();
-    }
     public static void assintoticAnalysis(double leslieMatrix[][]){
-
-        //creation and filling of the eigen Vector Matrix and the eigen Value Matrix through Eigen Decomposition
-        double eigenVecM [][] = new double[leslieMatrix.length][leslieMatrix.length];
-        double eigenValM [][] = new double[leslieMatrix.length][leslieMatrix.length];
-        eigenValAndVecMatrix(leslieMatrix,eigenVecM,eigenValM);
 
         //creation of the maximum Eigen Vector Array
         double maxVecM [] = new double [leslieMatrix.length];
@@ -654,43 +631,38 @@ public class main {
         double normalizedMaxVecM [] = new double [maxVecM.length];
 
         //saving the max Eigen Value through the method maxEigenValue and filling the maxVecM through the fillMaxVecM
-        double maxEigenValue = findMaxEigenValue(eigenValM,eigenVecM,maxVecM);
+        double maxEigenValue = findMaxEigenValue(leslieMatrix,maxVecM);
 
         double percChangePop = (maxEigenValue-1) * 100;
 
         System.out.println("COMPORTAMENTO ASSINTÓTICO DA POPULAÇÃO ASSOCIADO AO VALOR PRÓPRIO MÁXIMO");
-        System.out.println();
-        System.out.println("No estado estacionário, existe, um número constante específico, associado a um vetor de população específico.");
-        System.out.println("Esse número é o valor próprio que tem o módulo máximo da Matriz de Leslie, representando a população atual.");
+        System.out.println("\nAo longo do tempo, a distribuição normalizada pelo total da população vai estabilizando até a população atingir um estado de equilíbrio.\n");
+        System.out.println("Nesse estado, existe um número constante específico associado a um vetor de população específico.");
+        System.out.println("Esse número é o valor próprio que tem o módulo máximo da Matriz de Leslie representativa da população da espécie atual.");
         System.out.println("O vetor é o seu respetivo vetor próprio.");
-        System.out.println();
-        System.out.print("O valor próprio, que tem o módulo máximo, é, aproximadamente: ");
-        System.out.printf("%.4f%n", maxEigenValue);
-        System.out.println("Este valor próprio, representa a taxa de crescimento.");
+        System.out.print("\nO valor próprio que tem o módulo máximo, é, em módulo, aproximadamente: ");
+        System.out.printf("%.4f%n", Math.abs(maxEigenValue));
+        System.out.println("Este valor próprio representa a taxa de crescimento a partir do momento que a população atinge esse estado de equilíbrio.");
 
         if(maxEigenValue > 1) {
-            System.out.print("Como o valor próprio é maior do que 1, a população está a crescer e será, aproximadamente, ");
+            System.out.print("Como o valor próprio é maior do que 1, a população vai crescer e será, sucessiva e aproximadamente, ");
             System.out.printf("%.0f", percChangePop);
-            System.out.println("% maior em tamanho, em comparação ao ano anterior.");
+            System.out.println("% maior em comparação com ano anterior.");
         } else if(maxEigenValue < 1) {
-            System.out.print("Como o valor próprio é menor do que 1, a população está a decrescer e será, aproximadamente, ");
+            System.out.print("Como o valor próprio é menor do que 1, a população vai decrescer e será, sucessiva e aproximadamente, ");
             System.out.printf("%.0f", Math.abs(percChangePop));
-            System.out.println("% menor em tamanho, em comparação ao ano anterior.");
+            System.out.println("% menor em comparação com o ano anterior.");
         } else {
-            System.out.println("Como o valor próprio é igual a 1, a população permanecerá constante em tamanho, ao longo do tempo.");
+            System.out.println("Como o valor próprio é igual a 1, a população permanecerá constante ao longo do tempo.");
         }
 
-        System.out.println();
-        System.out.println("O vetor próprio associado ao valor próprio máximo representa representa as constantes proporções da população.");
-        System.out.println();
-        System.out.println("Proporções populacionais constantes: (2 casas decimais)");
-        printPopDistribution2(maxVecM);
-        System.out.println();
-        System.out.println("Proporções populacionais constantes normalizadas: (2 casas decimais)");
-        fillNormalizedPopVec2(normalizedMaxVecM,maxVecM);
-        printPopDistribution2(normalizedMaxVecM);
+        System.out.println("\nO vetor próprio associado ao valor próprio máximo representa a Distribuição Etária Estável (DEE).");
+        System.out.println("\nDistribuição (Normalizada) Etária Estável: (2 casas decimais)");
+        fillNormalizedDEE(normalizedMaxVecM,maxVecM);
+        printDEE(normalizedMaxVecM);
     }
-    public static void eigenValAndVecMatrix(double[][] leslieMatrix, double[][] eigenVecM, double[][] eigenValM) {
+    public static double findMaxEigenValue(double[][] leslieMatrix, double[] maxVecM) {
+
         Matrix leslie = new Basic2DMatrix(leslieMatrix);
 
         EigenDecompositor eigenD = new EigenDecompositor(leslie);
@@ -699,26 +671,20 @@ public class main {
         double vecM [][] = decompLeslie[0].toDenseMatrix().toArray();
         double valM [][] = decompLeslie[1].toDenseMatrix().toArray();
 
-        fillEmptyMatrix(eigenVecM,vecM);
-        fillEmptyMatrix(eigenValM,valM);
-
-    }
-    public static double findMaxEigenValue(double[][] eigenValM, double[][] eigenVecM, double[] maxVecM) {
-
-        double maxEigenVal = Math.abs(eigenValM[0][0]);
+        double maxEigenVal = Math.abs(valM[0][0]);
         int columnMaxEigenVal = 0;
 
-        for (int line = 0; line < eigenValM.length; line++) {
-            for (int column = 0; column < eigenValM.length; column++) {
+        for (int line = 0; line < valM.length; line++) {
+            for (int column = 0; column < valM.length; column++) {
                 if(line == column) {
-                    if (Math.abs(eigenValM[line][column]) > maxEigenVal) {
-                        maxEigenVal = eigenValM[line][column];
+                    if (Math.abs(valM[line][column]) > maxEigenVal) {
+                        maxEigenVal = valM[line][column];
                         columnMaxEigenVal = column;
                     }
                 }
             }
         }
-        fillMaxVecM(eigenVecM,columnMaxEigenVal,maxVecM);
+        fillMaxVecM(vecM,columnMaxEigenVal,maxVecM);
 
         return maxEigenVal;
 
@@ -730,13 +696,6 @@ public class main {
                 if(column == columnMaxEigenVal) {
                     maxVecM[line] = eigenVecM[line][column];
                 }
-            }
-        }
-    }
-    public static void fillEmptyMatrix(double[][] emptyMatrix, double[][] matrix) {
-        for (int line = 0; line < matrix.length; line++) {
-            for (int column = 0; column < matrix[line].length; column++) {
-                emptyMatrix[line][column] = matrix[line][column];
             }
         }
     }
