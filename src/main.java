@@ -346,33 +346,34 @@ public class main {
     public static void readFile (String path, double[] size, double[][] leslie) throws FileNotFoundException {
         String vector;
         String [] auxVector;
-        int cont=0, i;
+        int i;
         File archive = new File(path);
         Scanner readFile = new Scanner(archive);
 
         do{
             vector = readFile.nextLine();
-            switch (vector.charAt(0)){
-                case 'x':
-                    auxVector = transformVector(vector);
-                    for (i=0; i<auxVector.length; i++){
-                        size[i] = Integer.parseInt(auxVector[i]);
-                    }
-                    break;
-                case 's':
-                    auxVector = transformVector(vector);
-                    for (i=0; i<leslie.length-1; i++) {
-                        leslie[i+1][i] = Double.parseDouble(auxVector[i]);
-                    }
-                    break;
-                case 'f':
-                    auxVector = transformVector(vector);
-                    for (i=0; i<auxVector.length; i++){
-                        leslie[0][i] = Double.parseDouble(auxVector[i]);
-                    }
-                    break;
+            if (!vector.equals("")){
+                switch (vector.charAt(0)){
+                    case 'x':
+                        auxVector = transformVector(vector);
+                        for (i=0; i<auxVector.length; i++){
+                            size[i] = Integer.parseInt(auxVector[i]);
+                        }
+                        break;
+                    case 's':
+                        auxVector = transformVector(vector);
+                        for (i=0; i<leslie.length-1; i++) {
+                            leslie[i+1][i] = Double.parseDouble(auxVector[i]);
+                        }
+                        break;
+                    case 'f':
+                        auxVector = transformVector(vector);
+                        for (i=0; i<auxVector.length; i++){
+                            leslie[0][i] = Double.parseDouble(auxVector[i]);
+                        }
+                        break;
+                }
             }
-            cont++;
         }while (readFile.hasNextLine());
 
         readFile.close();
