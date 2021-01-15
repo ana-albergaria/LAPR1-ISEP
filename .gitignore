@@ -18,6 +18,7 @@ dist/
 *.log
 
 # Package files
+!lapr1-turma1def-jamp.jar
 *.jar
 
 # Maven
