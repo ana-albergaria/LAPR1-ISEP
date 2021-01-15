@@ -62,11 +62,12 @@ public class main {
         String speciesName = read.nextLine();
 
         double[] initialPopulationAux = new double[200];
+        System.out.println("Insira o número de indivíduos por classes, para finalizar a inserção das populações digite um número negativo:");
         int sizeArray = fillClasse(initialPopulationAux);
         double[] initialPopulation = new double[sizeArray];
         fillInitialPopulation (initialPopulation, initialPopulationAux);
 
-        System.out.println("Insira a taxa de sobrevivência dos indivíduos reprodutores");
+        System.out.println("Insira a taxa de sobrevivência dos indivíduos reprodutores:");
         double[][] leslieMatrix = new double[sizeArray][sizeArray];
         fillSurviveRate(leslieMatrix);
 
@@ -320,11 +321,14 @@ public class main {
         System.arraycopy(array2, 0, array1, 0, array1.length);
     }
     public static int fillClasse (double[] array){
-        int cont=0;
-        for (int i=0;i < array.length;i++){
-            System.out.print("Classe " + (i+1) + ":");
-            array[i] = read.nextDouble();
+        int cont=0; double numberOfAnimals;
+        System.out.print("Classe " + (cont+1) + ":");
+        numberOfAnimals = read.nextDouble();
+        while (cont<array.length && numberOfAnimals>=0){
+            array[cont] = numberOfAnimals;
             cont++;
+            System.out.print("Classe " + (cont+1) + ":");
+            numberOfAnimals = read.nextDouble();
         }
         return cont;
     }
