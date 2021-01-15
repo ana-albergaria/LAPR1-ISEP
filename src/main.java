@@ -394,12 +394,13 @@ public class main {
         Scanner readFile = new Scanner(archive);
         do{
             String vector = readFile.nextLine();
-            int compare = Character.compare(vector.charAt(0), 'f');
-            if (compare==0){
-               size = transformVector(vector).length;
+            if(!vector.equals("")) {
+                int compare = Character.compare(vector.charAt(0), 'f');
+                if (compare == 0) {
+                    size = transformVector(vector).length;
+                }
             }
         }while (readFile.hasNextLine());
-
         readFile.close();
         return size;
     }
