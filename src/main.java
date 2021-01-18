@@ -5,6 +5,8 @@ import org.la4j.matrix.dense.Basic2DMatrix;
 import java.io.*;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
 
@@ -684,9 +686,12 @@ public class main {
     }
 
     public static void saveGnuplotted (int gen, int classes, int nfile, int option, String specie) throws IOException, InterruptedException {
+        Date date = new Date();
+        SimpleDateFormat ft = new SimpleDateFormat ("E_dd-MM-yyyy_'at'_HH-mm-ss");
+        String name = specie + "-" + ft.format(date);
         Process process1 = Runtime.getRuntime().exec("gnuplot -c ./gnuplot/save"
                 + nfile +".gp "+ option + " " + classes
-                + " " + gen + " " + specie);
+                + " " + gen + " " + name);
         process1.waitFor();
     }
     public static void deleteDatFiles(){
