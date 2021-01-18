@@ -1,10 +1,8 @@
 import org.la4j.Matrix;
 import org.la4j.decomposition.EigenDecompositor;
 import org.la4j.matrix.dense.Basic2DMatrix;
-import org.w3c.dom.ls.LSOutput;
 
 import java.io.*;
-import java.lang.reflect.Array;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.Arrays;
@@ -608,7 +606,7 @@ public class testes_Unitarios {
     }
 
     public static void showGnuplotted (int gen, int classes, int nfile) throws IOException {
-        Process process1 = Runtime.getRuntime().exec("gnuplot -c ./gnuplot/show"+ nfile +".gp " + classes + " " + gen);
+        Process process = Runtime.getRuntime().exec("gnuplot -c ./gnuplot/show"+ nfile +".gp " + classes + " " + gen);
     }
     public static void saveGnuplotted (int gen, int classes, int nfile, int option, String specie) throws IOException, InterruptedException {
         Process process1 = Runtime.getRuntime().exec("gnuplot -c ./gnuplot/save"

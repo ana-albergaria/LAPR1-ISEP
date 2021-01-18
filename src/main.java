@@ -29,6 +29,7 @@ public class main {
                 break;
         }
     }
+    /*=========================================MENUS==============================================*/
     public static void dataInsert() throws IOException, InterruptedException {
         System.out.println("\nDe qual forma gostaria de inicializar os dados?:");
         System.out.println("\n ==============================");
@@ -56,55 +57,6 @@ public class main {
                 System.out.println("Opção Inválida!");
                 break;
         }
-    }
-    public static void manualStartOrganizer () throws IOException, InterruptedException {
-        System.out.println("Insira o nome da espécie a analisar:");
-        String speciesName = read.nextLine();
-
-        double[] initialPopulationAux = new double[200];
-        System.out.println("Insira o número de indivíduos por classes, para finalizar a inserção das populações digite um número negativo:");
-        int sizeArray = fillClasse(initialPopulationAux);
-        double[] initialPopulation = new double[sizeArray];
-        fillInitialPopulation (initialPopulation, initialPopulationAux);
-
-        System.out.println("Insira a taxa de sobrevivência dos indivíduos reprodutores:");
-        double[][] leslieMatrix = new double[sizeArray][sizeArray];
-        fillSurviveRate(leslieMatrix);
-
-        System.out.println("Insira o número médio de indivíduos reprodutores gerados por um indivíduo reprodutor:");
-        fillFecundityRate(leslieMatrix);
-
-        System.out.println("Insira o número de gerações a estimar: ");
-        int numberOfGenerations = read.nextInt();
-        read.nextLine();
-        double[] popVec = new double[leslieMatrix.length];
-        double[] normalizedPopVec = new double[popVec.length];
-        double[][] distributionMatrix = new double[numberOfGenerations + 1][leslieMatrix.length];
-        double[][] normDistMatrix = new double[numberOfGenerations + 1][leslieMatrix.length];
-        double[] popDim = new double[numberOfGenerations + 1];
-        double[] rateVariation = new double[numberOfGenerations + 1];
-        menu(numberOfGenerations, initialPopulation, popVec, distributionMatrix,
-                leslieMatrix, normalizedPopVec, normDistMatrix, popDim, rateVariation, speciesName);
-    }
-    public static void fileInitOrganizer (String fileNameInput) throws IOException, InterruptedException {
-        String speciesName1 = speciesName(fileNameInput);
-        int ageClass = sizeMatrix(fileNameInput);
-        double [] initialPopulation = new double[ageClass];
-        double [][] leslieMatrix = new double[ageClass][ageClass];
-        readFile(fileNameInput, initialPopulation, leslieMatrix);
-
-        System.out.println("Insira o número de gerações a estimar: ");
-        int numberOfGenerations = read.nextInt();
-        read.nextLine();
-
-        double[] popVec = new double[leslieMatrix.length];
-        double[] normalizedPopVec = new double[popVec.length];
-        double[][] distributionMatrix = new double[numberOfGenerations + 1][leslieMatrix.length];
-        double[][] normDistMatrix = new double[numberOfGenerations + 1][leslieMatrix.length];
-        double[] popDim = new double[numberOfGenerations + 1];
-        double[] rateVariation = new double[numberOfGenerations + 1];
-        menu(numberOfGenerations, initialPopulation, popVec, distributionMatrix,
-                leslieMatrix, normalizedPopVec, normDistMatrix, popDim, rateVariation, speciesName1);
     }
     public static void menu(int numberOfGenerations, double[]initialPopulation, double[]popVec,
                             double[][]distributionMatrix, double[][]leslieMatrix, double[]normalizedPopVec,
@@ -159,7 +111,7 @@ public class main {
                     }
                     break;
                 case 9:
-                    deleteDatFiles();
+                   deleteDatFiles();
                     dataInsert();
                     break;
                 case 0:
@@ -173,8 +125,8 @@ public class main {
         deleteDatFiles();
     }
     public static void menuGraphs(int gens, int classes, String specie) throws IOException, InterruptedException {
-        int option = 0;
-        //do {
+        int options;
+        do {
         System.out.println("\nInsira separando por espaços os graficos que deseja visualizar:");
         System.out.println("\n ======================================================================================================================");
         System.out.println("|     1 - Dimensão da população ao longo do tempo                                                                        |");
@@ -185,28 +137,22 @@ public class main {
         System.out.println("=========================================================================================================================\n");
 
         System.out.print("Opção -> ");
-        String optionString = read.nextLine();
-        String [] options = optionString.split(" ");
+        options = read.nextInt();
         System.out.print("\n");
-        for(int g = 0; g< options.length; g++){
-            System.out.println(options[g]);
-            switch (Integer.parseInt(options[g])) {
+            switch (options) {
                 case 1:
                 case 2:
                 case 3:
                 case 4:
-                    showGnuplotted(gens, classes, Integer.parseInt(options[g]));
-                    option = Integer.parseInt(options[g]);
+                    showGnuplotted(gens, classes, options);
                     break;
                 case 0:
-                    option = Integer.parseInt(options[g]);
                     break;
                 default:
                     System.out.println("Opção Inválida!");
                     break;
             }
-        }
-        if(option !=0) {
+        if(options == 1|options == 2|options == 3|options == 4) {
             System.out.println("Gostaria de guardar os graficos gerados?");
             System.out.println("\n ================");
             System.out.println("|     1 - Sim      |");
@@ -219,15 +165,13 @@ public class main {
             switch (save) {
                 case 1:
                     int format = graphsFormat();
-                    for (int k = 0; k < options.length; k++) {
-                        saveGnuplotted(gens, classes,Integer.parseInt(options[k]) , format, specie);
-                    }
+                        saveGnuplotted(gens, classes,options, format, specie);
                     break;
                 case 2:
                     break;
             }
         }
-        //    } while (option != 0);
+        } while (options != 0);
     }
     public static int graphsFormat ()  {
         System.out.println("Qual formato os ficheiros dos graficos devem ser guardados?");
@@ -242,33 +186,35 @@ public class main {
         System.out.print("\n");
         return format;
     }
+    /*===========================================================MENUS=============================================-===============*/
+    /*=======================================DATA STARTS AND FILE READ=============================================================*/
     public static void analysisOfDatas (String[] args) throws IOException, InterruptedException {
         String fileNameinput, fileNomeOutput; String specie; int numberOfGenerations=0, gnuplotFormat = 0, i;
         boolean e = false, v= false, r = false;
-       for (i=0; i<args.length; i++){
-           switch (args[i]) {
-               case "-t":
-                   numberOfGenerations = Integer.parseInt(args[i + 1]);
-                   break;
-               case "-g":
-                   gnuplotFormat = Integer.parseInt(args[i + 1]);
-                   break;
-               case "-e":
-                   e = true;
-                   break;
-               case "-v":
-                   v = true;
-                   break;
-               case "-r":
-                   r = true;
-                   break;
+        for (i=0; i<args.length; i++){
+            switch (args[i]) {
+                case "-t":
+                    numberOfGenerations = Integer.parseInt(args[i + 1]);
+                    break;
+                case "-g":
+                    gnuplotFormat = Integer.parseInt(args[i + 1]);
+                    break;
+                case "-e":
+                    e = true;
+                    break;
+                case "-v":
+                    v = true;
+                    break;
+                case "-r":
+                    r = true;
+                    break;
 
-           }
-       }
-       fileNameinput = args[args.length-2];
-       fileNomeOutput = args[args.length-1];
-       specie = speciesName(fileNameinput);
-       executeArguments(e, v, r, numberOfGenerations, gnuplotFormat, fileNameinput, fileNomeOutput, specie);
+            }
+        }
+        fileNameinput = args[args.length-2];
+        fileNomeOutput = args[args.length-1];
+        specie = speciesName(fileNameinput);
+        executeArguments(e, v, r, numberOfGenerations, gnuplotFormat, fileNameinput, fileNomeOutput, specie);
     }
     public static void executeArguments (boolean flag1, boolean flag2, boolean flag3, int numberOfGenerations,
                                          int gnuplotFormat, String input, String output,String specie) throws IOException, InterruptedException {
@@ -300,46 +246,68 @@ public class main {
 
         printTotalPopDistribution(numberOfGenerations, initialPopulation, popVec, distributionMatrix, leslieMatrix, normalizedPopVec, normDistMatrix);
 
-            if (flag1){
-                //chamar os métodos com as funcionalidades de -e
-                assintoticAnalysis(leslieMatrix);
-            }
-            if (flag2){
-                //chamar os métodos com as funcionalidades de -v
-                printPopDim(popDim,numberOfGenerations,distributionMatrix);
-            }
-            if (flag3){
-                //chamar os métodos com as funcionalidades de -r
-                printRateVariation(rateVariation, numberOfGenerations);
-            }
+        if (flag1){
+            //chamar os métodos com as funcionalidades de -e
+            assintoticAnalysis(leslieMatrix);
+        }
+        if (flag2){
+            //chamar os métodos com as funcionalidades de -v
+            printPopDim(popDim,numberOfGenerations,distributionMatrix);
+        }
+        if (flag3){
+            //chamar os métodos com as funcionalidades de -r
+            printRateVariation(rateVariation, numberOfGenerations);
+        }
 
     }
-    public static void fillInitialPopulation (double[] array1, double[] array2){
-        System.arraycopy(array2, 0, array1, 0, array1.length);
+    public static void manualStartOrganizer () throws IOException, InterruptedException {
+        System.out.println("Insira o nome da espécie a analisar:");
+        String speciesName = read.nextLine();
+
+        double[] initialPopulationAux = new double[200];
+        System.out.println("Insira o número de indivíduos por classes, para finalizar a inserção das populações digite um número negativo:");
+        int sizeArray = fillClasse(initialPopulationAux);
+        double[] initialPopulation = new double[sizeArray];
+        fillInitialPopulation (initialPopulation, initialPopulationAux);
+
+        System.out.println("Insira a taxa de sobrevivência dos indivíduos reprodutores:");
+        double[][] leslieMatrix = new double[sizeArray][sizeArray];
+        fillSurviveRate(leslieMatrix);
+
+        System.out.println("Insira o número médio de indivíduos reprodutores gerados por um indivíduo reprodutor:");
+        fillFecundityRate(leslieMatrix);
+
+        System.out.println("Insira o número de gerações a estimar: ");
+        int numberOfGenerations = read.nextInt();
+        read.nextLine();
+        double[] popVec = new double[leslieMatrix.length];
+        double[] normalizedPopVec = new double[popVec.length];
+        double[][] distributionMatrix = new double[numberOfGenerations + 1][leslieMatrix.length];
+        double[][] normDistMatrix = new double[numberOfGenerations + 1][leslieMatrix.length];
+        double[] popDim = new double[numberOfGenerations + 1];
+        double[] rateVariation = new double[numberOfGenerations + 1];
+        menu(numberOfGenerations, initialPopulation, popVec, distributionMatrix,
+                leslieMatrix, normalizedPopVec, normDistMatrix, popDim, rateVariation, speciesName);
     }
-    public static int fillClasse (double[] array){
-        int cont=0; double numberOfAnimals;
-        System.out.print("Classe " + (cont+1) + ":");
-        numberOfAnimals = read.nextDouble();
-        while (cont<array.length && numberOfAnimals>=0){
-            array[cont] = numberOfAnimals;
-            cont++;
-            System.out.print("Classe " + (cont+1) + ":");
-            numberOfAnimals = read.nextDouble();
-        }
-        return cont;
-    }
-    public static void fillSurviveRate (double[][] array){
-        for (int i=0; i<array.length-1 ;i++){
-            System.out.print("Classe " + (i+1) + ":");
-            array[i+1][i] = read.nextDouble();
-        }
-    }
-    public static void fillFecundityRate (double[][] array){
-        for (int i=0; i<array.length ;i++){
-            System.out.print("Classe " + (i+1) + ":");
-            array[0][i] = read.nextDouble();
-        }
+    public static void fileInitOrganizer (String fileNameInput) throws IOException, InterruptedException {
+        String speciesName1 = speciesName(fileNameInput);
+        int ageClass = sizeMatrix(fileNameInput);
+        double [] initialPopulation = new double[ageClass];
+        double [][] leslieMatrix = new double[ageClass][ageClass];
+        readFile(fileNameInput, initialPopulation, leslieMatrix);
+
+        System.out.println("Insira o número de gerações a estimar: ");
+        int numberOfGenerations = read.nextInt();
+        read.nextLine();
+
+        double[] popVec = new double[leslieMatrix.length];
+        double[] normalizedPopVec = new double[popVec.length];
+        double[][] distributionMatrix = new double[numberOfGenerations + 1][leslieMatrix.length];
+        double[][] normDistMatrix = new double[numberOfGenerations + 1][leslieMatrix.length];
+        double[] popDim = new double[numberOfGenerations + 1];
+        double[] rateVariation = new double[numberOfGenerations + 1];
+        menu(numberOfGenerations, initialPopulation, popVec, distributionMatrix,
+                leslieMatrix, normalizedPopVec, normDistMatrix, popDim, rateVariation, speciesName1);
     }
     public static String speciesName (String path){
         String[] specie = path.split(".txt");
@@ -380,15 +348,6 @@ public class main {
 
         readFile.close();
     }
-
-    public static String[] transformVector (String vector){
-        String[] auxVector = vector.split(", ");
-        for (int i=0; i<auxVector.length; i++){
-            auxVector[i] = auxVector[i].substring(auxVector[i].indexOf("=")+1);
-        }
-        return auxVector;
-    }
-
     public static int sizeMatrix (String path) throws FileNotFoundException {
         int size=0;
         File archive = new File(path);
@@ -405,6 +364,44 @@ public class main {
         readFile.close();
         return size;
     }
+    /*=======================================DATA STARTS AND FILE READ=============================================================*/
+    /*=======================================ARRAY FILLERS AND CALCULATIONS=============================================================*/
+    public static void fillInitialPopulation (double[] array1, double[] array2){
+        System.arraycopy(array2, 0, array1, 0, array1.length);
+    }
+    public static int fillClasse (double[] array){
+        int cont=0; double numberOfAnimals;
+        System.out.print("Classe " + (cont+1) + ":");
+        numberOfAnimals = read.nextDouble();
+        while (cont<array.length && numberOfAnimals>=0){
+            array[cont] = numberOfAnimals;
+            cont++;
+            System.out.print("Classe " + (cont+1) + ":");
+            numberOfAnimals = read.nextDouble();
+        }
+        return cont;
+    }
+    public static void fillSurviveRate (double[][] array){
+        for (int i=0; i<array.length-1 ;i++){
+            System.out.print("Classe " + (i+1) + ":");
+            array[i+1][i] = read.nextDouble();
+        }
+    }
+    public static void fillFecundityRate (double[][] array){
+        for (int i=0; i<array.length ;i++){
+            System.out.print("Classe " + (i+1) + ":");
+            array[0][i] = read.nextDouble();
+        }
+    }
+
+
+    public static String[] transformVector (String vector){
+        String[] auxVector = vector.split(", ");
+        for (int i=0; i<auxVector.length; i++){
+            auxVector[i] = auxVector[i].substring(auxVector[i].indexOf("=")+1);
+        }
+        return auxVector;
+    }
 
     public static void print (double[] size){
         for (int i=0; i< size.length; i++){
@@ -414,8 +411,8 @@ public class main {
     }
 
     public static void getGenerationsData (double initialPopVec[], double[][] leslieMatrix, int generationNum,
-    double[] popVec, double[] normalizedPopVec, double[][] distributionMatrix, double[][] normDistMatrix, double[] popDim, double[] rateVariation) throws IOException {
-
+                                           double[] popVec, double[] normalizedPopVec, double[][] distributionMatrix,
+                                           double[][] normDistMatrix, double[] popDim, double[] rateVariation) throws IOException {
         double dim, rate;
 
         for(int time = 0; time <= generationNum; time++) {
@@ -439,39 +436,6 @@ public class main {
 
         dimensionDataFormat(popDim, rateVariation);
 
-    }
-    public static void generationsDataFormat (double [] popVec, double [] normalizedPopVec, int gen) throws IOException {
-        DecimalFormat df = new DecimalFormat("0.00", new DecimalFormatSymbols(Locale.US));
-        int filesNum = popVec.length;
-        String data = "", fn= "";
-        for(int i=0;i<filesNum;i++){
-            data =  gen + " " + df.format(popVec[i]) + " " + df.format(normalizedPopVec[i]);
-            fn = POP_CLASSES_BASE_FILE_PATH+(i+1)+".dat";
-            dataToFile(fn, data);
-        }
-    }
-    public static void dimensionDataFormat (double [] popDim, double [] rateVariation) throws IOException {
-        DecimalFormat df = new DecimalFormat("0.00", new DecimalFormatSymbols(Locale.US));
-        String data = "";
-        for(int k=0; k < popDim.length; k++){
-            data = k + " " + df.format(popDim[k]) + " " + df.format(rateVariation[k]);
-            dataToFile(POP_DIM_FILE_PATH, data);
-        }
-    }
-    public static void dataToFile(String fileName, String fileData) throws IOException {
-        String textToAppend = fileData;
-        File file = new File(fileName);
-        if(file.exists()){
-            //Set true for append mode
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
-            writer.newLine();
-            writer.write(textToAppend);
-            writer.close();
-        }else{
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-            writer.write(textToAppend);
-            writer.close();
-        }
     }
     public static void fillPopulationDistribution(double initialPopVec[], double[] popVec, double[][] distributionMatrix, double[][] leslieMatrix, int time) {
         double mult = 0;
@@ -524,47 +488,6 @@ public class main {
         generationsDataFormat(popVec, normalizedPopVec, time);
         fillMatrix(normDistMatrix,time,normalizedPopVec);
     }
-    public static void printPopDistribution(double[][] matrix, int time) {
-        System.out.println("GERAÇÃO " + time);
-        System.out.println("Distribuição da População:");
-        for (int line = 0; line < matrix.length; line++) {
-            for (int column = 0; column < matrix[line].length; column++) {
-                if(line == time) {
-                    System.out.print("- Classe " + (column+1) + ": ");
-                    System.out.printf("%.2f%n", matrix[line][column]);
-                }
-            }
-        }
-        System.out.println();
-    }
-
-    public static void printDEE(double[] array) {
-        for (int i = 0; i < array.length; i++) {
-            System.out.print("- Classe " + (i+1) + ": ");
-            System.out.printf("%.2f", array[i]);
-            System.out.println("%");
-        }
-    }
-
-    public static void showGnuplotted (int gen, int classes, int nfile) throws IOException {
-        Process process1 = Runtime.getRuntime().exec("gnuplot -c ./gnuplot/show"+ nfile +".gp " + classes + " " + gen);
-    }
-    public static void saveGnuplotted (int gen, int classes, int nfile, int option, String specie) throws IOException, InterruptedException {
-        Process process1 = Runtime.getRuntime().exec("gnuplot -c ./gnuplot/save"
-                + nfile +".gp "+ option + " " + classes
-                + " " + gen + " " + specie);
-        process1.waitFor();
-    }
-    public static void deleteDatFiles(){
-        File folder = new File(FOLDER_DATA_FILES);
-        File fList[] = folder.listFiles();
-        for (int i = 0; i < fList.length; i++) {
-            String pes = String.valueOf(fList[i]);
-            if (pes.endsWith(".dat")) {
-                boolean success = (new File(String.valueOf(fList[i])).delete());
-            }
-        }
-    }
     /*-----------------------object = FILL POP DIMENSION AND RATE VARIATION OVER THE YEARS----------------------------*/
     public static void fillArray(double object, int time, double[] array) {
         array[time] = object;
@@ -583,45 +506,6 @@ public class main {
         double quocient = nextGeneration/nowGeneration;
 
         return quocient;
-    }
-
-    public static void printTotalPopDistribution(int numberOfGenerations, double[]initialPopulation, double[]popVec, double[][]distributionMatrix,double[][]leslieMatrix, double[]normalizedPopVec, double[][]normDistMatrix) {
-        for (int time = 0; time <= numberOfGenerations; time++) {
-            printPopDistribution(distributionMatrix, time);
-            printNormDistribution(normDistMatrix,time);
-        }
-    }
-
-    public static void printPopDim (double[]popDim, int numberOfGenerations, double[][] distributionMatrix){
-        System.out.println("\nDIMENSÕES DAS POPULAÇÕES\n");
-        for (int time = 0; time <= numberOfGenerations; time++) {
-            System.out.printf("GERAÇÃO " + time + " - %.2f", popDim[time] );
-            System.out.println();
-        }
-
-    }
-    public static void printNormDistribution(double[][] matrix, int time) {
-        System.out.println("Distribuição Normalizada pelo Total da População:");
-        for (int line = 0; line < matrix.length; line++) {
-            for (int column = 0; column < matrix[line].length; column++) {
-                if(line == time) {
-                    System.out.printf("- Classe " + (column+1) + ": %.2f", matrix[line][column]);
-                    System.out.println("%");
-                }
-            }
-        }
-        System.out.println();
-    }
-    public static void printRateVariation (double[]rateVariation, int numberOfGenerations){
-        System.out.println("TAXAS DE VARIAÇÃO ENTRE AS GERAÇÕES: \n");
-        for (int time = 0; time <= numberOfGenerations; time++) {
-            if(time != numberOfGenerations) {
-                System.out.printf(time + " E " + (time + 1) + ": %.2f", rateVariation[time]);
-                System.out.println();
-            } else {
-                System.out.println("Para a última geração (" + time + "), não existe Taxa de Variação.\n");
-            }
-        }
     }
     public static void assintoticAnalysis(double leslieMatrix[][]){
 
@@ -699,6 +583,123 @@ public class main {
             }
         }
     }
+    /*=======================================ARRAY FILLERS AND CALCULATIONS=============================================================*/
+    /*=========================================================PRINTERS================================================================*/
+    public static void printPopDistribution(double[][] matrix, int time) {
+        System.out.println("GERAÇÃO " + time);
+        System.out.println("Distribuição da População:");
+        for (int line = 0; line < matrix.length; line++) {
+            for (int column = 0; column < matrix[line].length; column++) {
+                if(line == time) {
+                    System.out.print("- Classe " + (column+1) + ": ");
+                    System.out.printf("%.2f%n", matrix[line][column]);
+                }
+            }
+        }
+        System.out.println();
+    }
+
+    public static void printDEE(double[] array) {
+        for (int i = 0; i < array.length; i++) {
+            System.out.print("- Classe " + (i+1) + ": ");
+            System.out.printf("%.2f", array[i]);
+            System.out.println("%");
+        }
+    }
+    public static void printTotalPopDistribution(int numberOfGenerations, double[]initialPopulation, double[]popVec, double[][]distributionMatrix,double[][]leslieMatrix, double[]normalizedPopVec, double[][]normDistMatrix) {
+        for (int time = 0; time <= numberOfGenerations; time++) {
+            printPopDistribution(distributionMatrix, time);
+            printNormDistribution(normDistMatrix,time);
+        }
+    }
+
+    public static void printPopDim (double[]popDim, int numberOfGenerations, double[][] distributionMatrix){
+        System.out.println("\nDIMENSÕES DAS POPULAÇÕES\n");
+        for (int time = 0; time <= numberOfGenerations; time++) {
+            System.out.printf("GERAÇÃO " + time + " - %.2f", popDim[time] );
+            System.out.println();
+        }
+
+    }
+    public static void printNormDistribution(double[][] matrix, int time) {
+        System.out.println("Distribuição Normalizada pelo Total da População:");
+        for (int line = 0; line < matrix.length; line++) {
+            for (int column = 0; column < matrix[line].length; column++) {
+                if(line == time) {
+                    System.out.printf("- Classe " + (column+1) + ": %.2f", matrix[line][column]);
+                    System.out.println("%");
+                }
+            }
+        }
+        System.out.println();
+    }
+    public static void printRateVariation (double[]rateVariation, int numberOfGenerations){
+        System.out.println("TAXAS DE VARIAÇÃO ENTRE AS GERAÇÕES: \n");
+        for (int time = 0; time <= numberOfGenerations; time++) {
+            if(time != numberOfGenerations) {
+                System.out.printf(time + " E " + (time + 1) + ": %.2f", rateVariation[time]);
+                System.out.println();
+            } else {
+                System.out.println("Para a última geração (" + time + "), não existe Taxa de Variação.\n");
+            }
+        }
+    }
+    /*=========================================================PRINTERS================================================================*/
+    /*=============================================DATA FORMATING AND GNUPLOT==========================================================*/
+    public static void generationsDataFormat (double [] popVec, double [] normalizedPopVec, int gen) throws IOException {
+        DecimalFormat df = new DecimalFormat("0.00", new DecimalFormatSymbols(Locale.US));
+        int filesNum = popVec.length;
+        String data = "", fn= "";
+        for(int i=0;i<filesNum;i++){
+            data =  gen + " " + df.format(popVec[i]) + " " + df.format(normalizedPopVec[i]);
+            fn = POP_CLASSES_BASE_FILE_PATH+(i+1)+".dat";
+            dataToFile(fn, data);
+        }
+    }
+    public static void dimensionDataFormat (double [] popDim, double [] rateVariation) throws IOException {
+        DecimalFormat df = new DecimalFormat("0.00", new DecimalFormatSymbols(Locale.US));
+        String data = "";
+        for(int k=0; k < popDim.length; k++){
+            data = k + " " + df.format(popDim[k]) + " " + df.format(rateVariation[k]);
+            dataToFile(POP_DIM_FILE_PATH, data);
+        }
+    }
+    public static void dataToFile(String fileName, String fileData) throws IOException {
+        String textToAppend = fileData;
+        File file = new File(fileName);
+        if(file.exists()){
+            //Set true for append mode
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
+            writer.newLine();
+            writer.write(textToAppend);
+            writer.close();
+        }else{
+            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+            writer.write(textToAppend);
+            writer.close();
+        }
+    }
+    public static void showGnuplotted (int gen, int classes, int nfile) throws IOException, InterruptedException {
+        Process process = Runtime.getRuntime().exec("gnuplot -c ./gnuplot/show"+ nfile +".gp " + classes + " " + gen);
+    }
+
+    public static void saveGnuplotted (int gen, int classes, int nfile, int option, String specie) throws IOException, InterruptedException {
+        Process process1 = Runtime.getRuntime().exec("gnuplot -c ./gnuplot/save"
+                + nfile +".gp "+ option + " " + classes
+                + " " + gen + " " + specie);
+        process1.waitFor();
+    }
+    public static void deleteDatFiles(){
+        File folder = new File(FOLDER_DATA_FILES);
+        File fList[] = folder.listFiles();
+        for (int i = 0; i < fList.length; i++) {
+            String pes = String.valueOf(fList[i]);
+            if (pes.endsWith(".dat")) {
+                boolean success = (new File(String.valueOf(fList[i])).delete());
+            }
+        }
+    }
+    /*=============================================DATA FORMATING AND GNUPLOT==========================================================*/
 }
 
 

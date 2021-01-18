@@ -1,5 +1,5 @@
 # =====================================================POP DIMENSION VARIATION================================================
-set terminal wxt 1 size 600, 400 enhanced font 'Verdana,10' persist
+set terminal wxt 1 size 600, 400 enhanced font 'Verdana,10'
 
 data = 'gnuplot/populationTotal.dat'
 
@@ -12,3 +12,4 @@ lastline=ARG2
 
 # Plot
 plot [ :lastline][0:] data using 1:3 title 'variação da população'
+pause mouse close

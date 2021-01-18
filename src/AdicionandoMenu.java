@@ -224,8 +224,8 @@ public class AdicionandoMenu {
                         }
                     }
                     break;
-                case 5:
-                    menuGraphs((numberOfGenerations-1), popVec.length, specie);
+                case 5: showGnuplotted(19, 4, 2);
+                    //menuGraphs((numberOfGenerations-1), popVec.length, specie);
                     break;
                 case 6:
                     System.out.println("POPULATION DISTRIBUTIONS\n");

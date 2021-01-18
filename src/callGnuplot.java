@@ -5,8 +5,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class callGnuplot {
-    public static void main(String[] args) {
-
+    public static void main(String[] args) throws IOException, InterruptedException {
+        showGnuplotted0(9, 4, 1);
+    }
+    public static void showGnuplotted0 (int gen, int classes, int nfile) throws IOException, InterruptedException {
+        Process process0 = Runtime.getRuntime().exec("gnuplot -c ./gnuplot/show"+ nfile +".gp " + classes + " " + gen);
+    }
+    public static void showGnuplotted1 (int gen, int classes, int nfile) throws IOException, InterruptedException {
+        Process process1 = Runtime.getRuntime().exec("gnuplot -c ./gnuplot/show"+ nfile +".gp " + classes + " " + gen);
     }
     public static void showGnuplotted (int gen, int classes) throws IOException, InterruptedException {
         Process process1 = Runtime.getRuntime().exec("gnuplot -c ./showGnuplot.gp " + classes + " " + gen);
