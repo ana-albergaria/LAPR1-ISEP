@@ -127,7 +127,7 @@ public class main {
     public static void menuGraphs(int gens, int classes, String specie) throws IOException, InterruptedException {
         int options;
         do {
-        System.out.println("\nInsira separando por espaços os graficos que deseja visualizar:");
+        System.out.println("\nInsira o numero do graficos que deseja visualizar:");
         System.out.println("\n ======================================================================================================================");
         System.out.println("|     1 - Dimensão da população ao longo do tempo                                                                        |");
         System.out.println("|     2 - Variações da dimensão população entre as gerações                                                              |");
@@ -153,7 +153,7 @@ public class main {
                     break;
             }
         if(options == 1|options == 2|options == 3|options == 4) {
-            System.out.println("Gostaria de guardar os graficos gerados?");
+            System.out.println("Gostaria de guardar o grafico gerado?");
             System.out.println("\n ================");
             System.out.println("|     1 - Sim      |");
             System.out.println("|     2 - Não      |");
