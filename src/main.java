@@ -26,7 +26,7 @@ public class main {
                 String fileNameInput = args[1];
                 fileInitOrganizer(fileNameInput);
                 break;
-            case 6: case 7: case 8: case 9:
+            default:
                 analysisOfDatas(args);
                 break;
         }
@@ -218,7 +218,7 @@ public class main {
         specie = speciesName(fileNameinput);
         executeArguments(e, v, r, numberOfGenerations, gnuplotFormat, fileNameinput, fileNomeOutput, specie);
     }
-    public static void executeArguments (boolean flag1, boolean flag2, boolean flag3, int numberOfGenerations,
+    public static void executeArguments (boolean flag1, boolean flag2, boolean flag3,  int numberOfGenerations,
                                          int gnuplotFormat, String input, String output,String specie) throws IOException, InterruptedException {
         int ageClass = sizeMatrix(input);
         double[] initialPopulation = new double[ageClass];
@@ -235,13 +235,7 @@ public class main {
         double[] popDim = new double[numberOfGenerations+1];
         double[] rateVariation = new double[numberOfGenerations+1];
 
-        getGenerationsData(initialPopulation, leslieMatrix, numberOfGenerations, popVec, normalizedPopVec, distributionMatrix, normDistMatrix, popDim, rateVariation);
 
-        for(int j = 0; j<=NUMBER_OF_GRAPHS;j++){
-            saveGnuplotted((numberOfGenerations-1), popVec.length,j, gnuplotFormat, specie);
-        }
-
-        deleteDatFiles();
 
         PrintStream out = new PrintStream (new FileOutputStream(output, true), true);
         System.setOut(out);
@@ -259,6 +253,13 @@ public class main {
         if (flag3){
             //chamar os métodos com as funcionalidades de -r
             printRateVariation(rateVariation, numberOfGenerations);
+        }
+        if (gnuplotFormat!=0){
+            getGenerationsData(initialPopulation, leslieMatrix, numberOfGenerations, popVec, normalizedPopVec, distributionMatrix, normDistMatrix, popDim, rateVariation);
+            for(int j = 0; j<=NUMBER_OF_GRAPHS;j++){
+                saveGnuplotted((numberOfGenerations-1), popVec.length,j, gnuplotFormat, specie);
+            }
+            deleteDatFiles();
         }
 
     }
