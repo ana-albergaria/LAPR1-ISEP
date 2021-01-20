@@ -1,12 +1,11 @@
 import java.io.IOException;
-import java.util.Arrays;
 
 public class testesUnitarios {
     public static void main(String[] args) throws IOException {
         double[][] leslieMatrix = {{0,3,3.17,0.39},{0.11,0,0,0},{0,0.29,0,0},{0,0,0.33,0}};
 
-        verifyBoolean(test_fillPopulationDistribution(1,leslieMatrix));
-        //verifyBoolean(test_fillNormalizedPopVec(1,leslieMatrix));
+        verifyBoolean(test_fillPopulationDistribution(2,leslieMatrix));
+        verifyBoolean(test_fillNormalizedPopVec(2,leslieMatrix));
         //verifyBoolean(test_getTotalPopulation(2291, dim, time));
         //verifyBoolean(test_getRateOfChangeOverTheYears(1.324277456647399,rate,time));
 
@@ -14,42 +13,59 @@ public class testesUnitarios {
     public static Boolean test_fillPopulationDistribution(int generationsToBeTested, double[][]leslieMatrix) {
         double[] initialPopVecAux = {1000, 300, 330, 100};
         double[] popVecAux = new double[initialPopVecAux.length];
-        double[] expectedResult0 = {1000, 300, 330, 100};
-        double[] expectedResult1 = {1985.1, 110.0, 87.0, 108.9};
-        double[] expectedResult2 = {648.26, 218.36, 31.9, 28.71};
-        double[][] distributionMatrix = new double[generationsToBeTested + 1][leslieMatrix.length];
+        double[][] distribMatrixAux = new double[generationsToBeTested + 1][leslieMatrix.length];
+        double[] expectedPopVec0 = {1000, 300, 330, 100};
+        double[] expectedPopVec1 = {1985.1, 110.0, 87.0, 108.9};
+        double[] expectedPopVec2 = {648.261, 218.361, 31.9, 28.71};
+
         for (int time = 0; time <= generationsToBeTested; time++) {
-            main.fillPopulationDistribution(initialPopVecAux, popVecAux, distributionMatrix, leslieMatrix, time);
-            if(test_CompareArrays(expectedResult0,popVecAux,0) && test_CompareArrays(expectedResult1,popVecAux,1) && test_CompareArrays(expectedResult2,popVecAux,2)) {
-                return true;
-            }
+            main.fillPopulationDistribution(initialPopVecAux, popVecAux, distribMatrixAux, leslieMatrix, time);
         }
-        System.out.println(Arrays.toString(popVecAux));
+
+        if(test_ComparePopVecWithMatrix(expectedPopVec0,distribMatrixAux,0) && test_ComparePopVecWithMatrix(expectedPopVec1,distribMatrixAux,1)
+                && test_ComparePopVecWithMatrix(expectedPopVec2,distribMatrixAux,2)) {
+            return true;
+        }
         return false;
-        //return test_CompareArrays(expectedResult1,popVecAux);
-
     }
-
-    /*
-    public static Boolean test_fillNormalizedPopVec(int generationToBeTested, double[][]leslieMatrix) throws IOException {
+    public static Boolean test_fillNormalizedPopVec(int generationsToBeTested, double[][]leslieMatrix) throws IOException {
         double[] initialPopVecAux = {1000, 300, 330, 100};
         double[] popVecAux = new double[initialPopVecAux.length];
         double[] normalizedPopVecAux = new double[popVecAux.length];
-        double[] expectedResult = {86.64775207333042, 4.801396769969446, 3.79746835443038, 4.753382802269752};
-        double[][] distributionMatrix = new double[generationToBeTested + 1][leslieMatrix.length];
-        double[][] normDistMatrixAux = new double[generationToBeTested + 1][leslieMatrix.length];
-        for (int time = 0; time <= generationToBeTested; time++) {
+        double[][] distributionMatrix = new double[generationsToBeTested + 1][leslieMatrix.length];
+        double[][] normDistMatrixAux = new double[generationsToBeTested + 1][leslieMatrix.length];
+        double[] expectedNormVec0 = {57.80346820809249, 17.341040462427745, 19.07514450867052, 5.780346820809249};
+        double[] expectedNormVec1 = {86.64775207333042, 4.801396769969446, 3.79746835443038, 4.753382802269752};
+        double[] expectedNormVec2 = {69.9135707136941, 23.54976963694092, 3.440347183876311, 3.0963124654886807};
+
+        for (int time = 0; time <= generationsToBeTested; time++) {
             main.fillPopulationDistribution(initialPopVecAux, popVecAux, distributionMatrix, leslieMatrix, time);
+            main.fillNormalizedPopVec(normalizedPopVecAux,popVecAux,normDistMatrixAux,generationsToBeTested);
         }
-        main.fillNormalizedPopVec(normalizedPopVecAux,popVecAux,normDistMatrixAux,generationToBeTested);
-        System.out.println(Arrays.toString(normalizedPopVecAux));
-        return test_CompareArrays(expectedResult,normalizedPopVecAux);
+
+
+
+
+
+        for (int i = 0; i < normDistMatrixAux.length; i++) {
+            for (int j = 0; j < normDistMatrixAux[i].length; j++) {
+                System.out.print(normDistMatrixAux[i][j]);
+            }
+            System.out.println();
+        }
+
+        if(test_ComparePopVecWithMatrix(expectedNormVec0,normDistMatrixAux,0) && test_ComparePopVecWithMatrix(expectedNormVec1,normDistMatrixAux,1)
+                && test_ComparePopVecWithMatrix(expectedNormVec2,normDistMatrixAux,2)) {
+            return true;
+        }
+        return false;
+
+        //System.out.println(Arrays.toString(normalizedPopVecAux));
+        //return test_CompareArrays(expectedResult,normalizedPopVecAux);
 
 
 
     }
-
-     */
     public static Boolean test_CompareArrays(double[]array1, double[]array2, int time){
         for (int i = 0; i < array1.length ; i++) {
             if(array1[i]!=array2[i]){
@@ -58,6 +74,19 @@ public class testesUnitarios {
         }
         return true;
     }
+    public static Boolean test_ComparePopVecWithMatrix(double[] expectedPopVec, double[][] distributionMatrixAux, int time) {
+        for (int line = 0; line < distributionMatrixAux.length; line++) {
+            for (int column = 0; column < distributionMatrixAux[line].length; column++) {
+                if(line == time) {
+                    if(expectedPopVec[column] != distributionMatrixAux[line][column]) {
+                            return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
     public static void verifyBoolean(boolean flag){
         if (flag){
             System.out.println("True");

@@ -151,7 +151,7 @@ public class main {
         System.out.print("\n");
             switch (options) {
                 case 1:
-                    printPopDim(popDim,gens,distributionMatrix);
+                    printPopDim(popDim,gens);
                     showGnuplotted((gens-1), classes, options);
                     break;
                 case 2:
@@ -263,12 +263,10 @@ public class main {
         System.setOut(out);
 
         System.out.printf("Espécie analisada: %s %n", specie);
-<<<<<<< HEAD
-        printTotalPopDistribution(numberOfGenerations,distributionMatrix,normDistMatrix);
-=======
 
-        printTotalPopDistribution(numberOfGenerations, initialPopulation, popVec, distributionMatrix, leslieMatrix, normalizedPopVec, normDistMatrix);
->>>>>>> 692fb3bcbf001ac3167abbc64fe7b4e8b87caf4e
+        printTotalPopDistribution(numberOfGenerations,distributionMatrix,normDistMatrix);
+
+        printTotalPopDistribution(numberOfGenerations, distributionMatrix, normDistMatrix);
 
         if (flag1){
             //chamar os métodos com as funcionalidades de -e
@@ -747,6 +745,7 @@ public class main {
     }
     /*=============================================DATA FORMATING AND GNUPLOT==========================================================*/
 }
+
 
 
 

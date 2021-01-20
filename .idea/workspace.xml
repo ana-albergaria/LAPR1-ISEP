@@ -25,29 +25,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3ae2d27b-0115-49db-8013-4c5ca0dfa57f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/AdicionandoMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/AdicionandoMenu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/FINAL_pop_distribution.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/FINAL_pop_distribution.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/Manu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/Manu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/anitaFINAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/anitaFINAL.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/arguments_line.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/arguments_line.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/callGnuplot.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/callGnuplot.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/dataToTxt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/dataToTxt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/dateTime.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/dateTime.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/deleteDataFiles.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/deleteDataFiles.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/pedrin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/pedrin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/pop_distributVersion2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/pop_distributVersion2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/population_distribution.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/population_distribution.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/population_distribution2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/population_distribution2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/test_eigenValue.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/test_eigenValue.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/test_eigenValue2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/test_eigenValue2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/testeValorMaxProprio.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/testeValorMaxProprio.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/teste_la4j.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/teste_la4j.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/testes_Unitarios.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/tratamentOfDatasTerminal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/tratamentOfDatasTerminal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/testes_Unitarios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/testes_unitarios_com_main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gnuplot/class1.dat" beforeDir="false" afterPath="$PROJECT_DIR$/gnuplot/class1.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gnuplot/class2.dat" beforeDir="false" afterPath="$PROJECT_DIR$/gnuplot/class2.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gnuplot/class3.dat" beforeDir="false" afterPath="$PROJECT_DIR$/gnuplot/class3.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gnuplot/class4.dat" beforeDir="false" afterPath="$PROJECT_DIR$/gnuplot/class4.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gnuplot/populationTotal.dat" beforeDir="false" afterPath="$PROJECT_DIR$/gnuplot/populationTotal.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/testesUnitarios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/testesUnitarios.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,7 +77,7 @@
       <recent name="C:\Users\jluca\Desktop\facul\LAPR1\JAMP\lapr1-turma1def-jamp\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.testesUnitarios">
+  <component name="RunManager" selected="Application.main">
     <configuration name="callGnuplot" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="callGnuplot" />
       <module name="lapr1-turma1def-jamp" />
@@ -136,8 +122,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.testesUnitarios" />
         <item itemvalue="Application.main" />
+        <item itemvalue="Application.testesUnitarios" />
         <item itemvalue="Application.testes_unitarios_com_main" />
         <item itemvalue="Application.dateTime" />
         <item itemvalue="Application.callGnuplot" />
@@ -205,7 +191,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/tratamentOfDatasTerminal.java</url>
           <line>43</line>
-          <properties class="tratamentOfDatasTerminal">
+          <properties class="tratamentOfDatasTerminal" method="fileName">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="11" />
@@ -225,6 +211,14 @@
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/testesUnitarios.java</url>
+          <line>30</line>
+          <properties class="testesUnitarios" method="test_fillNormalizedPopVec">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/dateTime.java</url>
