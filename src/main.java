@@ -235,11 +235,10 @@ public class main {
         double[] popDim = new double[numberOfGenerations+1];
         double[] rateVariation = new double[numberOfGenerations+1];
 
-
-
         PrintStream out = new PrintStream (new FileOutputStream(output, true), true);
         System.setOut(out);
 
+        System.out.printf("Espécie analisada: %s %n", specie);
         printTotalPopDistribution(numberOfGenerations, initialPopulation, popVec, distributionMatrix, leslieMatrix, normalizedPopVec, normDistMatrix);
 
         if (flag1){
