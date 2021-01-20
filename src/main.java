@@ -264,15 +264,8 @@ public class main {
         System.setOut(out);
 
         System.out.printf("Espécie analisada: %s %n", specie);
-<<<<<<< HEAD
 
         printTotalPopDistribution(numberOfGenerations,distributionMatrix,normDistMatrix);
-
-        printTotalPopDistribution(numberOfGenerations, distributionMatrix, normDistMatrix);
-=======
-
-        printTotalPopDistribution(numberOfGenerations,distributionMatrix,normDistMatrix);
->>>>>>> 583119a2ee290811d8b34495af72f98adf491452
 
         if (flag1){
             //chamar os métodos com as funcionalidades de -e
