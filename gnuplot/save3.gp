@@ -7,12 +7,12 @@ if (ARG1==1){
 if(ARG1==2) {
     # To print on a PostScript printer:
     set terminal postscript
-    set output "popDistribution.eps"
+    set output ARG5.'/popDistribution-'.ARG4.".eps"
 }
 if(ARG1==3){
     # To print on a Txt printer:
     set terminal dumb
-    set output 'popDistribution.txt'
+    set output ARG5.'/popDistribution-'.ARG4.'.txt'
 }
 
 set title "Distribuição da população / tempo"

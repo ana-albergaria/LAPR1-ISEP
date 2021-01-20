@@ -8,12 +8,12 @@ if (ARG1==1){
 if(ARG1==2) {
     # To print on a PostScript printer:
     set terminal postscript
-    set output "popVariation.eps"
+    set output ARG5.'/popVariation-'.ARG4.'.eps'
 }
 if(ARG1==3){
     # To print on a Txt printer:
     set terminal dumb
-    set output 'popVariation.txt'
+    set output ARG5.'/popVariation-'.ARG4.'.txt'
 }
 
 data = 'gnuplot/populationTotal.dat'

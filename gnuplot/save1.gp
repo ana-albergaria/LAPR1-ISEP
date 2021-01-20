@@ -8,12 +8,12 @@ if (ARG1==1){
 if(ARG1==2) {
     # To print on a PostScript printer:
     set terminal postscript
-    set output "popDimension.eps"
+    set output ARG5.'/popDimension-'.ARG4.'.eps'
 }
 if(ARG1==3){
     # To print on a Txt printer:
     set terminal dumb
-    set output 'popDimension.txt'
+    set output ARG5.'/popDimension-'.ARG4.'txt'
 }
 
 data = 'gnuplot/populationTotal.dat'
