@@ -3,7 +3,7 @@
 if (ARG1==1){
    # print a png
    set terminal pngcairo  transparent enhanced font "arial,10" fontscale 1.0 size 600, 400
-   set output 'popDimension-'.ARG4.'.png'
+   set output ARG5.'/popDimension-'.ARG4.'.png'
 }
 if(ARG1==2) {
     # To print on a PostScript printer:

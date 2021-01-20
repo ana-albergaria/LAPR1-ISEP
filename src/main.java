@@ -14,6 +14,7 @@ public class main {
     static final String POP_DIM_FILE_PATH = "gnuplot/populationTotal.dat";
     static final String POP_CLASSES_BASE_FILE_PATH = "gnuplot/class";
     static final String FOLDER_DATA_FILES = "./gnuplot/";
+    static final String GRAPHS_OUTPUT_FOLDER = "./graficos-";
     static final int NUMBER_OF_GRAPHS = 4;
 
     static Scanner read = new Scanner(System.in);
@@ -719,7 +720,6 @@ public class main {
     public static void dataToFile(String fileName, String fileData) throws IOException {
         File file = new File(fileName);
         if(file.exists()){
-            //Set true for append mode
             BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
             writer.newLine();
             writer.write(fileData);
@@ -735,20 +735,24 @@ public class main {
     }
 
     public static void saveGnuplotted (int gen, int classes, int nfile, int option, String specie) throws IOException, InterruptedException {
+        File graphsDir = new File(GRAPHS_OUTPUT_FOLDER+specie+"/");
+        if (!graphsDir.exists()){
+            graphsDir.mkdirs();
+        }
         Date date = new Date();
         SimpleDateFormat ft = new SimpleDateFormat ("E_dd-MM-yyyy_'at'_HH-mm-ss");
         String name = specie + "-" + ft.format(date);
         Process process1 = Runtime.getRuntime().exec("gnuplot -c ./gnuplot/save"
                 + nfile +".gp "+ option + " " + classes
-                + " " + gen + " " + name);
+                + " " + gen + " " + name + " " +  graphsDir);
         process1.waitFor();
     }
     public static void deleteDatFiles(){
         File folder = new File(FOLDER_DATA_FILES);
         File[] fList = folder.listFiles();
         for (int i = 0; i < fList.length; i++) {
-            String pes = String.valueOf(fList[i]);
-            if (pes.endsWith(".dat")) {
+            String files = String.valueOf(fList[i]);
+            if (files.endsWith(".dat")) {
                 new File(String.valueOf(fList[i])).delete();
             }
         }
