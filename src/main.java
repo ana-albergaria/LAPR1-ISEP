@@ -151,7 +151,7 @@ public class main {
         System.out.print("\n");
             switch (options) {
                 case 1:
-                    printPopDim(popDim,gens,distributionMatrix);
+                    printPopDim(popDim,gens);
                     showGnuplotted((gens-1), classes, options);
                     break;
                 case 2:
@@ -263,12 +263,8 @@ public class main {
         System.setOut(out);
 
         System.out.printf("Espécie analisada: %s %n", specie);
-<<<<<<< HEAD
-        printTotalPopDistribution(numberOfGenerations,distributionMatrix,normDistMatrix);
-=======
 
-        printTotalPopDistribution(numberOfGenerations, initialPopulation, popVec, distributionMatrix, leslieMatrix, normalizedPopVec, normDistMatrix);
->>>>>>> 692fb3bcbf001ac3167abbc64fe7b4e8b87caf4e
+        printTotalPopDistribution(numberOfGenerations,distributionMatrix,normDistMatrix);
 
         if (flag1){
             //chamar os métodos com as funcionalidades de -e
@@ -348,7 +344,7 @@ public class main {
                 switch (vector.charAt(0)){
                     case 'x':
                         initialLetter="x";
-                        auxVector = caseX(vector, initialLetter);
+                        auxVector = transformVector(vector, initialLetter);
                         for (i=0; i<auxVector.length; i++){
                             size[i] = Integer.parseInt(auxVector[i]);
                         }
@@ -427,21 +423,16 @@ public class main {
         }
     }
 
-
     public static String[] transformVector (String vector, String letter){
         String[] auxVector = vector.split(", ");
         for (int i=0; i<auxVector.length; i++){
-            if (Integer.parseInt(auxVector[i].substring(auxVector[i].indexOf(letter)+1))==i){
+            System.out.println(auxVector[i]);
+            System.out.println(Integer.parseInt(auxVector[i].substring(auxVector[i].indexOf(letter)+1, auxVector[i].indexOf("="))));
+            if (Integer.parseInt(auxVector[i].substring(auxVector[i].indexOf(letter)+1, auxVector[i].indexOf("=")))==i){
                 auxVector[i] = auxVector[i].substring(auxVector[i].indexOf("=")+1);
-            }
-        }
-        return auxVector;
-    }
-    public static String[] caseX (String vector, String letter){
-        String[] auxVector = vector.split(", ");
-        for (int i=0; i<auxVector.length; i++){
-            if (Integer.parseInt(auxVector[i].substring(auxVector[i].indexOf(letter)+2))==i){
-                auxVector[i] = auxVector[i].substring(auxVector[i].indexOf("=")+1);
+            }else{
+                System.out.println("Ficheiro de entrada invalido! A ordem do vetor deve estar crescente. Ex: \"x00=10, x01=20, x02=5\"");
+                System.exit(0);
             }
         }
         return auxVector;
