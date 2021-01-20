@@ -87,10 +87,10 @@ public class main {
 
             switch (option) {
                 case 1:
-                    printTotalPopDistribution(numberOfGenerations, initialPopulation, popVec, distributionMatrix, leslieMatrix, normalizedPopVec, normDistMatrix);
+                    printTotalPopDistribution(numberOfGenerations,distributionMatrix,normDistMatrix);
                     break;
                 case 2:
-                    printPopDim(popDim,numberOfGenerations,distributionMatrix);
+                    printPopDim(popDim,numberOfGenerations);
                     break;
                 case 3:
                     assintoticAnalysis(leslieMatrix);
@@ -102,8 +102,8 @@ public class main {
                     menuGraphs((numberOfGenerations-1), popVec.length, specie);
                     break;
                 case 6:
-                    printTotalPopDistribution(numberOfGenerations, initialPopulation, popVec, distributionMatrix, leslieMatrix, normalizedPopVec, normDistMatrix);
-                    printPopDim(popDim,numberOfGenerations,distributionMatrix);
+                    printTotalPopDistribution(numberOfGenerations,distributionMatrix,normDistMatrix);
+                    printPopDim(popDim,numberOfGenerations);
                     assintoticAnalysis(leslieMatrix);
                     printRateVariation(rateVariation, numberOfGenerations);
                     int format = graphsFormat();
@@ -238,7 +238,7 @@ public class main {
         PrintStream out = new PrintStream (new FileOutputStream(output, true), true);
         System.setOut(out);
         System.out.printf("Espécie analisada: %s %n", specie);
-        printTotalPopDistribution(numberOfGenerations, initialPopulation, popVec, distributionMatrix, leslieMatrix, normalizedPopVec, normDistMatrix);
+        printTotalPopDistribution(numberOfGenerations,distributionMatrix,normDistMatrix);
 
         if (flag1){
             //chamar os métodos com as funcionalidades de -e
@@ -246,7 +246,7 @@ public class main {
         }
         if (flag2){
             //chamar os métodos com as funcionalidades de -v
-            printPopDim(popDim,numberOfGenerations,distributionMatrix);
+            printPopDim(popDim,numberOfGenerations);
         }
         if (flag3){
             //chamar os métodos com as funcionalidades de -r
@@ -315,7 +315,7 @@ public class main {
         return specie[0];
     }
     public static void readFile (String path, double[] size, double[][] leslie) throws FileNotFoundException {
-        String vector;
+        String vector, initialLetter;
         String [] auxVector;
         int i;
         File archive = new File(path);
@@ -326,13 +326,15 @@ public class main {
             if (!vector.equals("")){
                 switch (vector.charAt(0)){
                     case 'x':
-                        auxVector = transformVector(vector);
+                        initialLetter="x";
+                        auxVector = caseX(vector, initialLetter);
                         for (i=0; i<auxVector.length; i++){
                             size[i] = Integer.parseInt(auxVector[i]);
                         }
                         break;
                     case 's':
-                        auxVector = transformVector(vector);
+                        initialLetter="s";
+                        auxVector = transformVector(vector, initialLetter);
                         for (i=0; i<leslie.length-1; i++) {
                             if (Double.parseDouble(auxVector[i])<=1){
                                 leslie[i+1][i] = Double.parseDouble(auxVector[i]);
@@ -340,7 +342,8 @@ public class main {
                         }
                         break;
                     case 'f':
-                        auxVector = transformVector(vector);
+                        initialLetter = "f";
+                        auxVector = transformVector(vector, initialLetter);
                         for (i=0; i<auxVector.length; i++){
                             leslie[0][i] = Double.parseDouble(auxVector[i]);
                         }
@@ -359,7 +362,7 @@ public class main {
             String vector = readFile.nextLine();
             if(!vector.equals("")) {
                 if (vector.charAt(0) == 'x') {
-                    size = transformVector(vector).length;
+                    size = transformVector(vector, "x").length;
                 }
             }
         }while (readFile.hasNextLine());
@@ -403,13 +406,26 @@ public class main {
     }
 
 
-    public static String[] transformVector (String vector){
+    public static String[] transformVector (String vector, String letter){
         String[] auxVector = vector.split(", ");
         for (int i=0; i<auxVector.length; i++){
-            auxVector[i] = auxVector[i].substring(auxVector[i].indexOf("=")+1);
+            if (Integer.parseInt(auxVector[i].substring(auxVector[i].indexOf(letter)+1))==i){
+                auxVector[i] = auxVector[i].substring(auxVector[i].indexOf("=")+1);
+            }
         }
         return auxVector;
     }
+    public static String[] caseX (String vector, String letter){
+        String[] auxVector = vector.split(", ");
+        for (int i=0; i<auxVector.length; i++){
+            if (Integer.parseInt(auxVector[i].substring(auxVector[i].indexOf(letter)+2))==i){
+                auxVector[i] = auxVector[i].substring(auxVector[i].indexOf("=")+1);
+            }
+        }
+        return auxVector;
+    }
+
+
 
     public static void print (double[] size){
         for (int i=0; i< size.length; i++){
@@ -418,7 +434,7 @@ public class main {
         }
     }
 
-    public static void getGenerationsData (double initialPopVec[], double[][] leslieMatrix, int generationNum,
+    public static void getGenerationsData (double[] initialPopVec, double[][] leslieMatrix, int generationNum,
                                            double[] popVec, double[] normalizedPopVec, double[][] distributionMatrix,
                                            double[][] normDistMatrix, double[] popDim, double[] rateVariation) throws IOException {
         double dim, rate;
@@ -445,7 +461,7 @@ public class main {
         dimensionDataFormat(popDim, rateVariation);
 
     }
-    public static void fillPopulationDistribution(double initialPopVec[], double[] popVec, double[][] distributionMatrix, double[][] leslieMatrix, int time) {
+    public static void fillPopulationDistribution(double[] initialPopVec, double[] popVec, double[][] distributionMatrix, double[][] leslieMatrix, int time) {
         double mult = 0;
         double[] previousPopVec = new double[popVec.length];
 
@@ -511,16 +527,14 @@ public class main {
         double nowGeneration = popDim[time-1];
         double nextGeneration = popDim[time];
 
-        double quocient = nextGeneration/nowGeneration;
-
-        return quocient;
+        return (nextGeneration/nowGeneration);
     }
-    public static void assintoticAnalysis(double leslieMatrix[][]){
+    public static void assintoticAnalysis(double[][]leslieMatrix){
 
         //creation of the maximum Eigen Vector Array
-        double maxVecM [] = new double [leslieMatrix.length];
+        double[] maxVecM = new double [leslieMatrix.length];
         //creation of the normalized maximum Eigen Vector Array
-        double normalizedMaxVecM [] = new double [maxVecM.length];
+        double[] normalizedMaxVecM = new double [maxVecM.length];
 
         //saving the max Eigen Value through the method maxEigenValue and filling the maxVecM through the fillMaxVecM
         double maxEigenValue = findMaxEigenValue(leslieMatrix,maxVecM);
@@ -560,8 +574,8 @@ public class main {
         EigenDecompositor eigenD = new EigenDecompositor(leslie);
         Matrix [] decompLeslie = eigenD.decompose();
 
-        double vecM [][] = decompLeslie[0].toDenseMatrix().toArray();
-        double valM [][] = decompLeslie[1].toDenseMatrix().toArray();
+        double[][] vecM= decompLeslie[0].toDenseMatrix().toArray();
+        double[][] valM= decompLeslie[1].toDenseMatrix().toArray();
 
         double maxEigenVal = Math.abs(valM[0][0]);
         int columnMaxEigenVal = 0;
@@ -614,14 +628,14 @@ public class main {
             System.out.println("%");
         }
     }
-    public static void printTotalPopDistribution(int numberOfGenerations, double[]initialPopulation, double[]popVec, double[][]distributionMatrix,double[][]leslieMatrix, double[]normalizedPopVec, double[][]normDistMatrix) {
+    public static void printTotalPopDistribution(int numberOfGenerations, double[][]distributionMatrix, double[][]normDistMatrix) {
         for (int time = 0; time <= numberOfGenerations; time++) {
             printPopDistribution(distributionMatrix, time);
             printNormDistribution(normDistMatrix,time);
         }
     }
 
-    public static void printPopDim (double[]popDim, int numberOfGenerations, double[][] distributionMatrix){
+    public static void printPopDim (double[]popDim, int numberOfGenerations){
         System.out.println("\nDIMENSÕES DAS POPULAÇÕES\n");
         for (int time = 0; time <= numberOfGenerations; time++) {
             System.out.printf("GERAÇÃO " + time + " - %.2f", popDim[time] );
@@ -657,7 +671,7 @@ public class main {
     public static void generationsDataFormat (double [] popVec, double [] normalizedPopVec, int gen) throws IOException {
         DecimalFormat df = new DecimalFormat("0.00", new DecimalFormatSymbols(Locale.US));
         int filesNum = popVec.length;
-        String data = "", fn= "";
+        String data, fn;
         for(int i=0;i<filesNum;i++){
             data =  gen + " " + df.format(popVec[i]) + " " + df.format(normalizedPopVec[i]);
             fn = POP_CLASSES_BASE_FILE_PATH+(i+1)+".dat";
@@ -666,28 +680,27 @@ public class main {
     }
     public static void dimensionDataFormat (double [] popDim, double [] rateVariation) throws IOException {
         DecimalFormat df = new DecimalFormat("0.00", new DecimalFormatSymbols(Locale.US));
-        String data = "";
+        String data;
         for(int k=0; k < popDim.length; k++){
             data = k + " " + df.format(popDim[k]) + " " + df.format(rateVariation[k]);
             dataToFile(POP_DIM_FILE_PATH, data);
         }
     }
     public static void dataToFile(String fileName, String fileData) throws IOException {
-        String textToAppend = fileData;
         File file = new File(fileName);
         if(file.exists()){
             //Set true for append mode
             BufferedWriter writer = new BufferedWriter(new FileWriter(file, true));
             writer.newLine();
-            writer.write(textToAppend);
+            writer.write(fileData);
             writer.close();
         }else{
             BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-            writer.write(textToAppend);
+            writer.write(fileData);
             writer.close();
         }
     }
-    public static void showGnuplotted (int gen, int classes, int nfile) throws IOException, InterruptedException {
+    public static void showGnuplotted (int gen, int classes, int nfile) throws IOException {
         Process process = Runtime.getRuntime().exec("gnuplot -c ./gnuplot/show"+ nfile +".gp " + classes + " " + gen);
     }
 
@@ -702,11 +715,11 @@ public class main {
     }
     public static void deleteDatFiles(){
         File folder = new File(FOLDER_DATA_FILES);
-        File fList[] = folder.listFiles();
+        File[] fList = folder.listFiles();
         for (int i = 0; i < fList.length; i++) {
             String pes = String.valueOf(fList[i]);
             if (pes.endsWith(".dat")) {
-                boolean success = (new File(String.valueOf(fList[i])).delete());
+                new File(String.valueOf(fList[i])).delete();
             }
         }
     }
