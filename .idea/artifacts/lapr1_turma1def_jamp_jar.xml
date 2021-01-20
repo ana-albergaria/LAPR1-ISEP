@@ -1,9 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="lapr1-turma1def-jamp:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/lapr1_turma1def_jamp_jar</output-path>
-    <root id="archive" name="lapr1-turma1def-jamp.jar">
-      <element id="module-output" name="lapr1-turma1def-jamp" />
-      <element id="extracted-dir" path="$USER_HOME$/Downloads/la4j-0.5.5.jar" path-in-jar="/" />
-    </root>
-  </artifact>
-</component>
