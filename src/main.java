@@ -23,7 +23,7 @@ public class main {
                dataInsert();
                 break;
             case 2:
-                String fileNameInput = args[1];
+                String fileNameInput = args[args.length-1];
                 fileInitOrganizer(fileNameInput);
                 break;
             default:
@@ -68,16 +68,16 @@ public class main {
                 distributionMatrix, normDistMatrix, popDim, rateVariation);
         do {
             System.out
-                    .println("\nDigite o numero da funcionalidade desejada:");
+                    .println("\nDigite o número da funcionalidade desejada:");
             System.out.println("\n ===================================================================================================================================");
             System.out.println("|     1 - Gerar a distribuição da população e distribuição normalizada pelo total da população para cada instante de tempo           |");
             System.out.println("|     2 - Obter a dimensão da população a cada geração                                                                               |");
             System.out.println("|     3 - Obter os valores e vetores próprios associados a matriz de Leslie                                                          |");
             System.out.println("|     4 - Obter a variação da população entre as gerações                                                                            |");
-            System.out.println("|     5 - Plotagem de graficos                                                                                                       |");
+            System.out.println("|     5 - Plotagem de gráficos                                                                                                       |");
             System.out.println("|     6 - Executar todas funcionalidades                                                                                             |");
             System.out.println("|     7 - Alterar numero de gerações a estimar                                                                                       |");
-            System.out.println("|     9 - Inserir dados de outra especie                                                                                             |");
+            System.out.println("|     9 - Inserir dados de outra espécie                                                                                             |");
             System.out.println("|     0 - Sair                                                                                                                       |");
             System.out.println("======================================================================================================================================\n");
 
@@ -137,7 +137,7 @@ public class main {
                                   double[] rateVariation, double [] popDim) throws IOException, InterruptedException {
         int options;
         do {
-        System.out.println("\nInsira o numero do graficos que deseja visualizar:");
+        System.out.println("\nInsira o número do gráfico que deseja visualizar:");
         System.out.println("\n ======================================================================================================================");
         System.out.println("|     1 - Dimensão da população ao longo do tempo                                                                        |");
         System.out.println("|     2 - Variações da dimensão população entre as gerações                                                              |");
@@ -177,7 +177,7 @@ public class main {
                     break;
             }
         if(options == 1|options == 2|options == 3|options == 4) {
-            System.out.println("Gostaria de guardar o grafico gerado?");
+            System.out.println("Gostaria de guardar o gráfico gerado?");
             System.out.println("\n ================");
             System.out.println("|     1 - Sim      |");
             System.out.println("|     2 - Não      |");
@@ -198,7 +198,7 @@ public class main {
         } while (options != 0);
     }
     public static int graphsFormat ()  {
-        System.out.println("Qual formato os ficheiros dos graficos devem ser guardados?");
+        System.out.println("Qual formato os graficos devem ser guardados?");
         System.out.println("\n ================");
         System.out.println("|     1 - PNG      |");
         System.out.println("|     2 - EPS      |");
@@ -410,7 +410,7 @@ public class main {
         for (int i=0; i<array.length-1 ;i++){
             System.out.print("Classe " + (i+1) + ":");
             surviveRate = read.nextDouble();
-            while (surviveRate>1){
+            while (surviveRate>1 || surviveRate<0){
                 System.out.println("Valor inválido! A taxa de sobrevivência deve estar entre 0 e 1");
                 System.out.print("Classe " + (i+1) + ":");
                 surviveRate = read.nextDouble();
@@ -419,9 +419,17 @@ public class main {
         }
     }
     public static void fillFecundityRate (double[][] array){
+        double fecundityRate;
         for (int i=0; i<array.length ;i++){
             System.out.print("Classe " + (i+1) + ":");
-            array[0][i] = read.nextDouble();
+            fecundityRate = read.nextDouble();
+            while (fecundityRate<0){
+                System.out.println("Valor inválido! A taxa de fecundidade deve ser igual ou superior a 0");
+                System.out.print("Classe " + (i+1) + ":");
+                fecundityRate = read.nextDouble();
+
+            }
+            array[0][i] = fecundityRate;
         }
     }
 
