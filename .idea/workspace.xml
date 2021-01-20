@@ -25,47 +25,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3ae2d27b-0115-49db-8013-4c5ca0dfa57f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gnuplot/save1.gp" beforeDir="false" afterPath="$PROJECT_DIR$/gnuplot/save1.gp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gnuplot/save2.gp" beforeDir="false" afterPath="$PROJECT_DIR$/gnuplot/save2.gp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gnuplot/save3.gp" beforeDir="false" afterPath="$PROJECT_DIR$/gnuplot/save3.gp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gnuplot/save4.gp" beforeDir="false" afterPath="$PROJECT_DIR$/gnuplot/save4.gp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gnuplot/show1.gp" beforeDir="false" afterPath="$PROJECT_DIR$/gnuplot/show1.gp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gnuplot/show2.gp" beforeDir="false" afterPath="$PROJECT_DIR$/gnuplot/show2.gp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gnuplot/show3.gp" beforeDir="false" afterPath="$PROJECT_DIR$/gnuplot/show3.gp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gnuplot/show4.gp" beforeDir="false" afterPath="$PROJECT_DIR$/gnuplot/show4.gp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/lapr1_turma1def_jamp_jar/gnuplot/save1.gp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/lapr1_turma1def_jamp_jar/gnuplot/save2.gp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/lapr1_turma1def_jamp_jar/gnuplot/save3.gp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/lapr1_turma1def_jamp_jar/gnuplot/save4.gp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/lapr1_turma1def_jamp_jar/gnuplot/show1.gp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/lapr1_turma1def_jamp_jar/gnuplot/show2.gp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/lapr1_turma1def_jamp_jar/gnuplot/show3.gp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/lapr1_turma1def_jamp_jar/gnuplot/show4.gp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/lapr1_turma1def_jamp_jar/lapr1-turma1def-jamp.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/lapr1_turma1def_jamp_jar/teste.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JAMP/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JAMP/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdicionandoMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdicionandoMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FINAL_pop_distribution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FINAL_pop_distribution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Manu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/anitaFINAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/anitaFINAL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/arguments_line.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/arguments_line.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataToTxt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataToTxt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dateTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dateTime.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pedrin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pedrin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pop_distributVersion2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pop_distributVersion2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/population_distribution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/population_distribution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/population_distribution2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/population_distribution2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test_eigenValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test_eigenValue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test_eigenValue2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test_eigenValue2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/testeValorMaxProprio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/testeValorMaxProprio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/teste_la4j.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/teste_la4j.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/testes_Unitarios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/testes_Unitarios.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tratamentOfDatasTerminal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tratamentOfDatasTerminal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teste.txt" beforeDir="false" afterPath="$PROJECT_DIR$/teste.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/AdicionandoMenu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/AdicionandoMenu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/FINAL_pop_distribution.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/FINAL_pop_distribution.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/Manu.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/Manu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/anitaFINAL.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/anitaFINAL.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/arguments_line.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/arguments_line.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/callGnuplot.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/callGnuplot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/dataToTxt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/dataToTxt.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/dateTime.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/dateTime.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/deleteDataFiles.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/deleteDataFiles.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/pedrin.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/pedrin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/pop_distributVersion2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/pop_distributVersion2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/population_distribution.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/population_distribution.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/population_distribution2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/population_distribution2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/test_eigenValue.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/test_eigenValue.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/test_eigenValue2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/test_eigenValue2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/testeValorMaxProprio.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/testeValorMaxProprio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/teste_la4j.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/teste_la4j.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/testes_Unitarios.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/tratamentOfDatasTerminal.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/tratamentOfDatasTerminal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/testes_Unitarios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/testes_unitarios_com_main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,6 +72,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="TEXT" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/out/artifacts/lapr1_turma1def_jamp_jar" />
     <property name="project.structure.last.edited" value="Artifacts" />
@@ -98,24 +81,17 @@
     <property name="settings.editor.selected.configurable" value="project.propCompiler" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jluca\Desktop\facul\LAPR1\JAMP\lapr1-turma1def-jamp\out\artifacts\lapr1_turma1def_jamp_jar" />
+      <recent name="C:\Users\jluca\Desktop\facul\LAPR1\JAMP\lapr1-turma1def-jamp\src" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\jluca\Desktop\facul\LAPR1\JAMP\lapr1-turma1def-jamp\gnuplot" />
       <recent name="C:\Users\jluca\Desktop\facul\LAPR1\JAMP\lapr1-turma1def-jamp" />
       <recent name="C:\Users\jluca\Desktop\facul\LAPR1\JAMP\lapr1-turma1def-jamp\src" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\jluca\Desktop\facul\LAPR1\JAMP\lapr1-turma1def-jamp\out\artifacts\lapr1_turma1def_jamp_jar" />
-      <recent name="C:\Users\jluca\Desktop\facul\LAPR1\JAMP\lapr1-turma1def-jamp\src" />
-    </key>
   </component>
-  <component name="RunManager" selected="Application.main">
-    <configuration name="AdicionandoMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="AdicionandoMenu" />
-      <module name="lapr1-turma1def-jamp" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.testesUnitarios">
     <configuration name="callGnuplot" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="callGnuplot" />
       <module name="lapr1-turma1def-jamp" />
@@ -130,37 +106,41 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="deleteDataFiles" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="$PROJECT_DIR$/../../../../../../../Program Files/Java/jdk-14.0.2" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="deleteDataFiles" />
+    <configuration name="main" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="main" />
       <module name="lapr1-turma1def-jamp" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="main" />
+    <configuration name="testesUnitarios" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="testesUnitarios" />
       <module name="lapr1-turma1def-jamp" />
-      <option name="PROGRAM_PARAMETERS" value="-t 20 -g 1 -v -e -r teste.txt pipi.txt" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="testes_unitarios_com_main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="testes_unitarios_com_main" />
+      <module name="lapr1-turma1def-jamp" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.AdicionandoMenu" />
-      <item itemvalue="Application.deleteDataFiles" />
       <item itemvalue="Application.main" />
       <item itemvalue="Application.callGnuplot" />
       <item itemvalue="Application.dateTime" />
+      <item itemvalue="Application.testes_unitarios_com_main" />
+      <item itemvalue="Application.testesUnitarios" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.testesUnitarios" />
         <item itemvalue="Application.main" />
+        <item itemvalue="Application.testes_unitarios_com_main" />
         <item itemvalue="Application.dateTime" />
         <item itemvalue="Application.callGnuplot" />
-        <item itemvalue="Application.AdicionandoMenu" />
-        <item itemvalue="Application.deleteDataFiles" />
       </list>
     </recent_temporary>
   </component>
@@ -186,80 +166,6 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="223" y="70" width="1089" height="708" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1610992170266">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="223" y="70" width="1089" height="708" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1610992170266" />
-    <state x="510" y="222" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1610101750729">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="510" y="222" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1610101750729" />
-    <state x="574" y="121" key="#com.intellij.ide.util.MemberChooser" timestamp="1610959126862">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="574" y="121" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1610959126862" />
-    <state x="499" y="205" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1610993769450">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="499" y="205" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1610993769450" />
-    <state x="768" y="238" key="FileChooserDialogImpl" timestamp="1610708736501">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="768" y="238" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1610708736501" />
-    <state width="1493" height="374" key="GridCell.Tab.0.bottom" timestamp="1610992172417">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="374" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1610992172417" />
-    <state width="1493" height="374" key="GridCell.Tab.0.center" timestamp="1610992172417">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="374" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1610992172417" />
-    <state width="1493" height="374" key="GridCell.Tab.0.left" timestamp="1610992172417">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="374" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1610992172417" />
-    <state width="1493" height="374" key="GridCell.Tab.0.right" timestamp="1610992172417">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="374" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1610992172417" />
-    <state width="1493" height="2" key="GridCell.Tab.1.bottom" timestamp="1610403803816">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="2" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1610403803816" />
-    <state width="1493" height="2" key="GridCell.Tab.1.center" timestamp="1610403803816">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="2" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1610403803816" />
-    <state width="1493" height="2" key="GridCell.Tab.1.left" timestamp="1610403803816">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="2" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1610403803816" />
-    <state width="1493" height="2" key="GridCell.Tab.1.right" timestamp="1610403803816">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state width="1493" height="2" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1610403803816" />
-    <state x="249" y="0" key="SettingsEditor" timestamp="1610993774554">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1610993774554" />
-    <state x="0" y="0" width="1215" height="781" key="dock-window-1" timestamp="1610042596626">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="0" y="0" width="1215" height="781" key="dock-window-1/0.0.1536.824@0.0.1536.824" timestamp="1610042596626" />
-    <state x="0" y="0" width="1215" height="703" key="dock-window-2" timestamp="1610046656767">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="0" y="0" width="1215" height="703" key="dock-window-2/0.0.1536.824@0.0.1536.824" timestamp="1610046656767" />
-    <state x="425" y="187" key="run.anything.popup" timestamp="1610966283855">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="425" y="187" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1610966283855" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1610451007171">
-      <screen x="0" y="0" width="1536" height="824" />
-    </state>
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1610451007171" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -299,7 +205,7 @@
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/tratamentOfDatasTerminal.java</url>
           <line>43</line>
-          <properties class="tratamentOfDatasTerminal" method="fileName">
+          <properties class="tratamentOfDatasTerminal">
             <option name="EMULATED" value="true" />
           </properties>
           <option name="timeStamp" value="11" />
@@ -329,6 +235,7 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/lapr1_turma1def_jamp$main.ic" NAME="main Coverage Results" MODIFIED="1610294781443" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/lapr1_turma1def_jamp$pop_distribution_AnaPedro.ic" NAME="pop_distribution_AnaPedro Coverage Results" MODIFIED="1610111167491" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/lapr1_turma1def_jamp$main.ic" NAME="main Coverage Results" MODIFIED="1611051040608" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
