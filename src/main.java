@@ -234,10 +234,9 @@ public class main {
 
         double[] popDim = new double[numberOfGenerations+1];
         double[] rateVariation = new double[numberOfGenerations+1];
-
+        getGenerationsData(initialPopulation, leslieMatrix, numberOfGenerations, popVec, normalizedPopVec, distributionMatrix, normDistMatrix, popDim, rateVariation);
         PrintStream out = new PrintStream (new FileOutputStream(output, true), true);
         System.setOut(out);
-
         System.out.printf("Espécie analisada: %s %n", specie);
         printTotalPopDistribution(numberOfGenerations, initialPopulation, popVec, distributionMatrix, leslieMatrix, normalizedPopVec, normDistMatrix);
 
@@ -254,7 +253,7 @@ public class main {
             printRateVariation(rateVariation, numberOfGenerations);
         }
         if (gnuplotFormat!=0){
-            getGenerationsData(initialPopulation, leslieMatrix, numberOfGenerations, popVec, normalizedPopVec, distributionMatrix, normDistMatrix, popDim, rateVariation);
+
             for(int j = 0; j<=NUMBER_OF_GRAPHS;j++){
                 saveGnuplotted((numberOfGenerations-1), popVec.length,j, gnuplotFormat, specie);
             }
