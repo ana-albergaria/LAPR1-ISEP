@@ -72,6 +72,9 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -82,6 +85,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
   <component name="ProjectId" id="1mbTuT9zugDXXrlkBtqGsMNWP9M" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -91,20 +97,20 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="TEXT" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/out/artifacts/lapr1_turma1def_jamp_jar" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/la4j-0.5.5.jar" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.38275862" />
     <property name="settings.editor.selected.configurable" value="project.propCompiler" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jluca\Desktop\facul\LAPR1\JAMP\lapr1-turma1def-jamp\out\artifacts\lapr1_turma1def_jamp_jar" />
+      <recent name="C:\Users\jluca\Desktop\facul\LAPR1\JAMP\lapr1-turma1def-jamp\src" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\jluca\Desktop\facul\LAPR1\JAMP\lapr1-turma1def-jamp\gnuplot" />
       <recent name="C:\Users\jluca\Desktop\facul\LAPR1\JAMP\lapr1-turma1def-jamp" />
-      <recent name="C:\Users\jluca\Desktop\facul\LAPR1\JAMP\lapr1-turma1def-jamp\src" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\jluca\Desktop\facul\LAPR1\JAMP\lapr1-turma1def-jamp\out\artifacts\lapr1_turma1def_jamp_jar" />
       <recent name="C:\Users\jluca\Desktop\facul\LAPR1\JAMP\lapr1-turma1def-jamp\src" />
     </key>
   </component>
@@ -149,10 +155,10 @@
     </configuration>
     <list>
       <item itemvalue="Application.AdicionandoMenu" />
-      <item itemvalue="Application.deleteDataFiles" />
-      <item itemvalue="Application.main" />
       <item itemvalue="Application.callGnuplot" />
       <item itemvalue="Application.dateTime" />
+      <item itemvalue="Application.deleteDataFiles" />
+      <item itemvalue="Application.main" />
     </list>
     <recent_temporary>
       <list>
@@ -204,25 +210,30 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="205" key="#com.intellij.ide.util.TreeClassChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1610993769450" />
-    <state x="768" y="238" key="FileChooserDialogImpl" timestamp="1610708736501">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="606" y="203" key="FileChooserDialogImpl" timestamp="1610994640967">
+      <screen x="0" y="0" width="1211" height="720" />
     </state>
+    <state x="606" y="203" key="FileChooserDialogImpl/0.0.1211.720@0.0.1211.720" timestamp="1610994640967" />
     <state x="768" y="238" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1610708736501" />
-    <state width="1493" height="374" key="GridCell.Tab.0.bottom" timestamp="1610992172417">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1167" height="176" key="GridCell.Tab.0.bottom" timestamp="1611147571736">
+      <screen x="0" y="0" width="1211" height="720" />
     </state>
+    <state width="1167" height="176" key="GridCell.Tab.0.bottom/0.0.1211.720@0.0.1211.720" timestamp="1611147571736" />
     <state width="1493" height="374" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1610992172417" />
-    <state width="1493" height="374" key="GridCell.Tab.0.center" timestamp="1610992172417">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1167" height="176" key="GridCell.Tab.0.center" timestamp="1611147571736">
+      <screen x="0" y="0" width="1211" height="720" />
     </state>
+    <state width="1167" height="176" key="GridCell.Tab.0.center/0.0.1211.720@0.0.1211.720" timestamp="1611147571736" />
     <state width="1493" height="374" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1610992172417" />
-    <state width="1493" height="374" key="GridCell.Tab.0.left" timestamp="1610992172417">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1167" height="176" key="GridCell.Tab.0.left" timestamp="1611147571736">
+      <screen x="0" y="0" width="1211" height="720" />
     </state>
+    <state width="1167" height="176" key="GridCell.Tab.0.left/0.0.1211.720@0.0.1211.720" timestamp="1611147571736" />
     <state width="1493" height="374" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1610992172417" />
-    <state width="1493" height="374" key="GridCell.Tab.0.right" timestamp="1610992172417">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1167" height="176" key="GridCell.Tab.0.right" timestamp="1611147571736">
+      <screen x="0" y="0" width="1211" height="720" />
     </state>
+    <state width="1167" height="176" key="GridCell.Tab.0.right/0.0.1211.720@0.0.1211.720" timestamp="1611147571736" />
     <state width="1493" height="374" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1610992172417" />
     <state width="1493" height="2" key="GridCell.Tab.1.bottom" timestamp="1610403803816">
       <screen x="0" y="0" width="1536" height="824" />
@@ -240,9 +251,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="2" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1610403803816" />
-    <state x="249" y="0" key="SettingsEditor" timestamp="1610993774554">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="173" y="0" key="SettingsEditor" timestamp="1610994645534">
+      <screen x="0" y="0" width="1211" height="720" />
     </state>
+    <state x="173" y="0" key="SettingsEditor/0.0.1211.720@0.0.1211.720" timestamp="1610994645534" />
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1610993774554" />
     <state x="0" y="0" width="1215" height="781" key="dock-window-1" timestamp="1610042596626">
       <screen x="0" y="0" width="1536" height="824" />
