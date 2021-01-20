@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Locale;
 import java.util.Scanner;
 
-public class testes_Unitarios {
+public class testes_unitarios_com_main {
     static final String POP_DIM_FILE_PATH = "gnuplot/populationTotal.dat";
     static final String POP_CLASSES_BASE_FILE_PATH = "gnuplot/class";
     static final String FOLDER_DATA_FILES = "./gnuplot/";
