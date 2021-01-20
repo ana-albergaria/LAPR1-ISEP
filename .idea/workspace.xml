@@ -25,47 +25,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3ae2d27b-0115-49db-8013-4c5ca0dfa57f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gnuplot/save1.gp" beforeDir="false" afterPath="$PROJECT_DIR$/gnuplot/save1.gp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gnuplot/save2.gp" beforeDir="false" afterPath="$PROJECT_DIR$/gnuplot/save2.gp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gnuplot/save3.gp" beforeDir="false" afterPath="$PROJECT_DIR$/gnuplot/save3.gp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gnuplot/save4.gp" beforeDir="false" afterPath="$PROJECT_DIR$/gnuplot/save4.gp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gnuplot/show1.gp" beforeDir="false" afterPath="$PROJECT_DIR$/gnuplot/show1.gp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gnuplot/show2.gp" beforeDir="false" afterPath="$PROJECT_DIR$/gnuplot/show2.gp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gnuplot/show3.gp" beforeDir="false" afterPath="$PROJECT_DIR$/gnuplot/show3.gp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gnuplot/show4.gp" beforeDir="false" afterPath="$PROJECT_DIR$/gnuplot/show4.gp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/lapr1_turma1def_jamp_jar/gnuplot/save1.gp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/lapr1_turma1def_jamp_jar/gnuplot/save2.gp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/lapr1_turma1def_jamp_jar/gnuplot/save3.gp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/lapr1_turma1def_jamp_jar/gnuplot/save4.gp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/lapr1_turma1def_jamp_jar/gnuplot/show1.gp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/lapr1_turma1def_jamp_jar/gnuplot/show2.gp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/lapr1_turma1def_jamp_jar/gnuplot/show3.gp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/lapr1_turma1def_jamp_jar/gnuplot/show4.gp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/lapr1_turma1def_jamp_jar/lapr1-turma1def-jamp.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/lapr1_turma1def_jamp_jar/teste.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/JAMP/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/JAMP/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdicionandoMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdicionandoMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FINAL_pop_distribution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FINAL_pop_distribution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Manu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Manu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/anitaFINAL.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/anitaFINAL.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/arguments_line.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/arguments_line.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dataToTxt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dataToTxt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dateTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/dateTime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gnuplot/class1.dat" beforeDir="false" afterPath="$PROJECT_DIR$/gnuplot/class1.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gnuplot/class2.dat" beforeDir="false" afterPath="$PROJECT_DIR$/gnuplot/class2.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gnuplot/class3.dat" beforeDir="false" afterPath="$PROJECT_DIR$/gnuplot/class3.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gnuplot/class4.dat" beforeDir="false" afterPath="$PROJECT_DIR$/gnuplot/class4.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gnuplot/populationTotal.dat" beforeDir="false" afterPath="$PROJECT_DIR$/gnuplot/populationTotal.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/lapr1-turma1def-jamp/main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pedrin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pedrin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pop_distributVersion2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/pop_distributVersion2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/population_distribution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/population_distribution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/population_distribution2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/population_distribution2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test_eigenValue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test_eigenValue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test_eigenValue2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test_eigenValue2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/testeValorMaxProprio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/testeValorMaxProprio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/teste_la4j.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/teste_la4j.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/testes_Unitarios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/testes_Unitarios.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tratamentOfDatasTerminal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/tratamentOfDatasTerminal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/teste.txt" beforeDir="false" afterPath="$PROJECT_DIR$/teste.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/testesUnitarios.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/testesUnitarios.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,6 +64,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="TEXT" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/la4j-0.5.5.jar" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -115,13 +84,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.main">
-    <configuration name="AdicionandoMenu" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="AdicionandoMenu" />
-      <module name="lapr1-turma1def-jamp" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="callGnuplot" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="callGnuplot" />
       <module name="lapr1-turma1def-jamp" />
@@ -136,37 +98,49 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="deleteDataFiles" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="$PROJECT_DIR$/../../../../../../../Program Files/Java/jdk-14.0.2" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="deleteDataFiles" />
+    <configuration name="main" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="main" />
       <module name="lapr1-turma1def-jamp" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="main" />
+    <configuration name="testesUnitarios" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="testesUnitarios" />
       <module name="lapr1-turma1def-jamp" />
-      <option name="PROGRAM_PARAMETERS" value="-t 20 -g 1 -v -e -r teste.txt pipi.txt" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="testes_unitarios_com_main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="testes_unitarios_com_main" />
+      <module name="lapr1-turma1def-jamp" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <list>
+<<<<<<< HEAD
       <item itemvalue="Application.AdicionandoMenu" />
       <item itemvalue="Application.callGnuplot" />
       <item itemvalue="Application.dateTime" />
       <item itemvalue="Application.deleteDataFiles" />
       <item itemvalue="Application.main" />
+=======
+      <item itemvalue="Application.main" />
+      <item itemvalue="Application.callGnuplot" />
+      <item itemvalue="Application.dateTime" />
+      <item itemvalue="Application.testes_unitarios_com_main" />
+      <item itemvalue="Application.testesUnitarios" />
+>>>>>>> a31e16e1cd78121fdc6fe5400e5f00f87272650b
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.main" />
+        <item itemvalue="Application.testesUnitarios" />
+        <item itemvalue="Application.testes_unitarios_com_main" />
         <item itemvalue="Application.dateTime" />
         <item itemvalue="Application.callGnuplot" />
-        <item itemvalue="Application.AdicionandoMenu" />
-        <item itemvalue="Application.deleteDataFiles" />
       </list>
     </recent_temporary>
   </component>
@@ -193,6 +167,7 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+<<<<<<< HEAD
   <component name="WindowStateProjectService">
     <state x="223" y="70" width="1089" height="708" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1610992170266">
       <screen x="0" y="0" width="1536" height="824" />
@@ -273,6 +248,8 @@
     </state>
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1610451007171" />
   </component>
+=======
+>>>>>>> a31e16e1cd78121fdc6fe5400e5f00f87272650b
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -332,6 +309,14 @@
           </properties>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/testesUnitarios.java</url>
+          <line>30</line>
+          <properties class="testesUnitarios" method="test_fillNormalizedPopVec">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="19" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/dateTime.java</url>
           <line>3</line>
@@ -341,6 +326,7 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/lapr1_turma1def_jamp$main.ic" NAME="main Coverage Results" MODIFIED="1610294781443" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/lapr1_turma1def_jamp$pop_distribution_AnaPedro.ic" NAME="pop_distribution_AnaPedro Coverage Results" MODIFIED="1610111167491" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/lapr1_turma1def_jamp$main.ic" NAME="main Coverage Results" MODIFIED="1611051040608" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

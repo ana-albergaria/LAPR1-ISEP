@@ -151,7 +151,7 @@ public class main {
         System.out.print("\n");
             switch (options) {
                 case 1:
-                    printPopDim(popDim,gens,distributionMatrix);
+                    printPopDim(popDim,gens);
                     showGnuplotted((gens-1), classes, options);
                     break;
                 case 2:
@@ -242,11 +242,12 @@ public class main {
     }
     public static void executeArguments (boolean flag1, boolean flag2, boolean flag3,  int numberOfGenerations,
                                          int gnuplotFormat, String input, String output,String specie) throws IOException, InterruptedException {
-        int ageClass = sizeMatrix(input);
+        boolean interactive = false;
+        int ageClass = sizeMatrix(input, interactive);
         double[] initialPopulation = new double[ageClass];
         double[][] leslieMatrix = new double[ageClass][ageClass];
 
-        readFile(input, initialPopulation, leslieMatrix);
+        readFile(input, initialPopulation, leslieMatrix, interactive);
 
         double[] popVec = new double[leslieMatrix.length];
         double[] normalizedPopVec = new double[popVec.length];
@@ -263,12 +264,8 @@ public class main {
         System.setOut(out);
 
         System.out.printf("Espécie analisada: %s %n", specie);
-<<<<<<< HEAD
-        printTotalPopDistribution(numberOfGenerations,distributionMatrix,normDistMatrix);
-=======
 
-        printTotalPopDistribution(numberOfGenerations, initialPopulation, popVec, distributionMatrix, leslieMatrix, normalizedPopVec, normDistMatrix);
->>>>>>> 692fb3bcbf001ac3167abbc64fe7b4e8b87caf4e
+        printTotalPopDistribution(numberOfGenerations,distributionMatrix,normDistMatrix);
 
         if (flag1){
             //chamar os métodos com as funcionalidades de -e
@@ -310,11 +307,12 @@ public class main {
         insertGenerationsNum(leslieMatrix, speciesName, initialPopulation);
     }
     public static void fileInitOrganizer (String fileNameInput) throws IOException, InterruptedException {
+        boolean interactive = true;
         String speciesName1 = speciesName(fileNameInput);
-        int ageClass = sizeMatrix(fileNameInput);
+        int ageClass = sizeMatrix(fileNameInput, interactive);
         double [] initialPopulation = new double[ageClass];
         double [][] leslieMatrix = new double[ageClass][ageClass];
-        readFile(fileNameInput, initialPopulation, leslieMatrix);
+        readFile(fileNameInput, initialPopulation, leslieMatrix, interactive);
 
         insertGenerationsNum(leslieMatrix, speciesName1, initialPopulation);
     }
@@ -335,7 +333,7 @@ public class main {
         String[] specie = path.split(".txt");
         return specie[0];
     }
-    public static void readFile (String path, double[] size, double[][] leslie) throws FileNotFoundException {
+    public static void readFile (String path, double[] size, double[][] leslie, boolean interactive) throws FileNotFoundException {
         String vector, initialLetter;
         String [] auxVector;
         int i;
@@ -348,14 +346,14 @@ public class main {
                 switch (vector.charAt(0)){
                     case 'x':
                         initialLetter="x";
-                        auxVector = caseX(vector, initialLetter);
+                        auxVector = transformVector(vector, initialLetter, interactive);
                         for (i=0; i<auxVector.length; i++){
                             size[i] = Integer.parseInt(auxVector[i]);
                         }
                         break;
                     case 's':
                         initialLetter="s";
-                        auxVector = transformVector(vector, initialLetter);
+                        auxVector = transformVector(vector, initialLetter, interactive);
                         for (i=0; i<leslie.length-1; i++) {
                             if (Double.parseDouble(auxVector[i])<=1){
                                 leslie[i+1][i] = Double.parseDouble(auxVector[i]);
@@ -364,7 +362,7 @@ public class main {
                         break;
                     case 'f':
                         initialLetter = "f";
-                        auxVector = transformVector(vector, initialLetter);
+                        auxVector = transformVector(vector, initialLetter, interactive);
                         for (i=0; i<auxVector.length; i++){
                             leslie[0][i] = Double.parseDouble(auxVector[i]);
                         }
@@ -375,7 +373,7 @@ public class main {
 
         readFile.close();
     }
-    public static int sizeMatrix (String path) throws FileNotFoundException {
+    public static int sizeMatrix (String path, boolean interactive) throws FileNotFoundException {
         int size=0;
         File archive = new File(path);
         Scanner readFile = new Scanner(archive);
@@ -383,7 +381,7 @@ public class main {
             String vector = readFile.nextLine();
             if(!vector.equals("")) {
                 if (vector.charAt(0) == 'x') {
-                    size = transformVector(vector, "x").length;
+                    size = transformVector(vector, "x", interactive).length;
                 }
             }
         }while (readFile.hasNextLine());
@@ -427,27 +425,29 @@ public class main {
         }
     }
 
-
-    public static String[] transformVector (String vector, String letter){
+    public static String[] transformVector (String vector, String letter, boolean interactive){
         String[] auxVector = vector.split(", ");
         for (int i=0; i<auxVector.length; i++){
-            if (Integer.parseInt(auxVector[i].substring(auxVector[i].indexOf(letter)+1))==i){
+            if (Integer.parseInt(auxVector[i].substring(auxVector[i].indexOf(letter)+1, auxVector[i].indexOf("=")))==i){
                 auxVector[i] = auxVector[i].substring(auxVector[i].indexOf("=")+1);
+            }else{
+                if(interactive){
+                    System.out.println("Ficheiro de entrada invalido! A ordem do vetor deve estar crescente. Ex: \"x00=10, x01=20, x02=5\"");
+                    try {
+                        dataInsert();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }else{
+                    System.out.println("Ficheiro de entrada invalido! A ordem do vetor deve estar crescente. Ex: \"x00=10, x01=20, x02=5\"");
+                    System.exit(0);
+                }
             }
         }
         return auxVector;
     }
-    public static String[] caseX (String vector, String letter){
-        String[] auxVector = vector.split(", ");
-        for (int i=0; i<auxVector.length; i++){
-            if (Integer.parseInt(auxVector[i].substring(auxVector[i].indexOf(letter)+2))==i){
-                auxVector[i] = auxVector[i].substring(auxVector[i].indexOf("=")+1);
-            }
-        }
-        return auxVector;
-    }
-
-
 
     public static void print (double[] size){
         for (int i=0; i< size.length; i++){
@@ -747,6 +747,7 @@ public class main {
     }
     /*=============================================DATA FORMATING AND GNUPLOT==========================================================*/
 }
+
 
 
 
