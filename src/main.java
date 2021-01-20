@@ -337,7 +337,9 @@ public class main {
                     case 's':
                         auxVector = transformVector(vector);
                         for (i=0; i<leslie.length-1; i++) {
-                            leslie[i+1][i] = Double.parseDouble(auxVector[i]);
+                            if (Double.parseDouble(auxVector[i])<=1){
+                                leslie[i+1][i] = Double.parseDouble(auxVector[i]);
+                            }
                         }
                         break;
                     case 'f':
@@ -359,8 +361,7 @@ public class main {
         do{
             String vector = readFile.nextLine();
             if(!vector.equals("")) {
-                int compare = Character.compare(vector.charAt(0), 'f');
-                if (compare == 0) {
+                if (vector.charAt(0) == 'x') {
                     size = transformVector(vector).length;
                 }
             }
@@ -386,9 +387,15 @@ public class main {
         return cont;
     }
     public static void fillSurviveRate (double[][] array){
+        double surviveRate;
         for (int i=0; i<array.length-1 ;i++){
             System.out.print("Classe " + (i+1) + ":");
-            array[i+1][i] = read.nextDouble();
+            surviveRate = read.nextDouble();
+            while (surviveRate>1){
+                System.out.println("Valor inválido! A taxa de sobrevivência deve estar entre 0 e 1");
+                surviveRate = read.nextDouble();
+            }
+            array[i+1][i] = surviveRate;
         }
     }
     public static void fillFecundityRate (double[][] array){
