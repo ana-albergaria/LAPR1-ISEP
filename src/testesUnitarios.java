@@ -13,7 +13,7 @@ public class testesUnitarios {
         System.out.print("TESTE DA DISTRIBUIÇÃO NORMALIZADA DA POPULAÇÃO ATÉ À GERAÇÃO SOLICITADA: ");
         verifyBoolean(test_fillNormalizedPopVec(GENERATIONS_TO_BE_ESTIMATED,leslieMatrix));
         System.out.print("TESTE DA DIMENSÃO DA POPULAÇÃO ATÉ À GERAÇÃO SOLICITADA: ");
-        verifyBoolean(test_getTotalPopulation();
+        verifyBoolean(test_getTotalPopulation());
         System.out.print("TESTE DAS TAXAS DE VARIAÇÃO DA POPULAÇÃO ATÉ À GERAÇÃO SOLICITADA: ");
         verifyBoolean(test_getRateOfChangeOverTheYears());
         //COMPORTAMENTO ASSINTÓTICO
