@@ -147,7 +147,7 @@ public class main {
         System.out.println("\nInsira o número do gráfico que deseja visualizar:");
         System.out.println("\n ======================================================================================================================");
         System.out.println("|     1 - Dimensão da população ao longo do tempo                                                                        |");
-        System.out.println("|     2 - Variações da dimensão população entre as gerações                                                              |");
+        System.out.println("|     2 - Variações da dimensão da população entre as gerações                                                              |");
         System.out.println("|     3 - Distribuição da população                                                                                      |");
         System.out.println("|     4 - Distribuição normalizada pelo total da população                                                               |");
         System.out.println("|     0 - Voltar                                                                                                         |");
