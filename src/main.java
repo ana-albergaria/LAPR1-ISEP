@@ -420,7 +420,7 @@ public class main {
             System.out.print("Classe " + (i+1) + ":");
             surviveRate = read.nextDouble();
             while (surviveRate>1 || surviveRate<0){
-                System.out.println("Valor inválido! A taxa de sobrevivência deve estar entre 0 e 1");
+                System.out.println("VALOR INVALIDO! A taxa de sobrevivência deve estar entre 0 e 1");
                 System.out.print("Classe " + (i+1) + ":");
                 surviveRate = read.nextDouble();
             }
@@ -433,7 +433,7 @@ public class main {
             System.out.print("Classe " + (i+1) + ":");
             fecundityRate = read.nextDouble();
             while (fecundityRate<0){
-                System.out.println("Valor inválido! A taxa de fecundidade deve ser igual ou superior a 0");
+                System.out.println("VALOR INVALIDO! A taxa de fecundidade deve ser igual ou superior a 0");
                 System.out.print("Classe " + (i+1) + ":");
                 fecundityRate = read.nextDouble();
 
@@ -449,7 +449,8 @@ public class main {
                 auxVector[i] = auxVector[i].substring(auxVector[i].indexOf("=")+1);
             }else{
                 if(interactive){
-                    System.out.println("Ficheiro de entrada invalido! A ordem do vetor deve ser crescente.");
+                    System.out.println();
+                    System.out.println("FICHEIRO DE ENTRADA INVÁLIDO! A ordem do vetor deve ser crescente.");
                     try {
                         dataInsert();
                     } catch (InterruptedException e) {
@@ -458,7 +459,8 @@ public class main {
                         e.printStackTrace();
                     }
                 }else{
-                    System.out.println("Ficheiro de entrada invalido! A ordem do vetor deve ser crescente.");
+                    System.out.println();
+                    System.out.println("FICHEIRO DE ENTRADA INVÁLIDO! A ordem do vetor deve ser crescente.");
                     System.exit(0);
                 }
             }
