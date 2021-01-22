@@ -15,7 +15,10 @@ public class main {
     static final String POP_CLASSES_BASE_FILE_PATH = "gnuplot/class";
     static final String FOLDER_DATA_FILES = "./gnuplot/";
     static final String GRAPHS_OUTPUT_FOLDER = "./graficos-";
+    static final int [] OBRIGATORY_GRAPHS = {3,4};
     static final int NUMBER_OF_GRAPHS = 4;
+    static final int GRAPH_POP_DIM = 1;
+    static final int GRAPH_POP_RATE = 2;
 
     static Scanner read = new Scanner(System.in);
     public static void main(String[] args) throws IOException, InterruptedException {
@@ -105,11 +108,14 @@ public class main {
                     break;
                 case 6:
                     printTotalPopDistribution(numberOfGenerations,distributionMatrix,normDistMatrix);
+                    System.out.println();
                     printPopDim(popDim,numberOfGenerations);
+                    System.out.println();
                     assintoticAnalysis(leslieMatrix);
+                    System.out.println();
                     printRateVariation(rateVariation, numberOfGenerations);
                     int format = graphsFormat();
-                    for(int j = 0; j<=NUMBER_OF_GRAPHS;j++){
+                    for(int j = 1; j<=NUMBER_OF_GRAPHS;j++){
                         showGnuplotted((numberOfGenerations-1), popVec.length, j);
                         saveGnuplotted((numberOfGenerations-1), popVec.length,j, format, specie);
                     }
@@ -268,6 +274,10 @@ public class main {
 
         printTotalPopDistribution(numberOfGenerations,distributionMatrix,normDistMatrix);
 
+        for(int j = 0; j<OBRIGATORY_GRAPHS.length;j++){
+            saveGnuplotted((numberOfGenerations-1), popVec.length,OBRIGATORY_GRAPHS[j], gnuplotFormat, specie);
+        }
+
         if (flag1){
             //chamar os métodos com as funcionalidades de -e
             assintoticAnalysis(leslieMatrix);
@@ -275,17 +285,15 @@ public class main {
         if (flag2){
             //chamar os métodos com as funcionalidades de -v
             printPopDim(popDim,numberOfGenerations);
+            saveGnuplotted((numberOfGenerations-1), popVec.length, GRAPH_POP_DIM, gnuplotFormat, specie);
         }
         if (flag3){
             //chamar os métodos com as funcionalidades de -r
             printRateVariation(rateVariation, numberOfGenerations);
+            saveGnuplotted((numberOfGenerations-1), popVec.length, GRAPH_POP_RATE, gnuplotFormat, specie);
         }
-        if (gnuplotFormat!=0){
-            for(int j = 0; j<=NUMBER_OF_GRAPHS;j++){
-                saveGnuplotted((numberOfGenerations-1), popVec.length,j, gnuplotFormat, specie);
-            }
-            deleteDatFiles();
-        }
+        deleteDatFiles();
+
 
     }
     public static void manualStartOrganizer () throws IOException, InterruptedException {
@@ -577,7 +585,7 @@ public class main {
         System.out.println("Nesse estado, existe um número constante específico associado a um vetor de população específico.");
         System.out.println("Esse número é o valor próprio que tem o módulo máximo da Matriz de Leslie representativa da população da espécie atual.");
         System.out.println("O vetor é o seu respetivo vetor próprio.");
-        System.out.print("\nO valor próprio que tem o módulo máximo, é, em módulo, aproximadamente: ");
+        System.out.print("\nO VALOR PROPRIO QUE TEM O MÓDULO MÁXIMO, É, EM MÓDULO, APROXIMADAMENTE: ");
         System.out.printf("%.4f%n", Math.abs(maxEigenValue));
         System.out.println("Este valor próprio representa a taxa de crescimento a partir do momento que a população atinge esse estado de equilíbrio.");
 
@@ -593,7 +601,7 @@ public class main {
             System.out.println("Como o valor próprio é igual a 1, a população permanecerá constante ao longo do tempo.");
         }
 
-        System.out.println("\nO vetor próprio associado ao valor próprio máximo representa a Distribuição Etária Estável (DEE).");
+        System.out.println("\nO VETOR PRÓPRIO ASSOCIADO AO VALOR PRÓPRIO MAXIMO REPRESENTA A DISTRIBUIÇÃIO ETÁRIA ESTÁVEL (DEE).");
         System.out.println("\nDistribuição (Normalizada) Etária Estável: (2 casas decimais)");
         fillNormalizedDEE(normalizedMaxVecM,maxVecM);
         printDEE(normalizedMaxVecM);
@@ -740,7 +748,7 @@ public class main {
             graphsDir.mkdirs();
         }
         Date date = new Date();
-        SimpleDateFormat ft = new SimpleDateFormat ("E_dd-MM-yyyy_'at'_HH-mm-ss");
+        SimpleDateFormat ft = new SimpleDateFormat ("dd-MM-yyyy_'at'_HH-mm-ss");
         String name = specie + "-" + ft.format(date);
         Process process1 = Runtime.getRuntime().exec("gnuplot -c ./gnuplot/save"
                 + nfile +".gp "+ option + " " + classes
