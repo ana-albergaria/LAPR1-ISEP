@@ -37,7 +37,7 @@ public class main {
     }
     /*=========================================MENUS==============================================*/
     public static void dataInsert() throws IOException, InterruptedException {
-        System.out.println("\nDe qual forma gostaria de inicializar os dados?:");
+        System.out.println("\nDe qual forma gostaria de inicializar os dados?");
         System.out.println("\n ==============================");
         System.out.println("|     1 - Manualmente            |");
         System.out.println("|     2 - Ficheiro de texto      |");
@@ -366,6 +366,20 @@ public class main {
                         for (i=0; i<leslie.length-1; i++) {
                             if (Double.parseDouble(auxVector[i])<=1){
                                 leslie[i+1][i] = Double.parseDouble(auxVector[i]);
+                            }else {
+                                if(interactive){
+                                    System.out.println("FICHEIRO DE ENTRADA INVALIDO! A taxa de sobrevivência deve estar entre 0 e 1.");
+                                    try {
+                                        dataInsert();
+                                    } catch (InterruptedException e) {
+                                        e.printStackTrace();
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                }else{
+                                    System.out.println("FICHEIRO DE ENTRADA INVALIDO! A taxa de sobrevivência deve estar entre 0 e 1.");
+                                    System.exit(0);
+                                }
                             }
                         }
                         break;
@@ -420,7 +434,7 @@ public class main {
             System.out.print("Classe " + (i+1) + ":");
             surviveRate = read.nextDouble();
             while (surviveRate>1 || surviveRate<0){
-                System.out.println("Valor inválido! A taxa de sobrevivência deve estar entre 0 e 1");
+                System.out.println("VALOR INVALIDO! A taxa de sobrevivência deve estar entre 0 e 1");
                 System.out.print("Classe " + (i+1) + ":");
                 surviveRate = read.nextDouble();
             }
@@ -433,7 +447,7 @@ public class main {
             System.out.print("Classe " + (i+1) + ":");
             fecundityRate = read.nextDouble();
             while (fecundityRate<0){
-                System.out.println("Valor inválido! A taxa de fecundidade deve ser igual ou superior a 0");
+                System.out.println("VALOR INVALIDO! A taxa de fecundidade deve ser igual ou superior a 0");
                 System.out.print("Classe " + (i+1) + ":");
                 fecundityRate = read.nextDouble();
 
@@ -449,7 +463,7 @@ public class main {
                 auxVector[i] = auxVector[i].substring(auxVector[i].indexOf("=")+1);
             }else{
                 if(interactive){
-                    System.out.println("Ficheiro de entrada invalido! A ordem do vetor deve ser crescente.");
+                    System.out.println("FICHEIRO DE ENTRADA INVALIDO! A ordem do vetor deve ser crescente.");
                     try {
                         dataInsert();
                     } catch (InterruptedException e) {
@@ -458,7 +472,7 @@ public class main {
                         e.printStackTrace();
                     }
                 }else{
-                    System.out.println("Ficheiro de entrada invalido! A ordem do vetor deve ser crescente.");
+                    System.out.println("FICHEIRO DE ENTRADA INVALIDO! A ordem do vetor deve ser crescente.");
                     System.exit(0);
                 }
             }

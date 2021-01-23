@@ -1,30 +1,32 @@
 import java.io.IOException;
 
 public class testesUnitarios {
-    static final int GENERATIONS_TO_BE_ESTIMATED = 2;
-
     public static void main(String[] args) throws IOException {
         double[][] leslieMatrix = {{0,3,3.17,0.39},{0.11,0,0,0},{0,0.29,0,0},{0,0,0.33,0}};
         double maxVecMAux [] = new double [leslieMatrix.length];
-        double normMaxVecMAux [] = new double [leslieMatrix.length];
+
+        int generationsToBeEstimated = 2;
+        //NOTE: To estimate more generations, new expected Results will need to be added to the methods
+        double expectedMaxEigenValue = 0.6956005054754468;
+        double expectedMaxPercChangePop = -30.439949452455316;
 
         System.out.print("TESTE DA DISTRIBUIÇÃO DA POPULAÇÃO ATÉ À GERAÇÃO SOLICITADA: ");
-        verifyBoolean(test_fillPopulationDistribution(GENERATIONS_TO_BE_ESTIMATED,leslieMatrix));
+        verifyBoolean(test_fillPopulationDistribution(generationsToBeEstimated,leslieMatrix));
         System.out.print("TESTE DA DISTRIBUIÇÃO NORMALIZADA DA POPULAÇÃO ATÉ À GERAÇÃO SOLICITADA: ");
-        verifyBoolean(test_fillNormalizedPopVec(GENERATIONS_TO_BE_ESTIMATED,leslieMatrix));
+        verifyBoolean(test_fillNormalizedPopVec(generationsToBeEstimated,leslieMatrix));
         System.out.print("TESTE DA DIMENSÃO DA POPULAÇÃO ATÉ À GERAÇÃO SOLICITADA: ");
         verifyBoolean(test_getTotalPopulation());
         System.out.print("TESTE DAS TAXAS DE VARIAÇÃO DA POPULAÇÃO ATÉ À GERAÇÃO SOLICITADA: ");
         verifyBoolean(test_getRateOfChangeOverTheYears());
         //COMPORTAMENTO ASSINTÓTICO
         System.out.print("TESTE DO MÓDULO DO VALOR PRÓPRIO MÁXIMO: ");
-        verifyBoolean(test_findMaxEigenValue(leslieMatrix,0.6956005054754468,maxVecMAux));
+        verifyBoolean(test_findMaxEigenValue(leslieMatrix,expectedMaxEigenValue,maxVecMAux));
         System.out.print("TESTE DO PREENCHIMENTO DO VETOR PRÓPRIO MÁXIMO: ");
         verifyBoolean(test_fillMaxVecM(maxVecMAux));
         System.out.print("TESTE DO PREENCHIMENTO DA DISTRIBUIÇÃO NORMALIZADA DO VETOR PRÓPRIO MÁXIMO: ");
         verifyBoolean(test_fillNormalizedDEE(maxVecMAux));
         System.out.print("TESTE DA PROPORÇÃO DE CRESCIMENTO DA POPULAÇÃO APÓS ATINGIR A DEE: ");
-        verifyBoolean(test_percChangePop(-30.439949452455316, 0.6956005054754468));
+        verifyBoolean(test_percChangePop(expectedMaxPercChangePop, expectedMaxEigenValue));
 
 
 
@@ -142,7 +144,7 @@ public class testesUnitarios {
     public static Boolean test_percChangePop(double expectedPercChangePop, double maxEigenValue){
         double percChangePop = (maxEigenValue-1) * 100;
 
-        if(expectedPercChangePop==percChangePop){
+        if(expectedPercChangePop == percChangePop) {
             return true;
         }
         return false;
