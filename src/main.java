@@ -463,7 +463,8 @@ public class main {
                 auxVector[i] = auxVector[i].substring(auxVector[i].indexOf("=")+1);
             }else{
                 if(interactive){
-                    System.out.println("FICHEIRO DE ENTRADA INVALIDO! A ordem do vetor deve ser crescente.");
+                    System.out.println();
+                    System.out.println("FICHEIRO DE ENTRADA INVÁLIDO! A ordem do vetor deve ser crescente.");
                     try {
                         dataInsert();
                     } catch (InterruptedException e) {
@@ -472,7 +473,8 @@ public class main {
                         e.printStackTrace();
                     }
                 }else{
-                    System.out.println("FICHEIRO DE ENTRADA INVALIDO! A ordem do vetor deve ser crescente.");
+                    System.out.println();
+                    System.out.println("FICHEIRO DE ENTRADA INVÁLIDO! A ordem do vetor deve ser crescente.");
                     System.exit(0);
                 }
             }
