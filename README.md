@@ -1,4 +1,4 @@
-# Integrating Project for the 1st Semester of LEI-ISEP 2020-21 
+# Integrating Project - 1st Semester of LEI-ISEP 2020-21 
 
 The project assigment is located at the root of this project in a file named **project_assignment.pdf**.
 
